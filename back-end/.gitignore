@@ -4,3 +4,4 @@
 package-lock.json
 /.pnp
 .pnp.js
+.DS_Store
