@@ -1,0 +1,30 @@
+{
+    "name": "project-ai-investment-playground-back-end",
+    "version": "1.0.0",
+    "description": "Code for investment playground backend",
+    "main": "src/server.js",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/rachel-cunningham/project-ai-investment-playground",
+        "directory": "/back-end"
+    },
+    "scripts": {
+        "start": "node src/server.js",
+        "start:dev": "nodemon src/server.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "UNLICENSED",
+    "dependencies": {
+        "cors": "^2.8.5",
+        "dotenv": "^16.4.5",
+        "express": "^4.19.2",
+        "jest": "^29.7.0",
+        "knex": "^3.1.0",
+        "node": "^20.13.1",
+        "pg": "^8.11.5"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.6"
+    }
+}
