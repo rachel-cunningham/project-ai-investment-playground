@@ -4,10 +4,13 @@ const app = express();
 const errorHandler = require("./errors/errorHandler");
 const notFound = require("./errors/notFound");
 
+const usersRouter = require("./users/users.router")
 
 
 app.use(cors());
 app.use(express.json());
+
+app.use("/", usersRouter)
 
 
 app.use(notFound);
