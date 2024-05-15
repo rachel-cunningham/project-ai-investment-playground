@@ -1,11 +1,45 @@
 import React from "react";
+import { Button, Box } from "@mui/material";
+import { Link } from "react-router-dom";
 
 function Header() {
-    return (
-        <header>
-            this will be a header / nav
-        </header>
-    )
+  return (
+    <Box component="header" sx={{ display: "flex", justifyContent: "space-between", padding: 2, backgroundColor: "#f5f5f5" }}>
+      <Button  
+      component={Link} 
+      to="/" 
+      variant="outlined"
+      sx={{ textDecoration: 'none', color: 'inherit' }}>
+        WealthifyAI
+      </Button>
+      <Box>
+        <Button 
+        component={Link} 
+        to="/log-in" 
+        variant="contained" 
+        color="primary" 
+        sx={{ marginRight: 2 }}>
+          Log In
+        </Button>
+        <Button 
+        component={Link} 
+        to="/sign-up" 
+        variant="contained" 
+        color="primary" 
+        sx={{ marginRight: 2 }}>
+          Sign Up
+        </Button>
+        <Button 
+        component={Link} 
+        to="/about" 
+        variant="contained" 
+        color="primary" 
+        sx={{ marginRight: 1 }}>
+          About
+        </Button>
+      </Box>
+    </Box>
+  );
 }
 
 export default Header;
