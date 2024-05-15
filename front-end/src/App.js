@@ -1,9 +1,7 @@
-import { Routes, Route } from "react-router-dom";
+import Layout from "./layouts/Layout";
 
 function App() {
-  return (
-    <Layout/>
-  );
+  return <Layout />;
 }
 
 export default App;
