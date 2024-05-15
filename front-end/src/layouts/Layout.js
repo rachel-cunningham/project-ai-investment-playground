@@ -6,6 +6,7 @@ import LogInPage from "../pages/LogInPage";
 import SignUpPage from "../pages/SignUpPage";
 import Footer from "../components/Footer";
 import DashboardPage from "../pages/DashboardPage";
+import About from "../pages/About";
 
 function Layout() {
   return (
@@ -17,6 +18,7 @@ function Layout() {
         <Route path="/dashboard" element={<DashboardPage />} />
         <Route path="/log-in" element={<LogInPage />} />
         <Route path="/sign-up" element={<SignUpPage />} />
+        <Route path="/about" element={<About />}/>
       </Routes>
       </div>
     
