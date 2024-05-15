@@ -15,7 +15,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use("/", usersRouter);
+app.use("/users", usersRouter);
 
 // Error handling
 app.use(notFound);
