@@ -1,15 +1,21 @@
 const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
 const hasProperties = require("../errors/hasProperties");
 const service = require("./users.service");
+const bcrypt = require('bcryptjs');
 
 async function create(req, res, next){
-    const {data: {first_name, last_name, email, password} = {}} = req.body
+    const {data: {first_name, last_name, username, email, password} = {}} = req.body
+
+    const salt = await bcrypt.genSalt(10);
+    const password_hash = await bcrypt.hash(password, salt);
 
     const newUser = {
         first_name,
         last_name,
+        username,
         email,
-        password
+        password,
+        password_hash
     }
 
     const response = await service.create(newUser)
