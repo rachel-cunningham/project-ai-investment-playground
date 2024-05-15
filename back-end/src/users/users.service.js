@@ -12,7 +12,15 @@ async function list() {
         .select("*")
 }
 
+function readUser(username) {
+    return knex("users")
+        .select("*")
+        .where({ username: username })
+        .first();
+}
+
 module.exports = {
     create,
-    list
+    list,
+    readUser
 };

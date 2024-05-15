@@ -20,6 +20,29 @@ async function list(req, res) {
     res.json({data: await service.list()});
 }
 
+// Validates that a user with the given username exists
+async function userExists(req, res, next) {
+    const { username } = req.params
+    const data = await service.readUser(username)
+
+    if (!data) {
+        next({
+            status: 404,
+            message: `Username '${username}' does not exist` 
+        })
+    } else {
+        res.locals.user = data
+        next()
+    }
+}
+
+// Get requests to /users/:username will return a single user - the whole row
+function readUser(req, res, next) {
+    const data = res.locals.user
+
+    res.json({ data })
+}
+
 module.exports = {
     create: [
         asyncErrorBoundary(hasProperties("first_name")),
@@ -28,5 +51,9 @@ module.exports = {
         asyncErrorBoundary(hasProperties("password")),
         asyncErrorBoundary(create)
     ],
-    list: asyncErrorBoundary(list)
+    list: asyncErrorBoundary(list),
+    read: [
+        asyncErrorBoundary(userExists),
+        readUser
+    ]
 };
