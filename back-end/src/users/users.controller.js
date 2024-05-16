@@ -5,8 +5,17 @@ const bcrypt = require("bcryptjs");
 const authenticateToken = require("../authentication/authenticateToken");
 
 async function create(req, res, next) {
-    const { data: { first_name, last_name, username, email, password } = {} } =
-        req.body;
+    const {
+        data: {
+            first_name,
+            last_name,
+            username,
+            email,
+            password,
+            age,
+            occupation,
+        } = {},
+    } = req.body;
 
     // Encrypts the user's password
     const salt = await bcrypt.genSalt(10);
@@ -19,6 +28,8 @@ async function create(req, res, next) {
         email,
         password,
         password_hash,
+        age,
+        occupation,
     };
 
     const response = await service.create(newUser);
