@@ -39,7 +39,8 @@ export async function listUsers(signal) {
     return await fetchJson(url, { headers, signal })
 }
 
-// userLogin takes a username(string) and password(string) and returns an auth token if credentials are valid
+// userLogin takes a username(string) and password(string) and if credentials are valid stores the returned auth token in a cookie
+// returns the authenticated user's info
 export async function userLogin(username, password, signal) {
     const url = `${API_BASE_URL}/login`
     const options = {
