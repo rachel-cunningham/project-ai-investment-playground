@@ -12,7 +12,14 @@ async function list() {
         .select("*")
 }
 
-function readUser(username) {
+function readUser(userId) {
+    return knex("users")
+        .select("*")
+        .where({ user_id: userId })
+        .first();
+}
+
+function readUserByUsername(username) {
     return knex("users")
         .select("*")
         .where({ username: username })
@@ -22,5 +29,6 @@ function readUser(username) {
 module.exports = {
     create,
     list,
-    readUser
+    readUser,
+    readUserByUsername
 };
