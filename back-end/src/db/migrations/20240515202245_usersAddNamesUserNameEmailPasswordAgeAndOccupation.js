@@ -3,15 +3,16 @@
  * @returns { Promise<void> }
  */
 exports.up = function (knex) {
-  return knex.schema.table("users", (table) => {
-    table.string("first_name").notNullable();
-    table.string("last_name").notNullable();
-    table.string("username").notNullable().unique();
-    table.string("email").notNullable().unique();
-    table.string("password").notNullable();
-    table.integer("age").notNullable();
-    table.string("occupation").notNullable();
-  });
+    return knex.schema.table("users", (table) => {
+        table.string("first_name").notNullable();
+        table.string("last_name").notNullable();
+        table.string("username").notNullable().unique();
+        table.string("email").notNullable().unique();
+        table.string("password").notNullable();
+        table.string("password_hash");
+        table.integer("age").notNullable();
+        table.string("occupation").notNullable();
+    });
 };
 
 /**
@@ -19,13 +20,14 @@ exports.up = function (knex) {
  * @returns { Promise<void> }
  */
 exports.down = function (knex) {
-  return knex.schema.table("users", (table) => {
-    table.dropColumn("first_name");
-    table.dropColumn("last_name");
-    table.dropColumn("username");
-    table.dropColumn("email");
-    table.dropColumn("password");
-    table.dropColumn("age");
-    table.dropColumn("occupation");
-  });
+    return knex.schema.table("users", (table) => {
+        table.dropColumn("first_name");
+        table.dropColumn("last_name");
+        table.dropColumn("username");
+        table.dropColumn("email");
+        table.dropColumn("password");
+        table.dropColumn("password_hash");
+        table.dropColumn("age");
+        table.dropColumn("occupation");
+    });
 };
