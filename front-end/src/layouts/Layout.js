@@ -9,6 +9,9 @@ import DashboardPage from "../pages/DashboardPage";
 import About from "../pages/About";
 import NotFoundPage from "../pages/NotFoundPage";
 
+// For api testing
+import ExampleLoginPage from "../pages/ExampleLoginPage";
+
 function Layout() {
   return (
     <Router>
@@ -21,6 +24,7 @@ function Layout() {
           <Route path="/sign-up" element={<SignUpPage />} />
           <Route path="/about" element={<About />} />
           <Route path="*" element={<NotFoundPage />} />
+          <Route path="/example-login" element={<ExampleLoginPage />} />
         </Routes>
       </div>
 
