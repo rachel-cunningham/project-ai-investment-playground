@@ -1,9 +1,23 @@
 [
     {
-        "goal_name": "John Doe's first investment",
-        "short_term_goals": "I want to earn ",
+        "goal_name": "John Smith's first investment",
+        "goal_statement": "I want to earn... and do this...",
         "years_to_invest": 5,
-        "risk_comfort": "low",
+        "risk_comfort": "medium",
         "amount_to_invest": 30000
+    },
+    {
+        "goal_name": "Jane Doe's first investment",
+        "goal_statement": "I want to earn... and do this...",
+        "years_to_invest": 10,
+        "risk_comfort": "low",
+        "amount_to_invest": 100000
+    },
+    {
+        "goal_name": "Mike Green's first investment",
+        "goal_statement": "I want to earn... and do this...",
+        "years_to_invest": 2,
+        "risk_comfort": "high",
+        "amount_to_invest": 7000
     }
 ]
