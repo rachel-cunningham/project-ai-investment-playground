@@ -1,0 +1,38 @@
+[
+    {
+        "first_name": "John",
+        "last_name": "Smith",
+        "username": "jsmith",
+        "email": "johnsmith@email.com",
+        "password": "securepassword",
+        "age": 30,
+        "occupation": "Cook"
+    },
+    {
+        "first_name": "Jane",
+        "last_name": "Doe",
+        "username": "jdoe",
+        "email": "janedoe@email.com",
+        "password": "anotherpw",
+        "age": 20,
+        "occupation": "Hairstylist"
+    },
+    {
+        "first_name": "Mike",
+        "last_name": "Green",
+        "username": "mgreen",
+        "email": "mikegreen@email.com",
+        "password": "pwtime222",
+        "age": 63,
+        "occupation": "Retired"
+    },
+    {
+        "first_name": "Emilia",
+        "last_name": "Anderson",
+        "username": "eanderson",
+        "email": "emanderson@email.com",
+        "password": "password123",
+        "age": 50,
+        "occupation": "Manager"
+    }
+]
