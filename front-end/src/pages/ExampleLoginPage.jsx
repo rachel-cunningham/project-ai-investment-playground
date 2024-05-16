@@ -26,6 +26,8 @@ export default function ExampleLoginPage() {
             setUser(response)
         } catch (err) {
             console.error(err)
+        } finally {
+            console.log("Navigate to dashboard for user with user.username")
         }
     }
 
