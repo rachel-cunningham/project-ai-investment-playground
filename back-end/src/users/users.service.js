@@ -19,8 +19,16 @@ function readUser(userId) {
         .first();
 }
 
+function readUserByUsername(username) {
+    return knex("users")
+        .select("*")
+        .where({ username: username })
+        .first();
+}
+
 module.exports = {
     create,
     list,
-    readUser
+    readUser,
+    readUserByUsername
 };
