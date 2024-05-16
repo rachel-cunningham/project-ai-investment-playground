@@ -5,7 +5,6 @@
 exports.up = function (knex) {
     return knex.schema.createTable("goals", (table) => {
         table.increments("goal_id").primary();
-        table.string("goal_name").notNullable();
         table.integer("user_id").unsigned();
         table
             .foreign("user_id")
