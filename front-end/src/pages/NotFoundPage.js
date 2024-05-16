@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button, Typography, Container, Box } from "@mui/material";
+import ErrorAlert from "../layouts/ErrorAlert";
 
 function NotFoundPage() {
   return (
@@ -16,6 +17,7 @@ function NotFoundPage() {
           <Button variant="contained" color="primary" component={Link} to="/">
             Go Back Home
           </Button>
+          <ErrorAlert error="test" />
         </Box>
       </Box>
     </Container>
