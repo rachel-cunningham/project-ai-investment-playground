@@ -12,10 +12,10 @@ async function list() {
         .select("*")
 }
 
-function readUser(username) {
+function readUser(userId) {
     return knex("users")
         .select("*")
-        .where({ username: username })
+        .where({ user_id: userId })
         .first();
 }
 

@@ -7,7 +7,7 @@ const cors = require("cors");
 const errorHandler = require("./errors/errorHandler");
 const notFound = require("./errors/notFound");
 const usersRouter = require("./users/users.router");
-const authenticationRouter = require("./authentication/auth.router")
+const loginRouter = require("./authentication/login.router")
 
 const app = express();
 
@@ -16,7 +16,7 @@ app.use(express.json());
 
 
 app.use("/users", usersRouter);
-app.use("/login", authenticationRouter)
+app.use("/login", loginRouter)
 
 // Error handling
 app.use(notFound);

@@ -2,10 +2,12 @@ const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
 const hasProperties = require("../errors/hasProperties");
 const service = require("./users.service");
 const bcrypt = require('bcryptjs');
+const authenticateToken = require("../authentication/authenticateToken")
 
 async function create(req, res, next){
     const {data: {first_name, last_name, username, email, password} = {}} = req.body
 
+    // Encrypts the user's password
     const salt = await bcrypt.genSalt(10);
     const password_hash = await bcrypt.hash(password, salt);
 
@@ -29,12 +31,14 @@ async function list(req, res) {
 // Validates that a user with the given username exists
 async function userExists(req, res, next) {
     const { username } = req.params
-    const data = await service.readUser(username)
+    const { userId } = req.user
+
+    const data = await service.readUser(userId)
 
     if (!data) {
         next({
             status: 404,
-            message: `Username '${username}' does not exist` 
+            message: `User '${username}' does not exist` 
         })
     } else {
         res.locals.user = data
@@ -57,8 +61,9 @@ module.exports = {
         asyncErrorBoundary(hasProperties("password")),
         asyncErrorBoundary(create)
     ],
-    list: asyncErrorBoundary(list),
+    list: [asyncErrorBoundary(list)],
     read: [
+        authenticateToken,
         asyncErrorBoundary(userExists),
         readUser
     ]
