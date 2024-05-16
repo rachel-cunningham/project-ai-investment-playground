@@ -4,7 +4,7 @@ const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
 const service = require("../users/users.service");
 
 /* This function 
-1. recieves the username and password sent from a form on the frontend
+1. receives the username and password sent from a form on the frontend
 2. checks the db for a user with that username
 3. checks the password from frontend form against password in db
 4. generates an auth token
@@ -17,19 +17,29 @@ async function login(req, res) {
 
         const user = await service.readUserByUsername(username);
         if (!user) {
-            return res.status(401).json({ message: "Invalid username or password" });
+            return res
+                .status(401)
+                .json({ message: "Invalid username or password" });
         }
 
         // Compares the encrypted password from the db with the password sent from the frontend form
-        const isPasswordValid = await bcrypt.compare(password, user.password_hash);
+        const isPasswordValid = await bcrypt.compare(
+            password,
+            user.password_hash
+        );
 
         if (!isPasswordValid) {
-            return res.status(401).json({ message: "Invalid username or password" });
+            return res
+                .status(401)
+                .json({ message: "Invalid username or password" });
         }
 
         // Creates an auth token which includes (in encrypted form) the user's id and a key used to unencrypt the token
-        const token = jwt.sign({ userId: user.user_id }, process.env.API_SECRET_KEY, { expiresIn: "1h" });
-
+        const token = jwt.sign(
+            { userId: user.user_id },
+            process.env.API_SECRET_KEY,
+            { expiresIn: "1h" }
+        );
 
         // Sends token and user info back to frontend
         res.status(200).json({ token: token, user: user });
@@ -40,5 +50,5 @@ async function login(req, res) {
 }
 
 module.exports = {
-    login: [asyncErrorBoundary(login)]
+    login: [asyncErrorBoundary(login)],
 };
