@@ -1,12 +1,16 @@
 import React from "react";
-import NewUserForm from "../layouts/users/NewUserForm";
+import AuthForm from "../components/AuthForm";
 
 function SignUpPage() {
+  const handleSignupSubmit = (formData) => {
+    // Handle signup logic
+    console.log("Signup data:", formData);
+  };
   return (
     <div>
       <header>
         <h1>Sign Up Page</h1>
-        <NewUserForm />
+        <AuthForm isSignup={true} onSubmit={handleSignupSubmit} />
         <p>"/dashboard" </p>
         <p>"/log-in"</p>
         <p>"/sign-up</p>
