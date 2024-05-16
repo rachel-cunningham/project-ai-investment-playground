@@ -7,7 +7,6 @@ export default function ExampleLoginPage() {
         password: ''
     })
     const [user, setUser] = useState(null)
-    const [error, setError] = useState(null)
 
     const handleChange = (event) => {
         const { name, value } = event.target
@@ -41,7 +40,6 @@ export default function ExampleLoginPage() {
     
       return (
         <>
-        {error ? <h3>{error.message}</h3> : null}
         <form onSubmit={handleSubmit}>
           <div>
             <label htmlFor="username">Username:</label>
