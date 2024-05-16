@@ -3,21 +3,27 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "../components/Header";
 import HomePage from "../pages/HomePage";
 import LogInPage from "../pages/LogInPage";
-
 import SignUpPage from "../pages/SignUpPage";
 import Footer from "../components/Footer";
 import DashboardPage from "../pages/DashboardPage";
+import About from "../pages/About";
+import NotFoundPage from "../pages/NotFoundPage";
 
 function Layout() {
   return (
     <Router>
       <Header />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/dashboard" element={<DashboardPage />} />
-        <Route path="/log-in" element={<LogInPage />} />
-        <Route path="/sign-up" element={<SignUpPage />} />
-      </Routes>
+      <div className="Layout">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/log-in" element={<LogInPage />} />
+          <Route path="/sign-up" element={<SignUpPage />} />
+          <Route path="/about" element={<About />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </div>
+
       <Footer />
     </Router>
   );
