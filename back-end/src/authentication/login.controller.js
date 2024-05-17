@@ -30,9 +30,15 @@ async function login(req, res) {
         // Creates an auth token which includes (in encrypted form) the user's id and a key used to unencrypt the token
         const token = jwt.sign({ userId: user.user_id }, process.env.API_SECRET_KEY, { expiresIn: "1h" });
 
+        res.cookie('token', token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'development', // set to process.env.NODE_ENV === 'production' if in production
+            sameSite: 'lax',
+            maxAge: 3600000 // 1 hour in milliseconds
+        })
 
-        // Sends token and user info back to frontend
-        res.status(200).json({ token: token, user: user });
+        // Sends user info back to frontend
+        res.status(200).json({ user: user });
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: "Internal server error" });
