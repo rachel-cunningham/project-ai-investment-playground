@@ -5,6 +5,7 @@ const bcrypt = require('bcryptjs');
 const authenticateToken = require("../authentication/authenticateToken")
 const validateInput = require("./validateInput")
 
+// POST requests to /users will create a new user and respond with that new user data
 async function create(req, res, next){
     const {data: {first_name, last_name, username, email, password} = {}} = req.body
 
@@ -47,7 +48,7 @@ async function userExists(req, res, next) {
     }
 }
 
-// Get requests to /users/:username will return a single user - the whole row
+// GET requests to /users/:username will return a single user - the whole row
 function readUser(req, res, next) {
     const data = res.locals.user
 

@@ -1,3 +1,5 @@
+// Takes an array of property names and looks for them in the request body
+// throws and error if any of the properties are missing or misspelled
 function hasProperties(properties) {
     return function (req, res, next) {
       const { data = {} } = req.body;

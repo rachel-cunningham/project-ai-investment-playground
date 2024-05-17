@@ -28,7 +28,7 @@ function validateEnum(value, validValues) {
     return validValues.includes(value)
 }
 
-// validationRules can include type <data type>, maxLength <number>, enum: validValues <array>, min <number>, max <number>, custom <function>
+// validationRules can include: type <data type>, maxLength <number>, enum: validValues <array>, min <number>, max <number>, custom <function>
 // returns status 400 and "Invalid <field>" if any of the validationRules are not met
 function validateInput(req, res, next) {
     const validationRules = {
@@ -72,7 +72,7 @@ module.exports = validateInput
 // Some usage examples from another project:
         /*
         admin: { type: "boolean" },
-         gender: { type: "string", enum: ["Male", "Female"] },
+        gender: { type: "string", enum: ["Male", "Female"] },
         sleep_duration: { type: "number", min: 0, max: 24 },
         quality_of_sleep: { type: "number", min: 1, max: 10 },
         physical_activity_level: { type: "number", min: 0, max: 1440 },
