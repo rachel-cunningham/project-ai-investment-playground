@@ -1,7 +1,6 @@
 const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
 const hasProperties = require("../utils/hasProperties");
 const goalsService = require("./goals.service");
-const usersService = require("../users/users.service");
 
 /*
  * Validation middleware
@@ -41,8 +40,10 @@ async function list(req, res, next) {
  * Create a new goal
  */
 async function create(req, res, next) {
+    const { userId } = req.user;
+
     try {
-        const data = await goalsService.create(req.body.data);
+        const data = await goalsService.create(req.body.data, userId);
         res.status(201).json({ data });
     } catch (error) {
         next(error);

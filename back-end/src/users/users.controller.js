@@ -44,6 +44,7 @@ async function list(req, res) {
 async function userExists(req, res, next) {
     const { username } = req.params;
     const { userId } = req.user;
+    console.log(req.user);
 
     const data = await service.readUser(userId);
 
@@ -75,7 +76,7 @@ module.exports = {
                 "email",
                 "password",
                 "age",
-                "location"
+                "occupation"
             )
         ),
         asyncErrorBoundary(create),

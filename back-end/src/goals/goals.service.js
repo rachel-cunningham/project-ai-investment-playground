@@ -6,7 +6,9 @@ function list() {
 }
 
 // create a new goal
-function create(goal) {
+function create(goal, userId) {
+    goal.user_id = userId;
+
     return knex("goals")
         .insert(goal)
         .returning("*")

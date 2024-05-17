@@ -9,6 +9,7 @@ const notFound = require("./errors/notFound");
 const usersRouter = require("./users/users.router");
 const loginRouter = require("./authentication/login.router");
 const goalsRouter = require("./goals/goals.router");
+const authenticateToken = require("./authentication/authenticateToken");
 
 const app = express();
 
@@ -18,7 +19,7 @@ app.use(cookieParser());
 
 app.use("/users", usersRouter);
 app.use("/login", loginRouter);
-app.use("/goals", goalsRouter);
+app.use("/users/:userId/goals", authenticateToken, goalsRouter);
 
 // Error handling
 app.use(notFound);
