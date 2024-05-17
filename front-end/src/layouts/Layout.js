@@ -7,21 +7,27 @@ import SignUpPage from "../pages/SignUpPage";
 import Footer from "../components/Footer";
 import DashboardPage from "../pages/DashboardPage";
 import About from "../pages/About";
+import NotFoundPage from "../pages/NotFoundPage";
+
+// For api testing
+import ExampleLoginPage from "../pages/ExampleLoginPage";
 
 function Layout() {
   return (
     <Router>
       <Header />
       <div className="Layout">
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/dashboard" element={<DashboardPage />} />
-        <Route path="/log-in" element={<LogInPage />} />
-        <Route path="/sign-up" element={<SignUpPage />} />
-        <Route path="/about" element={<About />}/>
-      </Routes>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/log-in" element={<LogInPage />} />
+          <Route path="/sign-up" element={<SignUpPage />} />
+          <Route path="/about" element={<About />} />
+          <Route path="*" element={<NotFoundPage />} />
+          <Route path="/example-login" element={<ExampleLoginPage />} />
+        </Routes>
       </div>
-    
+
       <Footer />
     </Router>
   );
