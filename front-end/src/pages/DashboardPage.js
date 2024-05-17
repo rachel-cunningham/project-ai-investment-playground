@@ -12,8 +12,8 @@ import CardActionArea from "@mui/material/CardActionArea";
 import CardActions from "@mui/material/CardActions";
 import Button from "@mui/material/Button";
 import CardMedia from "@mui/material/CardMedia";
-import InvestImage from "../assets/images / dashboard/invest.jpeg";
-import ProfileImage from "../assets/images / dashboard/blank-profile-picture.png";
+import InvestImage from "../assets/images/dashboard/invest.jpeg";
+import ProfileImage from "../assets/images/dashboard/blank-profile-picture.png";
 
 function DashboardPage() {
   return (
