@@ -7,6 +7,6 @@ const goals = require("./02-goals.json");
 
 exports.seed = async function (knex) {
     // Deletes ALL existing entries
-    await knex("table_name").del();
-    await knex("table_name").insert(goals);
+    await knex("goals").del();
+    await knex("goals").insert(goals);
 };
