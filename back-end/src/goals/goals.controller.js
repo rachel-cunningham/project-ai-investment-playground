@@ -50,9 +50,13 @@ async function create(req, res, next) {
     /* const goal = {
         ...req.body.data,
         userId,
-    }; */
+    };
+
+    console.log("GOAL WITH USER ID", goal);
+    console.log(req.body.data); */
+
     try {
-        const data = await goalsService.create(req.body.data);
+        const data = await goalsService.create(req.body.data, userId);
         console.log("CREATED");
         res.status(201).json({ data });
     } catch (error) {
