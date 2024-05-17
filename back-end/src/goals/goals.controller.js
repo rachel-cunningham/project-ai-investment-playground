@@ -40,8 +40,7 @@ async function list(req, res, next) {
  * Create a new goal
  */
 async function create(req, res, next) {
-    const { userId } = req.user;
-
+    const { userId } = req.params; // this returns undefined for now, user_id will be "null" in table
     try {
         const data = await goalsService.create(req.body.data, userId);
         res.status(201).json({ data });

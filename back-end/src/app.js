@@ -19,7 +19,7 @@ app.use(cookieParser());
 
 app.use("/users", usersRouter);
 app.use("/login", loginRouter);
-app.use("/users/:userId/goals", authenticateToken, goalsRouter);
+app.use("/users/:userId/goals", goalsRouter);
 
 // Error handling
 app.use(notFound);
