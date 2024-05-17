@@ -14,13 +14,13 @@ router.route("/:username").get(usersController.read).all(methodNotAllowed);
 
 // USER GOALS
 router
-    .route("/:username/goals")
+    .route("/:userId/goals")
     .get(goalsController.list)
     .post(goalsController.create)
     .all(methodNotAllowed);
 
 router
-    .route("/:username/goals/:goal_id")
+    .route("/:userId/goals/:goalId")
     .get(goalsController.read)
     .all(methodNotAllowed);
 

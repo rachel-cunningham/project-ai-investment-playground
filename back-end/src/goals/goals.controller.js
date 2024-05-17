@@ -9,15 +9,16 @@ const authenticateToken = require("../authentication/authenticateToken");
 
 // Check if goal with goal_id exists
 async function goalExists(req, res, next) {
-    const { goal_id } = req.params;
-    const goal = await goalsService.read(goal_id);
+    console.log("GOALEXISTS");
+    const { goalId } = req.params;
+    const goal = await goalsService.read(goalId);
     if (goal) {
         res.locals.goal = goal;
         return next();
     } else {
         next({
             status: 404,
-            message: `Goal with id ${goal_id} does not exist.`,
+            message: `Goal with id ${goalId} does not exist.`,
         });
     }
 }
@@ -29,6 +30,7 @@ async function goalExists(req, res, next) {
  */
 
 async function list(req, res, next) {
+    console.log("LIST");
     const { userId } = req.user;
     try {
         const data = await goalsService.list(userId);
@@ -42,9 +44,16 @@ async function list(req, res, next) {
  * Create handler for goal
  */
 async function create(req, res, next) {
-    const { userId } = req.params; // this returns undefined for now, user_id will be "null" in table
+    console.log("CREATE");
+    const { userId } = req.user;
+
+    /* const goal = {
+        ...req.body.data,
+        userId,
+    }; */
     try {
-        const data = await goalsService.create(req.body.data, userId);
+        const data = await goalsService.create(req.body.data);
+        console.log("CREATED");
         res.status(201).json({ data });
     } catch (error) {
         next(error);
@@ -73,5 +82,5 @@ module.exports = {
         ),
         asyncErrorBoundary(create),
     ],
-    read: [authenticateToken, asyncErrorBoundary(goalExists), read],
+    read: [asyncErrorBoundary(goalExists), read],
 };

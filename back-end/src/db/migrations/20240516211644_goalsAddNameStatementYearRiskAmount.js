@@ -7,7 +7,7 @@ exports.up = function (knex) {
     return knex.schema.table("goals", (table) => {
         table.string("goal_name").notNullable();
         table.string("goal_statement").notNullable();
-        table.string("years_to_invest_for").notNullable(); // has to be string because of "unsure" option
+        table.integer("years_to_invest_for").notNullable(); // has to be string if we want "unsure" option
         table.string("risk_comfort_level").notNullable();
         table.integer("starting_amount_to_invest").notNullable();
     });
