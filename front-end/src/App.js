@@ -1,7 +1,8 @@
 import React from "react";
 import Layout from "./layouts/Layout";
 import { ThemeProvider } from "@mui/material/styles";
-import { GlobalTheme, theme } from "./styles/GlobalTheme";
+import theme from "./styles/theme";
+import GlobalTheme from "./styles/GlobalTheme";
 
 function App() {
   return (
