@@ -1,56 +1,72 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Typography, Button, Container, Box, Grid } from "@mui/material";
+import { Typography, Button, Container, Box, CardMedia } from "@mui/material";
+import Logo from "../artwork/landing/wealthify-logo.png";
 
 function HomePage() {
   return (
-    <Container maxWidth="lg" sx={{ textAlign: "center", marginTop: 8 }}>
-      <Typography variant="h2" gutterBottom>
-        Welcome to WealthifyAI
+    <Container sx={{ textAlign: "center", marginTop: 25, px: 7 }}>
+      <CardMedia
+        component="img"
+        alt="stacks of coins"
+        height="100%"
+        image={Logo}
+      />
+      <Typography variant="h3" gutterBottom>
+        WealthifyAI
       </Typography>
-      <Typography variant="h5" paragraph>
-        Your AI-powered investment advisor for new and experienced investors.
+      <Typography variant="body1" paragraph>
+        "Investment advice that works just for you."
       </Typography>
-      <Box sx={{ marginY: 4 }}>
-        <Button component={Link} to="/log-in" variant="contained" color="primary" size="large" sx={{ marginX: 1 }}>
+      <Box sx={{ marginY: 4, display: "flex", flexDirection: "column", alignItems: "center" }}>
+        <Button
+          component={Link}
+          to="/log-in"
+          variant="contained"
+          color="primary"
+          size="large"
+          sx={{ 
+            marginX: 1, 
+            mb: 3, 
+            borderRadius: '15px', 
+            boxShadow: '0 10px 0 rgba(0, 0, 0, 0.2)', 
+            width: 'auto', 
+            paddingX: 3
+          }}
+        >
           Get Started
         </Button>
-        <Button component={Link} to="/about" variant="outlined" color="secondary" size="large" sx={{ marginX: 1 }}>
-          Learn More
+        <Button
+          component={Link}
+          to="/log-in"
+          variant="contained"
+          color="primary"
+          size="large"
+          sx={{ 
+            marginX: 1, 
+            mb: 3, 
+            borderRadius: '15px', 
+            boxShadow: '0 10px 0 rgba(0, 0, 0, 0.2)', 
+            width: 'auto', 
+            paddingX: 3
+          }}
+        >
+          Log In
         </Button>
+        <Typography>
+          <Link
+            to="/about"
+            style={{ textDecoration: 'none' }}
+            sx={{
+              '&:hover': {
+                textDecoration: 'underline',
+              },
+            }}
+          >
+            How does it work?
+          </Link>    
+        </Typography>
       </Box>
-      <Grid container spacing={4} justifyContent="center" sx={{ marginTop: 4 }}>
-        <Grid item xs={12} sm={6} md={4}>
-          <Box sx={{ padding: 2, border: "1px solid #ccc", borderRadius: 2 }}>
-            <Typography variant="h6" gutterBottom>
-              Personalized Advice
-            </Typography>
-            <Typography>
-              Receive tailored investment advice that fits your unique financial goals and risk tolerance.
-            </Typography>
-          </Box>
-        </Grid>
-        <Grid item xs={12} sm={6} md={4}>
-          <Box sx={{ padding: 2, border: "1px solid #ccc", borderRadius: 2 }}>
-            <Typography variant="h6" gutterBottom>
-              Expert Insights
-            </Typography>
-            <Typography>
-              Leverage the expertise of our AI to make informed investment decisions with confidence.
-            </Typography>
-          </Box>
-        </Grid>
-        <Grid item xs={12} sm={6} md={4}>
-          <Box sx={{ padding: 2, border: "1px solid #ccc", borderRadius: 2 }}>
-            <Typography variant="h6" gutterBottom>
-              Easy to Use
-            </Typography>
-            <Typography>
-              Our user-friendly platform makes it simple to get started and stay on top of your investments.
-            </Typography>
-          </Box>
-        </Grid>
-      </Grid>
     </Container>
   );
 }
