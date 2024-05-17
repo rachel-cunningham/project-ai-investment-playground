@@ -41,8 +41,15 @@ async function login(req, res) {
             { expiresIn: "1h" }
         );
 
-        // Sends token and user info back to frontend
-        res.status(200).json({ token: token, user: user });
+        res.cookie("token", token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === "development", // set to process.env.NODE_ENV === 'production' if in production
+            sameSite: "lax",
+            maxAge: 3600000, // 1 hour in milliseconds
+        });
+
+        // Sends user info back to frontend
+        res.status(200).json({ user: user });
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: "Internal server error" });
