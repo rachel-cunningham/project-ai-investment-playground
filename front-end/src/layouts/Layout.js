@@ -27,7 +27,6 @@ function Layout() {
           <Route path="/example-login" element={<ExampleLoginPage />} />
         </Routes>
       </div>
-
       <Footer />
     </Router>
   );

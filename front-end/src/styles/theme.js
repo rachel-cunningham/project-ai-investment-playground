@@ -33,8 +33,8 @@ const typography = {
     color: "#FFFFFF", // white text color for body text
   },
   body2: {
-    fontFamily: "Afacad, Roboto, sans-serif",
-    fontWeight: 500, // medium
+    fontFamily: "Mont-Blanc-Trial, Roboto, sans-serif",
+    fontWeight: 100, // light
     color: "#FFFFFF", // white text color for secondary body text
   },
 };
