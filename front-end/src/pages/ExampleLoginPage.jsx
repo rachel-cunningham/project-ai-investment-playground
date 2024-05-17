@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { userLogin } from "../utils/api";
+import { userLogin, readUserByUsername } from "../utils/api";
 
 export default function ExampleLoginPage() {
     const [credentials, setCredentials] = useState({
@@ -26,6 +26,18 @@ export default function ExampleLoginPage() {
             setUser(response)
         } catch (err) {
             console.error(err)
+        } finally {
+            console.log("Navigate to dashboard for user with user.username")
+        }
+    }
+
+    const handleClick = async () => {
+        console.log(user.username)
+        try {
+            const response = await readUserByUsername(user.username)
+            console.log(response)
+        } catch (err) {
+            console.error(err)
         }
     }
 
@@ -34,6 +46,8 @@ export default function ExampleLoginPage() {
         for (const [key, value] of Object.entries(user)) {
             output.push(<><h3>{key}</h3><p>{value}</p></>)
         }
+
+        output.push(<button onClick={handleClick} >Load User</button>)
 
         return output
     }
