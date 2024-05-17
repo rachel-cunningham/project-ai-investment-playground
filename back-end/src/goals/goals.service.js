@@ -15,7 +15,7 @@ function create(goal, userId) {
 }
 
 // Get information on a single goal given goal_id
-function read(goal_id) {
+function read(goal_id, userId) {
     return knex("goals").select("*").where({ goal_id }).first();
 }
 

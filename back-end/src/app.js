@@ -13,16 +13,17 @@ const authenticateToken = require("./authentication/authenticateToken");
 
 const app = express();
 
-app.use(cors({
-    origin: "http://localhost:3000",
-    credentials: true
-}));
+app.use(
+    cors({
+        origin: "http://localhost:3000",
+        credentials: true,
+    })
+);
 app.use(express.json());
 app.use(cookieParser());
 
 app.use("/users", usersRouter);
 app.use("/login", loginRouter);
-app.use("/users/:userId/goals", goalsRouter);
 
 // Error handling
 app.use(notFound);

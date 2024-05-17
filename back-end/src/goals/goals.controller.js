@@ -1,6 +1,7 @@
 const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
 const hasProperties = require("../utils/hasProperties");
 const goalsService = require("./goals.service");
+const authenticateToken = require("../authentication/authenticateToken");
 
 /*
  * Validation middleware
@@ -28,8 +29,9 @@ async function goalExists(req, res, next) {
  */
 
 async function list(req, res, next) {
+    const { userId } = req.user;
     try {
-        const data = await goalsService.list();
+        const data = await goalsService.list(userId);
         res.json({ data });
     } catch (error) {
         next(error);
@@ -59,8 +61,9 @@ function read(req, res, next) {
 }
 
 module.exports = {
-    list: asyncErrorBoundary(list),
+    list: [authenticateToken, asyncErrorBoundary(list)],
     create: [
+        authenticateToken,
         hasProperties(
             "goal_name",
             "goal_statement",
@@ -70,5 +73,5 @@ module.exports = {
         ),
         asyncErrorBoundary(create),
     ],
-    read: [asyncErrorBoundary(goalExists), read],
+    read: [authenticateToken, asyncErrorBoundary(goalExists), read],
 };
