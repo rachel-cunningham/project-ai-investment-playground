@@ -9,7 +9,10 @@ headers.append("Content-Type", "application/json")
 
 async function fetchJson(url, options, onCancel) {
     try {
-        const response = await fetch(url, options)
+        const response = await fetch(url, {
+            ...options,
+            credentials: 'include'
+        })
 
         if (response.status === 204) {
             return null
@@ -50,16 +53,9 @@ export async function userLogin(username, password, signal) {
         signal,
     }
 
-    const { token, user } = await fetchJson(url, options)
-    if (token) {
-        Cookies.set('token', token, {
-            secure: true,
-            httpOnly: true,
-            sameSite: 'lax'
-        })
+    const { user } = await fetchJson(url, options)
 
-        return user
-    }
+    return user
 }
 
 // Returns a single user with the matching userId(number)
