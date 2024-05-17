@@ -67,10 +67,17 @@ function readUser(req, res, next) {
 
 module.exports = {
     create: [
-        asyncErrorBoundary(hasProperties("first_name")),
-        asyncErrorBoundary(hasProperties("last_name")),
-        asyncErrorBoundary(hasProperties("email")),
-        asyncErrorBoundary(hasProperties("password")),
+        asyncErrorBoundary(
+            hasProperties(
+                "first_name",
+                "last_name",
+                "username",
+                "email",
+                "password",
+                "age",
+                "location"
+            )
+        ),
         asyncErrorBoundary(create),
     ],
     list: [asyncErrorBoundary(list)],
