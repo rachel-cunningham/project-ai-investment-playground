@@ -3,6 +3,7 @@ const hasProperties = require("../errors/hasProperties");
 const service = require("./users.service");
 const bcrypt = require('bcryptjs');
 const authenticateToken = require("../authentication/authenticateToken")
+const validateInput = require("./validateInput")
 
 async function create(req, res, next){
     const {data: {first_name, last_name, username, email, password} = {}} = req.body
@@ -55,10 +56,15 @@ function readUser(req, res, next) {
 
 module.exports = {
     create: [
-        asyncErrorBoundary(hasProperties("first_name")),
-        asyncErrorBoundary(hasProperties("last_name")),
-        asyncErrorBoundary(hasProperties("email")),
-        asyncErrorBoundary(hasProperties("password")),
+        asyncErrorBoundary(hasProperties([
+            "first_name",
+            "last_name",
+            "username",
+            "email",
+            "password",
+            "password_hash"
+        ])),
+        asyncErrorBoundary(validateInput),
         asyncErrorBoundary(create)
     ],
     list: [asyncErrorBoundary(list)],
