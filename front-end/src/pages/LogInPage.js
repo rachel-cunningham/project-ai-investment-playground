@@ -12,9 +12,6 @@ function LogInPage() {
       <header>
         <h1>Log In Page</h1>
         <AuthForm isSignup={false} onSubmit={handleLoginSubmit} />
-        <p>"/dashboard" </p>
-        <p>"/log-in"</p>
-        <p>"/sign-up</p>
       </header>
     </div>
   );
