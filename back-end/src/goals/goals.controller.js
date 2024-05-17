@@ -6,7 +6,7 @@ const goalsService = require("./goals.service");
  * Validation middleware
  */
 
-// check if goal with goal_id exists
+// Check if goal with goal_id exists
 async function goalExists(req, res, next) {
     const { goal_id } = req.params;
     const goal = await goalsService.read(goal_id);
@@ -37,7 +37,7 @@ async function list(req, res, next) {
 }
 
 /*
- * Create a new goal
+ * Create handler for goal
  */
 async function create(req, res, next) {
     const { userId } = req.params; // this returns undefined for now, user_id will be "null" in table
@@ -50,7 +50,7 @@ async function create(req, res, next) {
 }
 
 /*
- * Get info on one goal given goal id
+ * Read handler for goal
  */
 
 function read(req, res, next) {

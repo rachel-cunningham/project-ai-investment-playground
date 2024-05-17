@@ -1,11 +1,12 @@
 const knex = require("../db/connection");
 
-// list all of the information from goals, ordered by goal name
+// List all of the goals and order by goal_id
+// Ideally this will be grouped by user_id in the future
 function list() {
     return knex("goals").select("*").orderBy("goal_id");
 }
 
-// create a new goal
+// Create a new goal
 function create(goal, userId) {
     return knex("goals")
         .insert(goal)
@@ -13,7 +14,7 @@ function create(goal, userId) {
         .then((createdGoals) => createdGoals[0]);
 }
 
-// find a single goal given goal id
+// Get information on a single goal given goal_id
 function read(goal_id) {
     return knex("goals").select("*").where({ goal_id }).first();
 }
