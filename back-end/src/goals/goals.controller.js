@@ -9,7 +9,6 @@ const authenticateToken = require("../authentication/authenticateToken");
 
 // Check if goal with goal_id exists
 async function goalExists(req, res, next) {
-    console.log("GOALEXISTS");
     const { goalId } = req.params;
     const goal = await goalsService.read(goalId);
     if (goal) {
@@ -23,18 +22,16 @@ async function goalExists(req, res, next) {
     }
 }
 
-/* ---- CRUD ---- */
+/* ---- CRUDL ---- */
 
 /**
  * List handler for goal resources
  */
 
 async function list(req, res, next) {
-    console.log("LIST");
     const { userId } = req.user;
     try {
         const data = await goalsService.list(userId);
-        // console.log(data);
         res.json({ data });
     } catch (error) {
         next(error);
@@ -45,20 +42,10 @@ async function list(req, res, next) {
  * Create handler for goal
  */
 async function create(req, res, next) {
-    console.log("CREATE");
     const { userId } = req.user;
-
-    /* const goal = {
-        ...req.body.data,
-        userId,
-    };
-
-    console.log("GOAL WITH USER ID", goal);
-    console.log(req.body.data); */
 
     try {
         const data = await goalsService.create(req.body.data, userId);
-        console.log("CREATED");
         res.status(201).json({ data });
     } catch (error) {
         next(error);

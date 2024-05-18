@@ -1,13 +1,19 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { readUserByUsername, userLogin, deleteUser, updateUser, createUser } from "../utils/api";
+import {
+    createUser,
+    deleteUser,
+    readUserByUsername,
+    updateUser,
+    userLogin,
+} from "../utils/api";
 
 export default function ExampleLoginPage() {
     const [credentials, setCredentials] = useState({
         username: "",
-        password: ""
-    })
-    const [user, setUser] = useState(null)
+        password: "",
+    });
+    const [user, setUser] = useState(null);
 
     const handleCreateUserClick = async () => {
         const placeholderUser = {
@@ -17,16 +23,16 @@ export default function ExampleLoginPage() {
             email: "guy@guy.guy",
             password: "guy",
             age: "50",
-            occupation: "five guys"
-        }
+            occupation: "five guys",
+        };
 
         try {
-            const response = await createUser(placeholderUser)
-            console.log(response)
+            const response = await createUser(placeholderUser);
+            console.log(response);
         } catch (err) {
-            console.error(err)
+            console.error(err);
         }
-    }
+    };
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -37,12 +43,12 @@ export default function ExampleLoginPage() {
     };
 
     const handleUpdateFormChange = (event) => {
-        const { name, value } = event.target
-        setUser(prevUser => ({
-          ...prevUser,
-          [name]: value
-        }))
-    }
+        const { name, value } = event.target;
+        setUser((prevUser) => ({
+            ...prevUser,
+            [name]: value,
+        }));
+    };
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -62,17 +68,17 @@ export default function ExampleLoginPage() {
     };
 
     const handleUpdateFormSubmit = async (event) => {
-        event.preventDefault()
-        const abortController = new AbortController()
+        event.preventDefault();
+        const abortController = new AbortController();
         try {
-            const response = await updateUser(user, abortController.signal)
-            setUser(response.data)
+            const response = await updateUser(user, abortController.signal);
+            setUser(response.data);
         } catch (err) {
-            console.error(err)
+            console.error(err);
         } finally {
-            console.log("Navigate to dashboard for user with user.username")
+            console.log("Navigate to dashboard for user with user.username");
         }
-    }
+    };
 
     const handleClickLoadUser = async () => {
         try {
@@ -84,42 +90,41 @@ export default function ExampleLoginPage() {
     };
 
     const handleClickDeleteUser = async () => {
-
         try {
-            const response = await deleteUser(user.username)
-            console.log("DELETED")
+            await deleteUser(user.username);
+            console.log("User deleted!");
         } catch (err) {
-            console.error(err)
+            console.error(err);
         }
-    }
+    };
 
     const updateUserForm = user ? (
         <>
-        <form onSubmit={handleUpdateFormSubmit}>
-          <div>
-            <label htmlFor="age">Age:</label>
-            <input
-              type="number"
-              id="age"
-              name="age"
-              value={user.age}
-              onChange={handleUpdateFormChange}
-            />
-          </div>
-          <div>
-            <label htmlFor="occupation">Occupation:</label>
-            <input
-              type="text"
-              id="occupation"
-              name="occupation"
-              value={user.occupation}
-              onChange={handleUpdateFormChange}
-            />
-          </div>
-          <button type="submit">Submit</button>
-        </form>
+            <form onSubmit={handleUpdateFormSubmit}>
+                <div>
+                    <label htmlFor="age">Age:</label>
+                    <input
+                        type="number"
+                        id="age"
+                        name="age"
+                        value={user.age}
+                        onChange={handleUpdateFormChange}
+                    />
+                </div>
+                <div>
+                    <label htmlFor="occupation">Occupation:</label>
+                    <input
+                        type="text"
+                        id="occupation"
+                        name="occupation"
+                        value={user.occupation}
+                        onChange={handleUpdateFormChange}
+                    />
+                </div>
+                <button type="submit">Submit</button>
+            </form>
         </>
-    ) : null
+    ) : null;
 
     function generateElements(user) {
         let output = [];
@@ -134,8 +139,10 @@ export default function ExampleLoginPage() {
 
         // Button to test readUser function
         output.push(<button onClick={handleClickLoadUser}>Load User</button>);
-        output.push(updateUserForm)
-        output.push(<button onClick={handleClickDeleteUser}>Delete User</button>)
+        output.push(updateUserForm);
+        output.push(
+            <button onClick={handleClickDeleteUser}>Delete User</button>
+        );
 
         return output;
     }
@@ -143,7 +150,7 @@ export default function ExampleLoginPage() {
     return (
         <>
             <button onClick={handleCreateUserClick}>Create User</button>
-        <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="username">Username:</label>
                     <input
@@ -171,7 +178,7 @@ export default function ExampleLoginPage() {
             <div>
                 {user ? (
                     <>
-                        {generateElements(user)} {console.log("USER", user)}
+                        {generateElements(user)}
                         <Link to={`/dashboard/${user.user_id}/create`}>
                             <button type="submit">Create Goal</button>
                         </Link>

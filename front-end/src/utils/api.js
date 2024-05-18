@@ -6,7 +6,6 @@ headers.append("Content-Type", "application/json");
 
 async function fetchJson(url, options, onCancel) {
     try {
-
         const response = await fetch(url, {
             ...options,
             credentials: "include",
@@ -32,6 +31,10 @@ async function fetchJson(url, options, onCancel) {
         return Promise.resolve(onCancel);
     }
 }
+
+/*
+ * USERS API
+ */
 
 // Returns an array of all users
 export async function listUsers(signal) {
@@ -69,6 +72,60 @@ export async function readUserByUsername(username, signal) {
     return await fetchJson(url, options);
 }
 
+// Creates a new user
+// Currently needs user object with the following properties: "first_name", "last_name", "username", "password", "email", "age", "occupation"
+export async function createUser(user, signal) {
+    const url = `${API_BASE_URL}/users`;
+    const userWithNumberAge = {
+        ...user,
+        age: Number(user.age),
+    };
+    const options = {
+        method: "POST",
+        headers,
+        body: JSON.stringify({ data: userWithNumberAge }),
+        signal,
+    };
+
+    return await fetchJson(url, options);
+}
+
+// Currently needs an entire user object with the following properties: "first_name", "last_name", "username", "email", "age", "occupation"
+// returns a copy of the updated user object
+// "user: <username> does not exist" if not logged in or if user does not exist
+export async function updateUser(updatedUser, signal) {
+    const url = `${API_BASE_URL}/users/${updatedUser.username}`;
+    //  Make sure the age property is a number
+    const updatedUserWithNumberAge = {
+        ...updatedUser,
+        age: Number(updatedUser.age),
+    };
+    const options = {
+        method: "PUT",
+        headers,
+        body: JSON.stringify({ data: updatedUserWithNumberAge }),
+        signal,
+    };
+
+    return await fetchJson(url, options);
+}
+
+// Takes a username, returns status 204 if successful or "user: <username> does not exist" if not logged in or if user does not exist
+export async function deleteUser(username, signal) {
+    const url = `${API_BASE_URL}/users/${username}`;
+    const options = {
+        method: "DELETE",
+        headers,
+        signal,
+    };
+
+    return await fetchJson(url, options);
+}
+
+/*
+ * GOALS API
+ */
+
 /**
  * Saves a new goal to the database.
  * @param newGoal
@@ -81,7 +138,11 @@ export async function readUserByUsername(username, signal) {
  *  a promise that resolves the saved Goal, which will now have an `id` property.
  */
 export async function createGoal(newGoal, userId, signal) {
-    console.log("CREATE GOAL POST REQUEST:", newGoal, userId);
+    console.log(
+        "CREATE GOAL POST REQUEST, newGoal + userId to be saved:",
+        newGoal,
+        userId
+    );
     const url = `${API_BASE_URL}/users/${userId}/goals`;
     const options = {
         method: "POST",
@@ -94,6 +155,8 @@ export async function createGoal(newGoal, userId, signal) {
 
 /**
  * Retrieves all existing goals with matching userId.
+ * @param userId
+ *  the userId of the user creating the goal
  * @returns {Promise<[reservation]>}
  *  a promise that resolves to a possibly empty array of goals saved in the database.
  */
@@ -111,6 +174,8 @@ export async function listGoals(userId, signal) {
  * Retrieves the goal with the specified `goalId`
  * @param goalId
  *  the `id` property matching the desired goal.
+ * @param userId
+ *  the userId of the user creating the goal
  * @param signal
  *  optional AbortController.signal
  * @returns {Promise<any>}
@@ -124,55 +189,4 @@ export async function readGoal(userId, goalId, signal) {
         signal,
     };
     return await fetchJson(url, options);
-}
-
-
-// Creates a new user
-// Currently needs user object with the following properties: "first_name", "last_name", "username", "password", "email", "age", "occupation"
-export async function createUser(user, signal) {
-    const url = `${API_BASE_URL}/users`
-    const userWithNumberAge = {
-        ...user,
-        age: Number(user.age),
-    }
-    const options = {
-        method: "POST",
-        headers,
-        body: JSON.stringify({ data: userWithNumberAge }),
-        signal,
-    }
-
-    return await fetchJson(url, options)
-}
-
-// Currently needs an entire user object with the following properties: "first_name", "last_name", "username", "email", "age", "occupation"
-// returns a copy of the updated user object
-// "user: <username> does not exist" if not logged in or if user does not exist
-export async function updateUser(updatedUser, signal) {
-    const url = `${API_BASE_URL}/users/${updatedUser.username}`
-    //  Make sure the age property is a number
-    const updatedUserWithNumberAge = {
-        ...updatedUser,
-        age: Number(updatedUser.age),
-    }
-    const options = {
-        method: "PUT",
-        headers,
-        body: JSON.stringify({ data: updatedUserWithNumberAge }),
-        signal,
-    }
-
-    return await fetchJson(url, options)
-}
-
-// Takes a username, returns status 204 if successful or "user: <username> does not exist" if not logged in or if user does not exist
-export async function deleteUser(username, signal) {
-    const url = `${API_BASE_URL}/users/${username}`
-    const options = {
-        method: "DELETE",
-        headers,
-        signal,
-    }
-
-    return await fetchJson(url, options)
 }
