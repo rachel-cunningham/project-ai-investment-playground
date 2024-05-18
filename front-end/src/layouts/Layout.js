@@ -11,8 +11,8 @@ import SignUpPage from "../pages/SignUpPage";
 
 // For api testing
 import ExampleLoginPage from "../pages/ExampleLoginPage";
-import ExampleCreateGoal from "../pages/Goals/ExampleCreateGoal";
-import ExampleGoalsList from "../pages/Goals/ExampleGoalsList";
+import ExampleCreateGoal from "../pages/GoalsExamplePages/ExampleCreateGoal";
+import ExampleGoalsList from "../pages/GoalsExamplePages/ExampleGoalsList";
 
 function Layout() {
     return (
