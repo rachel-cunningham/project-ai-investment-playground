@@ -1,27 +1,6 @@
 import React from "react";
 
 function ExampleGoal({ goal }) {
-    // const { userId } = useParams();
-    // const [goal, setGoal] = useState(null);
-    console.log(goal);
-
-    /* useEffect(() => {
-        async function fetchGoal() {
-            try {
-                const response = await readGoal(userId);
-                console.log("RESPONSE", response);
-                setGoal(response);
-            } catch (error) {
-                console.log(error);
-            }
-        }
-        fetchGoal();
-    }, [userId]); */
-
-    /* if (!goal) {
-        return <div>Loading...</div>;
-    } */
-
     return (
         <div>
             <h1>{goal.goal_id}</h1>

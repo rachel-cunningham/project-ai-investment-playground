@@ -27,8 +27,6 @@ function CreateGoal() {
 
     const params = useParams();
     const userId = params.userId;
-    console.log("PARAMS", params);
-    console.log("USERID", userId);
 
     async function handleSubmit(event) {
         //on submit, prevent page from reloading
