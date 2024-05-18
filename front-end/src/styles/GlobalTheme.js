@@ -1,56 +1,47 @@
-import { createTheme, GlobalStyles } from "@mui/material";
-import { ThemeProvider } from "@mui/material/styles";
+import { GlobalStyles } from "@mui/material";
+import MontBlancBold from "../assets/fonts/MontBlanc-Trial-Bold.ttf";
+import theme from "./theme";
 
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: "#2196f3", // to be changed
-    },
-    secondary: {
-      main: "#f50057", // to be changed
-    },
-  },
-  // to add other theme customizations as needed
-});
-
-// global styles and theme provider
 const GlobalTheme = () => (
-  <>
-    <GlobalStyles
-      styles={{
-        "*": {
-          margin: 0,
-          padding: 0,
-          boxSizing: "border-box",
-        },
-        body: {
-          fontFamily: "Roboto, sans-serif",
-          WebkitFontSmoothing: "antialiased",
-          MozOsxFontSmoothing: "grayscale",
-          backgroundColor: "#f0f0f0",
-        },
-        ".Layout": {
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          minHeight: "100vh",
-        },
-        // to futher add custom styles for elements in Layout.js
-        ".Header": {
-          // styles for the header component
-        },
-        ".Footer": {
-          //  styles for the footer component
-        },
-        // can add more styles as needed
-      }}
-    />
-    {/* ThemeProvider to apply the theme to App.js */}
-    <ThemeProvider theme={theme}>
-      {/* there's no need to include application components here since it's being applied in app.js */}
-    </ThemeProvider>
-  </>
+  <GlobalStyles
+    styles={{
+      "@font-face": {
+        fontFamily: "MontBlancBold",
+        fontStyle: "normal",
+        fontWeight: "bold",
+        src: `
+          local('MontBlancBold'),
+          url(${MontBlancBold}) format('truetype')
+        `,
+      },
+      "*": {
+        margin: 0,
+        padding: 0,
+        boxSizing: "border-box",
+      },
+      body: {
+        fontFamily: "Roboto, sans-serif",
+        WebkitFontSmoothing: "antialiased",
+        MozOsxFontSmoothing: "grayscale",
+        background: `linear-gradient(to top, ${theme.palette.custom.DarkPurple}, ${theme.palette.custom.LightPurple})`,
+      },
+      ".Layout": {
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        minHeight: "100vh",
+      },
+      // to further add custom styles for elements in Layout.js
+      ".Header": {
+        // styles for the header component
+      },
+      ".Footer": {
+        //  styles for the footer component
+      },
+      // can add more styles as needed
+    }}
+  />
 );
 
-export { theme, GlobalTheme };
+export default GlobalTheme;
