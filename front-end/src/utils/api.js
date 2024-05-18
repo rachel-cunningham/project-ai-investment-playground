@@ -57,10 +57,37 @@ export async function userLogin(username, password, signal) {
 }
 
 // Returns a single user with the matching userId(number)
+// "user: <username> does not exist" if not logged in or if user does not exist
 export async function readUserByUsername(username, signal) {
     const url = `${API_BASE_URL}/users/${username}`
     const options = {
         method: "GET",
+        headers,
+        signal,
+    }
+
+    return await fetchJson(url, options)
+}
+
+// Currently needs an entire user object with the following properties: "first_name", "last_name", "username", "email", "age", "occupation"
+// returns a copy of the updated user object
+// "user: <username> does not exist" if not logged in or if user does not exist
+export async function updateUser(updatedUser, signal) {
+    const url = `${API_BASE_URL}/users/${updatedUser.username}`
+    const options = {
+        method: "PUT",
+        body: JSON.stringify({ data: updatedUser }),
+        signal,
+    }
+
+    return await fetchJson(url, options)
+}
+
+// Takes a username, returns status 204 if successful or "user: <username> does not exist" if not logged in or if user does not exist
+export async function deleteUser(username, signal) {
+    const url = `${API_BASE_URL}/users/${username}`
+    const options = {
+        method: "DELETE",
         headers,
         signal,
     }
