@@ -87,6 +87,7 @@ export default function ExampleLoginPage() {
 
         try {
             const response = await deleteUser(user.username)
+            console.log("DELETED")
         } catch (err) {
             console.error(err)
         }
