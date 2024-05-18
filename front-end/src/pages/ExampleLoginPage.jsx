@@ -89,11 +89,16 @@ export default function ExampleLoginPage() {
                 </div>
                 <button type="submit">Submit</button>
             </form>
-            <div>{user ? <>{generateElements(user)}</> : null}</div>
-            {console.log("USER", user.user_id)}
-            <Link to={`/dashboard/${user.user_id}/create`}>
-                <button type="submit">Create Goal</button>
-            </Link>
+            <div>
+                {user ? (
+                    <>
+                        {generateElements(user)} {console.log("USER", user)}
+                        <Link to={`/dashboard/${user.user_id}/create`}>
+                            <button type="submit">Create Goal</button>
+                        </Link>
+                    </>
+                ) : null}
+            </div>
         </>
     );
 }
