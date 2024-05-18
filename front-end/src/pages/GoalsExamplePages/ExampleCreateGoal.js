@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { createGoal } from "../../utils/api";
-import ExampleCreateForm from "./ExampleGoalForm";
+import ExampleGoalForm from "./ExampleGoalForm";
 
 function CreateGoal() {
     // set initial empty form data
@@ -58,11 +58,14 @@ function CreateGoal() {
             <p>{error}</p>
 
             <div>
-                <ExampleCreateForm
+                <ExampleGoalForm
                     handleChange={handleChange}
                     handleSubmit={handleSubmit}
                     formData={formData}
                 />
+                <Link to={`/dashboard/${userId}/goals`}>
+                    <button type="submit">Go to goals</button>
+                </Link>
             </div>
         </div>
     );

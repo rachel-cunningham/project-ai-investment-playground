@@ -34,6 +34,7 @@ async function list(req, res, next) {
     const { userId } = req.user;
     try {
         const data = await goalsService.list(userId);
+        // console.log(data);
         res.json({ data });
     } catch (error) {
         next(error);
@@ -86,5 +87,5 @@ module.exports = {
         ),
         asyncErrorBoundary(create),
     ],
-    read: [asyncErrorBoundary(goalExists), read],
+    read: [authenticateToken, asyncErrorBoundary(goalExists), read],
 };
