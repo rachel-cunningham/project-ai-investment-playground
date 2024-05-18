@@ -7,6 +7,6 @@ const goals = require("./02-goals.json");
 
 exports.seed = async function (knex) {
     // Deletes ALL existing entries
-    await knex("goals").del();
+    await knex.raw('TRUNCATE TABLE goals RESTART IDENTITY CASCADE');
     await knex("goals").insert(goals);
 };
