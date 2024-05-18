@@ -6,7 +6,7 @@ const authenticateToken = require("../authentication/authenticateToken");
 const validateInput = require("../utils/validateInput")
 
 // POST requests to /users will create a new user and respond with that new user data
-async function create(req, res, next){
+async function create(req, res, next) {
     const {
         data: {
             first_name,
@@ -103,6 +103,7 @@ module.exports = {
                 "username",
                 "email",
                 "password",
+                "password_hash",
                 "age",
                 "occupation"
             )

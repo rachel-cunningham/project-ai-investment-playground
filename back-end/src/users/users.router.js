@@ -1,16 +1,27 @@
 router = require("express").Router({ mergeParams: true });
-const controller = require("./users.controller");
+const usersController = require("./users.controller");
+const goalsController = require("../goals/goals.controller");
 const methodNotAllowed = require("../errors/methodNotAllowed");
 
-router.route("/")
-    .get(controller.list)
-    .post(controller.create)
+// USER INFO
+router
+    .route("/")
+    .get(usersController.list)
+    .post(usersController.create)
     .all(methodNotAllowed);
 
-router.route("/:username")
-    .get(controller.read)
-    .put(controller.update)
-    .delete(controller.deleteUser)
+router.route("/:username").get(usersController.read).all(methodNotAllowed);
+
+// USER GOALS
+router
+    .route("/:userId/goals")
+    .get(goalsController.list)
+    .post(goalsController.create)
+    .all(methodNotAllowed);
+
+router
+    .route("/:userId/goals/:goalId")
+    .get(goalsController.read)
     .all(methodNotAllowed);
 
 module.exports = router;

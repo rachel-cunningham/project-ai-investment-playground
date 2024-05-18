@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { userLogin, readUserByUsername, deleteUser, updateUser, createUser } from "../utils/api";
+import { Link } from "react-router-dom";
+import { readUserByUsername, userLogin, deleteUser, updateUser, createUser } from "../utils/api";
 
 export default function ExampleLoginPage() {
     const [credentials, setCredentials] = useState({
@@ -28,12 +29,12 @@ export default function ExampleLoginPage() {
     }
 
     const handleChange = (event) => {
-        const { name, value } = event.target
-        setCredentials(prevCredentials => ({
-          ...prevCredentials,
-          [name]: value
-        }))
-    }
+        const { name, value } = event.target;
+        setCredentials((prevCredentials) => ({
+            ...prevCredentials,
+            [name]: value,
+        }));
+    };
 
     const handleUpdateFormChange = (event) => {
         const { name, value } = event.target
@@ -44,19 +45,21 @@ export default function ExampleLoginPage() {
     }
 
     const handleSubmit = async (event) => {
-        event.preventDefault()
-        const abortController = new AbortController(
-
-        )
+        event.preventDefault();
+        const abortController = new AbortController();
         try {
-            const response = await userLogin(credentials.username, credentials.password, abortController.signal)
-            setUser(response)
+            const response = await userLogin(
+                credentials.username,
+                credentials.password,
+                abortController.signal
+            );
+            setUser(response);
         } catch (err) {
-            console.error(err)
+            console.error(err);
         } finally {
-            console.log("Navigate to dashboard for user with user.username")
+            console.log("Navigate to dashboard for user with user.username");
         }
-    }
+    };
 
     const handleUpdateFormSubmit = async (event) => {
         event.preventDefault()
@@ -73,12 +76,12 @@ export default function ExampleLoginPage() {
 
     const handleClickLoadUser = async () => {
         try {
-            const response = await readUserByUsername(user.username)
-            console.log(response)
+            const response = await readUserByUsername(user.username);
+            console.log(response);
         } catch (err) {
-            console.error(err)
+            console.error(err);
         }
-    }
+    };
 
     const handleClickDeleteUser = async () => {
 
@@ -118,54 +121,62 @@ export default function ExampleLoginPage() {
     ) : null
 
     function generateElements(user) {
-        let output = []
+        let output = [];
         for (const [key, value] of Object.entries(user)) {
-            output.push(<><h3>{key}</h3><p>{value}</p></>)
+            output.push(
+                <>
+                    <h3>{key}</h3>
+                    <p>{value}</p>
+                </>
+            );
         }
 
         // Button to test readUser function
-        output.push(<button onClick={handleClickLoadUser} >Load User</button>)
+        output.push(<button onClick={handleClickLoadUser}>Load User</button>);
         output.push(updateUserForm)
         output.push(<button onClick={handleClickDeleteUser}>Delete User</button>)
 
-        return output
+        return output;
     }
-    
-      return (
+
+    return (
         <>
-        <button onClick={handleCreateUserClick}>Create User</button>
+            <button onClick={handleCreateUserClick}>Create User</button>
         <form onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor="username">Username:</label>
-            <input
-              type="text"
-              id="username"
-              name="username"
-              value={credentials.username}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="password">Password:</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              value={credentials.password}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <button type="submit">Submit</button>
-        </form>
-        <div>
-            {user ? (
-            <>
-            {generateElements(user)}
-            </>
-            ) : null}
-        </div>
+                <div>
+                    <label htmlFor="username">Username:</label>
+                    <input
+                        type="text"
+                        id="username"
+                        name="username"
+                        value={credentials.username}
+                        onChange={handleChange}
+                        required
+                    />
+                </div>
+                <div>
+                    <label htmlFor="password">Password:</label>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        value={credentials.password}
+                        onChange={handleChange}
+                        required
+                    />
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+            <div>
+                {user ? (
+                    <>
+                        {generateElements(user)} {console.log("USER", user)}
+                        <Link to={`/dashboard/${user.user_id}/create`}>
+                            <button type="submit">Create Goal</button>
+                        </Link>
+                    </>
+                ) : null}
+            </div>
         </>
-      )
+    );
 }
