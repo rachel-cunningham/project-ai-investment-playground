@@ -7,10 +7,12 @@ headers.append("Content-Type", "application/json")
 
 async function fetchJson(url, options, onCancel) {
     try {
+
         const response = await fetch(url, {
             ...options,
             credentials: 'include'
         })
+        console.log(response)
 
         if (response.status === 204) {
             return null
@@ -69,14 +71,38 @@ export async function readUserByUsername(username, signal) {
     return await fetchJson(url, options)
 }
 
+// Creates a new user
+// Currently needs user object with the following properties: "first_name", "last_name", "username", "password", "email", "age", "occupation"
+export async function createUser(user, signal) {
+    const url = `${API_BASE_URL}/users`
+    const userWithNumberAge = {
+        ...user,
+        age: Number(user.age),
+    }
+    const options = {
+        method: "POST",
+        headers,
+        body: JSON.stringify({ data: userWithNumberAge }),
+        signal,
+    }
+
+    return await fetchJson(url, options)
+}
+
 // Currently needs an entire user object with the following properties: "first_name", "last_name", "username", "email", "age", "occupation"
 // returns a copy of the updated user object
 // "user: <username> does not exist" if not logged in or if user does not exist
 export async function updateUser(updatedUser, signal) {
     const url = `${API_BASE_URL}/users/${updatedUser.username}`
+    //  Make sure the age property is a number
+    const updatedUserWithNumberAge = {
+        ...updatedUser,
+        age: Number(updatedUser.age),
+    }
     const options = {
         method: "PUT",
-        body: JSON.stringify({ data: updatedUser }),
+        headers,
+        body: JSON.stringify({ data: updatedUserWithNumberAge }),
         signal,
     }
 

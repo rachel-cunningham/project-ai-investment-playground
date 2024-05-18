@@ -9,7 +9,6 @@ const notFound = require("./errors/notFound");
 const usersRouter = require("./users/users.router");
 const loginRouter = require("./authentication/login.router");
 const goalsRouter = require("./goals/goals.router");
-const authenticateToken = require("./authentication/authenticateToken");
 
 const app = express();
 
