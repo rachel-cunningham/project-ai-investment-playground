@@ -1,5 +1,6 @@
 import { GlobalStyles } from "@mui/material";
 import MontBlancBold from "../assets/fonts/MontBlanc-Trial-Bold.ttf";
+import Afacad from "../assets/fonts/Afacad-Regular.ttf";
 import theme from "./theme";
 
 const GlobalTheme = () => (
