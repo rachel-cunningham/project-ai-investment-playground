@@ -13,7 +13,7 @@ const service = require("../users/users.service");
 */
 async function login(req, res) {
     try {
-        const { username, password } = req.body;
+        const { username, password } = req.body.data;
 
         const user = await service.readUserByUsername(username);
         if (!user) {

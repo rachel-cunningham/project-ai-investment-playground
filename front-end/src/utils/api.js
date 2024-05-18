@@ -46,7 +46,7 @@ export async function userLogin(username, password, signal) {
     const options = {
         method: "POST",
         headers,
-        body: JSON.stringify({ username: username, password: password }),
+        body: JSON.stringify({ data: { username: username, password: password } }),
         signal,
     };
 
