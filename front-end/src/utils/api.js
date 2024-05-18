@@ -126,7 +126,7 @@ export async function readGoal(userId, goalId, signal) {
 }
 
 // Creates a new user
-// Currently needs user object with the following properties: "first_name", "last_name", "username", "password", "email", "age", "occupation"
+// Currently needs user object with the following properties: "first_name", "last_name", "username", "password", "email", "age", "occupation, img_src"
 export async function createUser(user, signal) {
     const url = `${API_BASE_URL}/users`;
     const userWithNumberAge = {

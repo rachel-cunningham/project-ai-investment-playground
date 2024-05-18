@@ -16,6 +16,7 @@ async function create(req, res, next) {
             password,
             age,
             occupation,
+            img_src
         } = {},
     } = req.body;
 
@@ -28,10 +29,10 @@ async function create(req, res, next) {
         last_name,
         username,
         email,
-        password,
         password_hash,
         age,
         occupation,
+        img_src
     };
 
     const response = await service.create(newUser);
@@ -105,7 +106,8 @@ module.exports = {
                 "email",
                 "password",
                 "age",
-                "occupation"
+                "occupation",
+                "img_src"
             )
         ),
         asyncErrorBoundary(validateInput),
