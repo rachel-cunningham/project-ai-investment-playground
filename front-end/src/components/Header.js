@@ -37,14 +37,6 @@ function Header() {
           sx={{ marginRight: 2 }}>
           Sign Up
         </Button>
-        <Button 
-          component={Link} 
-          to="/about" 
-          variant="contained" 
-          color="primary" 
-          sx={{ marginRight: 1 }}>
-          About
-        </Button>
       </Box>
     </Box>
   );
