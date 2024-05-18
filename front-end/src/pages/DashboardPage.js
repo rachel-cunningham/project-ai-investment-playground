@@ -28,7 +28,7 @@ function DashboardPage() {
         <Container>
           <Stack direction="row" spacing={2}>
             <h1>Welcome Back, !</h1>
-            <Avatar alt="blank profile pic" src={ProfileImage} />
+              <Avatar alt="blank profile pic" src={ProfileImage} style={{color:"#CB88A"}}/>
           </Stack>
         </Container>
       </Grid>
@@ -42,7 +42,7 @@ function DashboardPage() {
         <Container>
           <h4> How Can I Help You?</h4>
           <Divider></Divider>
-          <Card>
+          <Card variant="outlined">
             <CardActionArea>
               <CardContent>
                 <Typography
@@ -62,50 +62,84 @@ function DashboardPage() {
           </Card>
         </Container>
         <Container>
-          <Card>
-            <CardActionArea>
-              <CardContent>
-                <Typography
-                  sx={{ fontSize: 14 }}
-                  color="text.secondary"
-                  gutterBottom
-                >
-                  Review Advice From Your Virtual Assistant
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-            <Button size="small" color="primary">
-              Let's Review
-            </Button>
+
+        <Card variant="outlined">
+          <CardActionArea>
+            <CardContent>
+              <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+              Review Advice From Your Virtual Assistant
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+          <Button size="small" color="primary">
+          Let's Review
+        </Button>
           </Card>
         </Container>
         <Container>
           <h4>Become an Investment Rock Star</h4>
-          <Divider></Divider>
-          <Container>
-            <Card>
-              <CardMedia
-                component="img"
-                alt="stacks of coins"
-                height="140"
-                image={InvestImage}
-              />
-              <CardActionArea>
-                <CardContent>
-                  <Typography
-                    sx={{ fontSize: 14 }}
-                    color="text.secondary"
-                    gutterBottom
-                  >
-                    test
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-              <Button size="small" color="primary">
-                Learn More
-              </Button>
-            </Card>
-          </Container>
+        <Divider>
+        </Divider>
+        <Container>
+        <Card variant="outlined" color="white">
+          <CardMedia
+          component="img"
+        alt="stacks of coins"
+        height="140"
+        image={InvestImage}
+          />
+          <CardActionArea>
+            <CardContent>
+              <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+              Investment strategies
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+          <Button size="small">
+          Learn More
+        </Button>
+          </Card>
+        </Container>
+        <Container>
+        <Card variant="outlined" color="white">
+          <CardMedia
+          component="img"
+        alt="stacks of coins"
+        height="140"
+        image={InvestImage}
+          />
+          <CardActionArea>
+            <CardContent>
+              <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+              Terminology
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+          <Button size="small">
+          Learn More
+        </Button>
+          </Card>
+        </Container>
+        <Container sx={{ mb: 3 }}>
+        <Card variant="outlined" color="white">
+          <CardMedia
+          component="img"
+        alt="stacks of coins"
+        height="140"
+        image={InvestImage}
+          />
+          <CardActionArea>
+            <CardContent>
+              <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+              Benchmark Examples
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+          <Button size="small">
+          Learn More
+        </Button>
+          </Card>
+        </Container>
         </Container>
       </Grid>
     </Box>
