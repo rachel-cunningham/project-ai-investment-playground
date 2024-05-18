@@ -14,6 +14,7 @@ router
     .route("/:username")
     .get(usersController.read)
     .put(usersController.update)
+    .patch(usersController.patch)
     .delete(usersController.deleteUser)
     .all(methodNotAllowed);
 
