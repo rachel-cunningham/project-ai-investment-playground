@@ -3,10 +3,10 @@
  * @returns { Promise<void> }
  */
 
-const users = require("./01-users.json");
+const goals = require("./02-goals.json");
 
 exports.seed = async function (knex) {
     // Deletes ALL existing entries
-    await knex("users").del();
-    await knex("users").insert(users);
+    await knex("goals").del();
+    await knex("goals").insert(goals);
 };
