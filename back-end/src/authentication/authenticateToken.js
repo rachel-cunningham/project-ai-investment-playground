@@ -6,6 +6,8 @@ function authenticateToken(req, res, next) {
     const token = req.cookies.token;
     // console.log("req", req);
 
+    console.log(req.body)
+
     if (!token) {
         return res.status(401).json({ message: "Unauthorized" });
     }

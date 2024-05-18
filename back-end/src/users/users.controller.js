@@ -3,7 +3,7 @@ const hasProperties = require("../utils/hasProperties");
 const service = require("./users.service");
 const bcrypt = require("bcryptjs");
 const authenticateToken = require("../authentication/authenticateToken");
-const validateInput = require("./validateInput");
+const validateInput = require("../utils/validateInput")
 
 // POST requests to /users will create a new user and respond with that new user data
 async function create(req, res, next) {
@@ -42,11 +42,11 @@ async function list(req, res) {
     res.json({ data: await service.list() });
 }
 
-// Validates that a user with the given username exists
+// Validates that a user with the given username exists.
+// req.user should have previously been assigned by authenticateToken
 async function userExists(req, res, next) {
     const { username } = req.params;
     const { userId } = req.user;
-    console.log(req.user);
 
     const data = await service.readUser(userId);
 
@@ -68,6 +68,32 @@ function readUser(req, res, next) {
     res.json({ data });
 }
 
+async function update(req, res) {
+    try {
+        const { user_id } = res.locals.user
+        const updatedUser = { ...req.body.data, user_id }
+
+        const result = await service.update(updatedUser)
+        res.json({ data: result[0] })
+    } catch (error) {
+        next({
+            status: 500,
+            message: `Error updating user data: ${error}`
+        })
+    }
+}
+
+async function deleteUser(req, res, next) {
+    try {
+        const { user_id } = res.locals.user
+        await service.deleteUser(user_id)
+        res.sendStatus(204)
+    } catch (error) {
+        console.error(error)
+        res.status(500).json({ error: "Error deleting health data" })
+    }
+}
+
 module.exports = {
     create: [
         asyncErrorBoundary(
@@ -77,7 +103,6 @@ module.exports = {
                 "username",
                 "email",
                 "password",
-                "password_hash",
                 "age",
                 "occupation"
             )
@@ -87,4 +112,25 @@ module.exports = {
     ],
     list: [asyncErrorBoundary(list)],
     read: [authenticateToken, asyncErrorBoundary(userExists), readUser],
+    update: [
+        authenticateToken,
+        asyncErrorBoundary(userExists),
+        asyncErrorBoundary(
+            hasProperties(
+                "first_name",
+                "last_name",
+                "username",
+                "email",
+                "age",
+                "occupation"
+            )
+        ),
+        validateInput,
+        update
+    ],
+    deleteUser: [
+        authenticateToken,
+        asyncErrorBoundary(userExists),
+        asyncErrorBoundary(deleteUser)
+    ]
 };

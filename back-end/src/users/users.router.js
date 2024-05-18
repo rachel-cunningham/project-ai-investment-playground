@@ -10,7 +10,11 @@ router
     .post(usersController.create)
     .all(methodNotAllowed);
 
-router.route("/:username").get(usersController.read).all(methodNotAllowed);
+router.route("/:username")
+    .get(usersController.read)
+    .put(usersController.update)
+    .delete(usersController.deleteUser)
+    .all(methodNotAllowed);
 
 // USER GOALS
 router

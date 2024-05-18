@@ -26,9 +26,31 @@ function readUserByUsername(username) {
         .first();
 }
 
+function update(updatedUser) {
+    return knex("users")
+        .where({ user_id: updatedUser.user_id})
+        .update(updatedUser, "*")
+}
+
+async function deleteUser(user_id) {
+    try {
+        await knex.transaction(async trx => {
+            await trx("users").where({ user_id: user_id }).del()
+            await trx("goals").where({ user_id: user_id }).del()
+        })
+        return "User was successfully deleted."
+    } catch (error) {
+        console.error(error)
+        return "Failed to delete user"
+    }
+}
+
+
 module.exports = {
     create,
     list,
     readUser,
-    readUserByUsername
+    readUserByUsername,
+    update,
+    deleteUser
 };
