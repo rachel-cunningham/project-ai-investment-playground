@@ -3,7 +3,7 @@ const hasProperties = require("../utils/hasProperties");
 const service = require("./users.service");
 const bcrypt = require("bcryptjs");
 const authenticateToken = require("../authentication/authenticateToken");
-const validateInput = require("../utils/validateInput")
+const validateInput = require("../utils/validateInput");
 
 // POST requests to /users will create a new user and respond with that new user data
 async function create(req, res, next) {
@@ -70,27 +70,28 @@ function readUser(req, res, next) {
 
 async function update(req, res) {
     try {
-        const { user_id } = res.locals.user
-        const updatedUser = { ...req.body.data, user_id }
+        const { user_id } = res.locals.user;
+        const updatedUser = { ...req.body.data, user_id };
 
-        const result = await service.update(updatedUser)
-        res.json({ data: result[0] })
+        const result = await service.update(updatedUser);
+        res.json({ data: result[0] });
     } catch (error) {
         next({
             status: 500,
-            message: `Error updating user data: ${error}`
-        })
+            message: `Error updating user data: ${error}`,
+        });
     }
 }
+// use this error handling
 
 async function deleteUser(req, res, next) {
     try {
-        const { user_id } = res.locals.user
-        await service.deleteUser(user_id)
-        res.sendStatus(204)
+        const { user_id } = res.locals.user;
+        await service.deleteUser(user_id);
+        res.sendStatus(204);
     } catch (error) {
-        console.error(error)
-        res.status(500).json({ error: "Error deleting health data" })
+        console.error(error);
+        res.status(500).json({ error: "Error deleting health data" });
     }
 }
 
@@ -126,11 +127,11 @@ module.exports = {
             )
         ),
         validateInput,
-        update
+        update,
     ],
     deleteUser: [
         authenticateToken,
         asyncErrorBoundary(userExists),
-        asyncErrorBoundary(deleteUser)
-    ]
+        asyncErrorBoundary(deleteUser),
+    ],
 };

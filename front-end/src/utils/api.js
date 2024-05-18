@@ -32,10 +32,6 @@ async function fetchJson(url, options, onCancel) {
     }
 }
 
-/*
- * USERS API
- */
-
 // Returns an array of all users
 export async function listUsers(signal) {
     const url = `${API_BASE_URL}/users`;
@@ -69,6 +65,63 @@ export async function readUserByUsername(username, signal) {
         signal,
     };
 
+    return await fetchJson(url, options);
+}
+
+/**
+ * Saves a new goal to the database.
+ * @param newGoal
+ *  the new goal to save
+ * @param userId
+ *  the userId of the user creating the goal
+ * @param signal
+ *  optional AbortController.signal
+ * @returns {Promise<deck>}
+ *  a promise that resolves the saved Goal, which will now have an `id` property.
+ */
+export async function createGoal(newGoal, userId, signal) {
+    console.log("CREATE GOAL POST REQUEST:", newGoal, userId);
+    const url = `${API_BASE_URL}/users/${userId}/goals`;
+    const options = {
+        method: "POST",
+        headers,
+        body: JSON.stringify({ data: newGoal }),
+        signal,
+    };
+    return await fetchJson(url, options, newGoal);
+}
+
+/**
+ * Retrieves all existing goals with matching userId.
+ * @returns {Promise<[reservation]>}
+ *  a promise that resolves to a possibly empty array of goals saved in the database.
+ */
+export async function listGoals(userId, signal) {
+    const url = new URL(`${API_BASE_URL}/users/${userId}/goals`);
+    const options = {
+        method: "GET",
+        headers,
+        signal,
+    };
+    return await fetchJson(url, options);
+}
+
+/**
+ * Retrieves the goal with the specified `goalId`
+ * @param goalId
+ *  the `id` property matching the desired goal.
+ * @param signal
+ *  optional AbortController.signal
+ * @returns {Promise<any>}
+ *  a promise that resolves to the saved Goal.
+ */
+export async function readGoal(userId, goalId, signal) {
+    const url = `${API_BASE_URL}/users/${userId}/goals/${goalId}`;
+    const options = {
+        method: "GET",
+        headers,
+        signal,
+    };
     return await fetchJson(url, options);
 }
 
@@ -119,74 +172,5 @@ export async function deleteUser(username, signal) {
         signal,
     };
 
-    return await fetchJson(url, options);
-}
-
-/*
- * GOALS API
- */
-
-/**
- * Saves a new goal to the database.
- * @param newGoal
- *  the new goal to save
- * @param userId
- *  the userId of the user creating the goal
- * @param signal
- *  optional AbortController.signal
- * @returns {Promise<deck>}
- *  a promise that resolves the saved Goal, which will now have an `id` property.
- */
-export async function createGoal(newGoal, userId, signal) {
-    console.log(
-        "CREATE GOAL POST REQUEST, newGoal + userId to be saved:",
-        newGoal,
-        userId
-    );
-    const url = `${API_BASE_URL}/users/${userId}/goals`;
-    const options = {
-        method: "POST",
-        headers,
-        body: JSON.stringify({ data: newGoal }),
-        signal,
-    };
-    return await fetchJson(url, options, newGoal);
-}
-
-/**
- * Retrieves all existing goals with matching userId.
- * @param userId
- *  the userId of the user creating the goal
- * @returns {Promise<[reservation]>}
- *  a promise that resolves to a possibly empty array of goals saved in the database.
- */
-export async function listGoals(userId, signal) {
-    const url = new URL(`${API_BASE_URL}/users/${userId}/goals`);
-    const options = {
-        method: "GET",
-        headers,
-        signal,
-    };
-    return await fetchJson(url, options);
-}
-
-/**
- * Retrieves the goal with the specified `goalId`
- * @param goalId
- *  the `id` property matching the desired goal.
- * @param userId
- *  the userId of the user creating the goal
- * @param signal
- *  optional AbortController.signal
- * @returns {Promise<any>}
- *  a promise that resolves to the saved Goal.
- */
-export async function readGoal(userId, goalId, signal) {
-    const url = `${API_BASE_URL}/users/${userId}/goals/${goalId}`;
-    const options = {
-        method: "GET",
-        headers,
-        signal,
-    };
     return await fetchJson(url, options);
 }
