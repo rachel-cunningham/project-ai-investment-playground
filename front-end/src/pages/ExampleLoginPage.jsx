@@ -13,8 +13,8 @@ export default function ExampleLoginPage() {
         const placeholderUser = {
             first_name: "Guy",
             last_name: "McGuysson",
-            username: "guyman",
-            email: "guy@guy.com",
+            username: "mrguy",
+            email: "guy@guy.guy",
             password: "guy",
             age: "50",
             occupation: "five guys"

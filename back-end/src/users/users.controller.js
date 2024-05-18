@@ -103,7 +103,6 @@ module.exports = {
                 "username",
                 "email",
                 "password",
-                "password_hash",
                 "age",
                 "occupation"
             )
