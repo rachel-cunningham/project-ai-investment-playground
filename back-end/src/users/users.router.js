@@ -9,6 +9,8 @@ router.route("/")
 
 router.route("/:username")
     .get(controller.read)
+    .put(controller.update)
+    .delete(controller.deleteUser)
     .all(methodNotAllowed);
 
 module.exports = router;
