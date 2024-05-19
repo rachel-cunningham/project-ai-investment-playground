@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Unstable_Grid2";
 import Avatar from "@mui/material/Avatar";
 import { createTheme } from '@mui/material/styles';
+import Paper from '@mui/material/Paper';
 import EditIcon from "../assets/images/icons/EditPlans_Icon.png";
 import ViewPlanIcon from "../assets/images/icons/ViewPlans_icon.png";
 import StartPlanIcon from "../assets/images/icons/StartPlan_Icon.png";
@@ -14,9 +15,13 @@ import Plans_icon from "../assets/images/icons/Plans_icon.png";
 import Dashboard_icon from "../assets/images/icons/Dashboard_icon.png";
 import BenchMarkIcon from "../assets/images/icons/BenchMark_Icon.png";
 import BlankProfile from "../assets/images/dashboard/blank-profile-picture.png";
-import "./DashboardPage.css"
+import "./DashboardPage.css";
+import { useParams } from "react-router-dom";
 
 function DashboardPage() {
+
+  const params = useParams();
+  const userId = params.userId;
   const theme = createTheme({
     palette:{
       primary:{
@@ -24,14 +29,31 @@ function DashboardPage() {
       }
     }
   })
+  const Greetings = () => {
+    let date = new Date();
+    let hours= date.getHours();
+    let greet
+
+    if (hours < 12){
+      greet =  "morning";
+    } else if (hours >= 12 && hours <= 17){
+      greet = "afternoon";
+    } else if (hours >= 17 && hours <= 24) {
+      greet = "evening";
+    }
+    return(
+      <span>Good {greet}, </span>
+    )   
+}
+
   return (
     <Box>
       <Box class="top-box">
         <Grid className="top" container direction="row" justifyContent="flex-start" spacing={1}>
           <Avatar sx ={{bgcolor:theme, width: 86, height: 86}} xs={1} src={BlankProfile}></Avatar>          
           <Grid xs={9}>
-            <h1>Good Morning,</h1>
-            <h1>Rachel</h1>
+            <h1>{Greetings} </h1>
+            <h1>{userId}</h1>
           </Grid>
         </Grid>
       </Box>
