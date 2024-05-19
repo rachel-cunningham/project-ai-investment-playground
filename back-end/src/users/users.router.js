@@ -28,6 +28,8 @@ router
 router
     .route("/:userId/goals/:goalId")
     .get(goalsController.read)
+    .patch(goalsController.update)
+    .delete(goalsController.destroy)
     .all(methodNotAllowed);
 
 module.exports = router;
