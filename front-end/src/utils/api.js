@@ -1,6 +1,6 @@
 /*
     API Calls!
-    use ctrl/cmd + f and type in the name of the function that you want to jump to it
+    use ctrl/cmd + f and type in the name of the function that you want to jump to
     instructions for calling the function are commented above each
 
 
