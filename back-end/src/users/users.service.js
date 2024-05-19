@@ -25,6 +25,12 @@ function update(updatedUser) {
         .update(updatedUser, "*");
 }
 
+function patch(patchedUser) {
+    return knex("users")
+        .where({ user_id: patchedUser.user_id})
+        .update(patchedUser, "*");
+}
+
 async function deleteUser(user_id) {
     try {
         await knex.transaction(async (trx) => {
@@ -44,5 +50,6 @@ module.exports = {
     readUser,
     readUserByUsername,
     update,
+    patch,
     deleteUser,
 };

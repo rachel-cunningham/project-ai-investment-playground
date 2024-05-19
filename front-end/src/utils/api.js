@@ -46,7 +46,7 @@ export async function userLogin(username, password, signal) {
     const options = {
         method: "POST",
         headers,
-        body: JSON.stringify({ username: username, password: password }),
+        body: JSON.stringify({ data: { username: username, password: password } }),
         signal,
     };
 
@@ -171,6 +171,21 @@ export async function deleteUser(username, signal) {
         headers,
         signal,
     };
+
+    return await fetchJson(url, options);
+}
+
+// Allows user data to be updated by only sending one (or more) property, rather than an entire user object
+// Acceptable properties: "first_name", "last_name", "username", "email", "age", "occupation, img_src"
+// patch arg should look like { age: 30 } or { occupation: "president", email: "potus@whitehouse.gov"}
+export async function patchUser(username, patch, signal) {
+    const url = `${API_BASE_URL}/users/${username}`
+    const options = {
+        method: "PATCH",
+        headers,
+        body: JSON.stringify(patch),
+        signal
+    }
 
     return await fetchJson(url, options);
 }
