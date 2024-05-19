@@ -1,0 +1,36 @@
+.main-grid {    
+    background-color: white;
+    width: 100%;
+    border: 15px solid #87DBA8;
+    border-radius: 25px;
+    margin-bottom: 20px;
+}
+.card {
+    background-color: #F6F6F6;
+    border: 5px solid #87DBA8;
+    border-radius: 25px;
+    width: fit-content;
+    
+}
+.titles {
+    color:#3B0347;
+}
+.bottom {
+    margin-top: 50px
+}
+.top{
+    margin-bottom: 200px;
+    width:100%;
+    border: 1px solid white; 
+    border-radius: 45px;
+    color: white
+}
+.icon{
+    background-color: #87DBA8;
+}
+.top-box{
+    margin-bottom: 100px;
+}
+.middle-box{
+    margin-left:10px;
+}

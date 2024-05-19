@@ -13,6 +13,7 @@ import ExampleLoginPage from "../pages/ExampleLoginPage";
 import DisplayOneGoal from "../pages/GoalsExamplePages/DisplayOneGoal";
 import ExampleCreateGoal from "../pages/GoalsExamplePages/ExampleCreateGoal";
 import ExampleDashboard from "../pages/GoalsExamplePages/ExampleDashboard";
+import DashboardPage from "../pages/DashboardPage";
 
 function Layout() {
     return (
@@ -29,6 +30,10 @@ function Layout() {
                     <Route
                         path="/example-login"
                         element={<ExampleLoginPage />}
+                    />
+                    <Route
+                        path="/dashboard"
+                        element={<DashboardPage />}
                     />
                     <Route
                         path="/dashboard/:userId/goals/:goalId"
