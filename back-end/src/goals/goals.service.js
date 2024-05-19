@@ -28,8 +28,24 @@ function read(goalId, userId) {
         .first();
 }
 
+// Update goal
+function update(updatedGoal) {
+    return knex("goals")
+        .select("*")
+        .where({ goal_id: updatedGoal.goal_id })
+        .update(updatedGoal, "*")
+        .then((updatedRecords) => updatedRecords[0]);
+}
+
+// Delete goal
+function destroy(goalId) {
+    return knex("goals").where({ goal_id: goalId }).del();
+}
+
 module.exports = {
     list,
     create,
     read,
+    update,
+    destroy,
 };
