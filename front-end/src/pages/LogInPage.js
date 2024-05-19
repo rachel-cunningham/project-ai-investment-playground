@@ -1,17 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import AuthForm from "../components/AuthForm";
 
 function LogInPage() {
+  const [loginError, setLoginError] = useState("");
+
   const handleLoginSubmit = (formData) => {
-    // handling login logic
-    console.log("Login data:", formData);
+    const { username, password } = formData;
+    if (username === "exampleuser" && password === "password") {
+      console.log("Login successful:", formData);
+      setLoginError("");
+    } else {
+      setLoginError("Invalid username or password. Please try again.");
+    }
   };
 
   return (
     <div>
       <header>
-        <h1>Log In Page</h1>
+        <h1>Welcome Back</h1>
         <AuthForm isSignup={false} onSubmit={handleLoginSubmit} />
+        {loginError && <p>{loginError}</p>}
       </header>
     </div>
   );
