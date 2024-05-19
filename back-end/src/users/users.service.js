@@ -1,34 +1,55 @@
 const knex = require("../db/connection");
 
-function create(newUser){
+function create(newUser) {
     return knex("users")
-    .insert(newUser)
-    .returning("*")
-    .then((res)=> res[0])
+        .insert(newUser)
+        .returning("*")
+        .then((res) => res[0]);
 }
 
 async function list() {
-    return knex("users")
-        .select("*")
+    return knex("users").select("*");
 }
 
 function readUser(userId) {
-    return knex("users")
-        .select("*")
-        .where({ user_id: userId })
-        .first();
+    return knex("users").select("*").where({ user_id: userId }).first();
 }
 
 function readUserByUsername(username) {
+    return knex("users").select("*").where({ username: username }).first();
+}
+
+function update(updatedUser) {
     return knex("users")
-        .select("*")
-        .where({ username: username })
-        .first();
+        .where({ user_id: updatedUser.user_id })
+        .update(updatedUser, "*");
+}
+
+function patch(patchedUser) {
+    return knex("users")
+        .where({ user_id: patchedUser.user_id})
+        .update(patchedUser, "*");
+}
+
+async function deleteUser(user_id) {
+    try {
+        await knex.transaction(async (trx) => {
+            await trx("users").where({ user_id: user_id }).del();
+            await trx("goals").where({ user_id: user_id }).del();
+        });
+        return "User was successfully deleted.";
+    } catch (error) {
+        console.error(error);
+        return "Failed to delete user";
+    }
 }
 
 module.exports = {
     create,
     list,
     readUser,
-    readUserByUsername
+    readUserByUsername,
+    update,
+    patch,
+    deleteUser,
 };
