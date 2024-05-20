@@ -5,7 +5,7 @@ import ExampleGoalForm from "./ExampleGoalForm";
 
 function CreateGoal() {
     // set initial empty form data
-    const initialFormDate = {
+    const initialFormData = {
         goal_name: "",
         goal_statement: "",
         years_to_invest_for: 1,
@@ -13,7 +13,7 @@ function CreateGoal() {
         starting_amount_to_invest: 0,
     };
 
-    const [formData, setFormData] = useState({ ...initialFormDate });
+    const [formData, setFormData] = useState({ ...initialFormData });
     const [error, setError] = useState(null);
 
     function handleChange(event) {
@@ -39,6 +39,7 @@ function CreateGoal() {
             await createGoal(formData, userId, abortController.signal);
             console.log("Goal created!");
         } catch (error) {
+            console.log(error);
             setError(error);
         }
 
