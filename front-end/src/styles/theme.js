@@ -58,8 +58,8 @@ const theme = createTheme({
       main: "#639577", // OliveGreen
     },
     custom: {
-      LightPurple: "#3B0B47",
-      DarkPurple: "#6E3979",
+      LightPurple: "#6E3979",
+      DarkPurple: "#3B0B47",
     },
     text: {
       primary: "#FFFFFF", // white text color
