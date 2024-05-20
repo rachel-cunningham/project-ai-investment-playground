@@ -64,6 +64,10 @@ function DashboardPage({name}) {
                 <h2 className="titles">Things To Do</h2>
               </Grid>
               <Grid className="card" xs={3}>
+                <img src={EditIcon}></img>
+                <Box>Most Recent Plan</Box>
+              </Grid>
+              <Grid className="card" xs={3}>
                 <img src={ViewPlanIcon}></img>
                 <Box>View Plans</Box>
               </Grid>
