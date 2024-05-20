@@ -37,6 +37,16 @@ const typography = {
     fontWeight: 100, // light
     color: "#FFFFFF", // white text color for secondary body text
   },
+  header1: {
+    fontFamily: "Mont-Blanc-Trial, Roboto, sans-serif",
+    fontWeight: 400, // light
+    color: "#FFFFFF", // white text color for secondary body text
+  },
+  header2: {
+    fontFamily: "Mont-Blanc-Trial, Roboto, sans-serif",
+    fontWeight: 600, // light
+    color: "#FFFFFF", // white text color for secondary body text
+  },
 };
 
 const theme = createTheme({
