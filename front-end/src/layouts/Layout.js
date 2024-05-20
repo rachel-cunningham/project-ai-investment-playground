@@ -32,7 +32,7 @@ function Layout() {
                         element={<ExampleLoginPage />}
                     />
                     <Route
-                        path="/dashboard"
+                        path="/dashboard/:userId"
                         element={<DashboardPage />}
                     />
                     <Route
