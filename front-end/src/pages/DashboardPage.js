@@ -3,7 +3,6 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Unstable_Grid2";
 import Avatar from "@mui/material/Avatar";
 import { createTheme } from '@mui/material/styles';
-import Paper from '@mui/material/Paper';
 import EditIcon from "../assets/images/icons/EditPlans_Icon.png";
 import ViewPlanIcon from "../assets/images/icons/ViewPlans_icon.png";
 import StartPlanIcon from "../assets/images/icons/StartPlan_Icon.png";
@@ -16,15 +15,15 @@ import Dashboard_icon from "../assets/images/icons/Dashboard_icon.png";
 import BenchMarkIcon from "../assets/images/icons/BenchMark_Icon.png";
 import BlankProfile from "../assets/images/dashboard/blank-profile-picture.png";
 import "./DashboardPage.css";
-import { useParams } from "react-router-dom";
+
 
 function DashboardPage({name}) {
   const [displayName, setDisplayName] = useState(name);
   const handleName=(name)=>{
     setDisplayName(name);
   } 
- let { id } = useParams();
- let salutation = "Good Morning";
+
+ let salutation = "Good Morning,";
   const theme = createTheme({
     palette:{
       primary:{
@@ -41,9 +40,9 @@ function DashboardPage({name}) {
     let date = new Date();
     let hours= date.getHours();
     if (hours >= 12 && hours <= 17){
-      salutation ="Good Afternoon" ;
+      salutation ="Good Afternoon," ;
     } else if (hours >= 17 && hours <= 24) {
-      salutation = "Good Evening";
+      salutation = "Good Evening,";
     }  
   },[])
 
@@ -65,10 +64,6 @@ function DashboardPage({name}) {
                 <h2 className="titles">Things To Do</h2>
               </Grid>
               <Grid className="card" xs={3}>
-                <img src={EditIcon}></img>
-                <Box>Edit My Plans</Box>
-              </Grid>
-              <Grid className="card" xs={3}>
                 <img src={ViewPlanIcon}></img>
                 <Box>View Plans</Box>
               </Grid>
@@ -88,10 +83,6 @@ function DashboardPage({name}) {
             <Grid className="card" xs={3}>
               <img src={TermIcon}></img>
               <Box>Terminology</Box>
-            </Grid>
-            <Grid className="card" xs={3}>
-              <img src={BenchMarkIcon}></img>
-              <Box>Benchmark Examples</Box>
             </Grid>
           </Grid>
         </Grid>
