@@ -6,6 +6,7 @@ import StepLabel from '@mui/material/StepLabel';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useNavigate } from 'react-router-dom';
 import StepOne from './StepOne';
 import StepTwo from './StepTwo';
 import StepThree from './StepThree';
@@ -13,7 +14,6 @@ import StepFour from './StepFour';
 import StepFive from './StepFive';
 import Confirm from './Confirm';
 
-// custom theme
 const theme = createTheme({
   components: {
     MuiStepLabel: {
@@ -43,7 +43,6 @@ const theme = createTheme({
   },
 });
 
-// style
 const style = {
   width: "90%",
   bgcolor: "white",
@@ -55,14 +54,17 @@ const style = {
 const steps = ["Start", 'Goal', 'Initial Investment', 'Investment Length', 'Risk', 'Confirm'];
 
 export default function StrategiesForms() {
-  const [activeStep, setActiveStep] = React.useState(0);
-  const [formData, setFormData] = React.useState({
+  const initialFormData = {
     goalName: '',
-    goalStatement: '',
+    return: '',
     yearsToInvest: '',
     riskComfortLevel: 'Low',
     startingInvestment: ''
-  });
+  };
+
+  const [activeStep, setActiveStep] = React.useState(0);
+  const [formData, setFormData] = React.useState(initialFormData);
+  const navigate = useNavigate();
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -74,13 +76,20 @@ export default function StrategiesForms() {
 
   const handleReset = () => {
     setActiveStep(0);
-    setFormData({
-      goalName: '',
-      goalStatement: '',
-      yearsToInvest: '',
-      riskComfortLevel: 'Low',
-      startingInvestment: ''
-    });
+    setFormData(initialFormData);
+  };
+
+  const isStepValid = () => {
+    switch (activeStep) {
+      case 1:
+        return formData.goalName.trim() !== '' && formData.return !== '' && formData.return > 0;
+      case 2:
+        return formData.startingInvestment !== '' && formData.startingInvestment > 0;
+      case 3:
+        return formData.yearsToInvest !== '' && formData.yearsToInvest > 0;
+      default:
+        return true;
+    }
   };
 
   const getStepContent = (step) => {
@@ -96,7 +105,7 @@ export default function StrategiesForms() {
       case 4:
         return <StepFive formData={formData} setFormData={setFormData} />;
       case 5:
-        return <Confirm formData={formData} />;
+        return <Confirm formData={formData} setFormData={setFormData}/>;
       default:
         return 'Unknown step';
     }
@@ -107,10 +116,32 @@ export default function StrategiesForms() {
       <Box sx={style}>
         {activeStep === steps.length ? (
           <React.Fragment>
-            <Typography sx={{ mt: 2, mb: 1 }}>
-              All steps completed - you&apos;re finished
+            <Typography sx={{ mt: 2, mb: 1, textAlign: 'center', fontSize: '40px' }}>
+              Finished!
             </Typography>
-            <Box sx={{ display: 'flex', justifyContent: 'center', pt: 2 }}>
+            <Box sx={{ display: 'flex', justifyContent: 'center', pt: 2, mb: 7 }}>
+              <Button
+                onClick={() => navigate('/dashboard')}
+                variant='contained'
+                color='primary'
+                sx={{
+                  fontFamily: "MontBlancBold",
+                  textTransform: 'none',
+                  marginX: 5,
+                  borderRadius: '15px',
+                  boxShadow: '0 9px 0 #639577',
+                  width: 'auto',
+                  paddingX: 3,
+                  color: "#3B0347",
+                  bgcolor: "#87DBA8",
+                  '&:hover': {
+                    bgcolor: "#639577",
+                    boxShadow: "0px"
+                  }
+                }}
+              >
+                Back To Dashboard
+              </Button>
               <Button
                 onClick={handleReset}
                 variant='contained'
@@ -118,7 +149,7 @@ export default function StrategiesForms() {
                 sx={{
                   fontFamily: "MontBlancBold",
                   textTransform: 'none',
-                  marginX: 1,
+                  marginX: 5,
                   borderRadius: '15px',
                   boxShadow: '0 9px 0 #639577',
                   width: 'auto',
@@ -194,6 +225,7 @@ export default function StrategiesForms() {
                   onClick={handleNext}
                   variant='contained'
                   color='primary'
+                  //disabled={!isStepValid()}
                   sx={{
                     fontFamily: "MontBlancBold",
                     textTransform: 'none',
@@ -210,14 +242,14 @@ export default function StrategiesForms() {
                     }
                   }}
                 >
-                  {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+                  {activeStep === steps.length - 1 ? 'Submit' : 'Next'}
                 </Button>
               </Box>
             )}
           </React.Fragment>
         )}
         <Stepper activeStep={activeStep} sx={{ mt: 3, px: 3, pb: 3 }}>
-          {steps.map((label, index) => (
+          {steps.map((label) => (
             <Step key={label}>
               <StepLabel>{label}</StepLabel>
             </Step>

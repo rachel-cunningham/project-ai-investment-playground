@@ -32,7 +32,17 @@ export default function StepFive({ formData, setFormData }) {
 
   return (
     <form>
-      <Box sx={{ width: 400, textAlign: 'center', margin: 'auto' }}>
+      <Box 
+        sx={{ 
+          width: 500, 
+          textAlign: 'center', 
+          margin: 'auto', 
+          display: 'flex', 
+          flexDirection: 'column', 
+          justifyContent: 'center', 
+          height: '400px' 
+        }}
+      >
         <FormLabel sx={{ color: 'black', fontSize: '40px' }}>
           Select your preferred risk level 
         </FormLabel>
@@ -43,23 +53,34 @@ export default function StepFive({ formData, setFormData }) {
           max={3}
           onChange={handleChange}
           valueLabelDisplay="off"
+          marks={marks}
           color='primary'
           sx={{
-            color: '#87DBA8',
+            height: 10,
             '& .MuiSlider-thumb': {
+              width: 24,
+              height: 24,
               backgroundColor: '#87DBA8',
+              '&:hover, &.Mui-focusVisible, &.Mui-active': {
+                boxShadow: 'inherit',
+              },
             },
             '& .MuiSlider-track': {
+              height: 10,
               backgroundColor: '#87DBA8',
             },
             '& .MuiSlider-rail': {
+              height: 10,
               backgroundColor: '#87DBA8',
             },
             '& .MuiSlider-mark': {
-              backgroundColor: '#87DBA8',
+              backgroundColor: '#3B0B47',
+              height: 10,
+              width: 10,
+              borderRadius: '50%',
             },
             '& .MuiSlider-markLabel': {
-              color: '#87DBA8',
+              fontSize: '0px',
             },
           }}
         />
@@ -67,21 +88,21 @@ export default function StepFive({ formData, setFormData }) {
           <Typography
             variant="body2"
             onClick={() => handleChange(null, 1)}
-            sx={{ cursor: 'pointer', color: 'black' }}
+            sx={{ cursor: 'pointer', color: 'black', fontSize: '25px' }}
           >
             Low
           </Typography>
           <Typography
             variant="body2"
             onClick={() => handleChange(null, 2)}
-            sx={{ cursor: 'pointer', color: 'black' }}
+            sx={{ cursor: 'pointer', color: 'black', fontSize: '25px' }}
           >
             Mid
           </Typography>
           <Typography
             variant="body2"
             onClick={() => handleChange(null, 3)}
-            sx={{ cursor: 'pointer', color: 'black' }}
+            sx={{ cursor: 'pointer', color: 'black', fontSize: '25px' }}
           >
             High
           </Typography>

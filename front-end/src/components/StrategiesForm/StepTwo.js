@@ -9,10 +9,20 @@ export default function StepTwo({ formData, setFormData }) {
       [name]: value,
     }));
   };
+  const handleNumberChange = (e) => {
+    const { name, value } = e.target;
+    // Allow only numeric characters
+    const numericValue = value.replace(/\D/g, '');
+    // Update the form data with the integer value
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: numericValue ? parseInt(numericValue, 10) : '',
+    }));
+  };
 
   return (
     <form>
-      <Box sx={{ display: 'flex', flexDirection: "column", textAlign: 'center', alignItems: 'center', gap: 3 }}>
+      <Box sx={{ display: 'flex', flexDirection: "column", textAlign: 'center', alignItems: 'center', justifyContent: 'center', gap: 3, height: '400px' }}>
         <FormLabel sx={{ color: 'black', fontSize: '40px' }}>
           Name your investment plan
         </FormLabel>
@@ -40,6 +50,7 @@ export default function StepTwo({ formData, setFormData }) {
           variant="outlined"
           placeholder="EX: General Savings Plan"
           autoFocus
+          required
         />
         <FormLabel sx={{ color: 'black', fontSize: '40px' }}>
           How much of an investment return are you aiming for?
@@ -62,11 +73,12 @@ export default function StepTwo({ formData, setFormData }) {
               },
             },
           }}
-          name="goalStatement"
-          value={formData.goalStatement}
-          onChange={handleChange}
+          name="return"
+          value={formData.return}
+          onChange={handleNumberChange}
           variant="outlined"
           placeholder="Enter Dollar Amount"
+          required
         />
       </Box>
     </form>

@@ -2,21 +2,24 @@ import { FormLabel, TextField, Box } from "@mui/material";
 import * as React from "react";
 
 export default function StepThree({ formData, setFormData }) {
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData((prevFormData) => ({
-          ...prevFormData,
-          [name]: value,
-        }));
-      };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    // Allow only numeric characters
+    const numericValue = value.replace(/\D/g, '');
+    // Update the form data with the integer value
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: numericValue ? parseInt(numericValue, 10) : '',
+    }));
+  };
 
-    return (
-        <form>
-            <Box sx={{ display: 'flex', flexDirection: "column", textAlign: 'center', alignItems: 'center', gap: 3 }}>
-                <FormLabel sx={{ color: 'black', fontSize: '40px' }}>
-                    How much do you want to invest?
-                </FormLabel>
-                <TextField
+  return (
+    <form>
+      <Box sx={{ display: 'flex', flexDirection: "column", textAlign: 'center', alignItems: 'center', justifyContent: 'center', gap: 3, height: '400px' }}>
+        <FormLabel sx={{ color: 'black', fontSize: '40px' }}>
+          How much do you want to invest?
+        </FormLabel>
+        <TextField
           sx={{
             width: '50%',
             '& .MuiOutlinedInput-root': {
@@ -41,7 +44,7 @@ export default function StepThree({ formData, setFormData }) {
           placeholder="Enter Dollar Amount"
           autoFocus
         />
-            </Box>
-        </form>
-    );
+      </Box>
+    </form>
+  );
 }

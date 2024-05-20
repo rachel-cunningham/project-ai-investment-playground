@@ -2,12 +2,11 @@ import React from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import StrategiesForm from "../components/StrategiesForm/StrategiesForm";
 import HomePage from "../pages/HomePage";
 import LogInPage from "../pages/LogInPage";
-import SignUpPage from "../pages/SignUpPage";
-import DashboardPage from "../pages/DashboardPage";
 import NotFoundPage from "../pages/NotFoundPage";
-import StrategiesForm from "../components/StrategiesForm/StrategiesForm"
+import SignUpPage from "../pages/SignUpPage";
 
 // For api testing
 import ExampleLoginPage from "../pages/ExampleLoginPage";
@@ -23,7 +22,6 @@ function Layout() {
             <div className="Layout">
                 <Routes>
                     <Route path="/" element={<HomePage />} />
-                    {/* <Route path="/dashboard" element={<DashboardPage />} /> */}
                     <Route path="/log-in" element={<LogInPage />} />
                     <Route path="/sign-up" element={<SignUpPage />} />
                     <Route path="/strategy" element={<StrategiesForm />} />
@@ -50,20 +48,6 @@ function Layout() {
                     />
                 </Routes>
             </div>
-  return (
-    <Router>
-      <Header />
-      <div className="Layout">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/dashboard" element={<DashboardPage />} />
-          <Route path="/log-in" element={<LogInPage />} />
-          <Route path="/sign-up" element={<SignUpPage />} />
-          <Route path="/strategy" element={<StrategiesForm />} />
-          <Route path="*" element={<NotFoundPage />} />
-          <Route path="/example-login" element={<ExampleLoginPage />} />
-        </Routes>
-      </div>
 
             <Footer />
         </Router>

@@ -4,15 +4,16 @@ import * as React from "react";
 export default function StepFour({ formData, setFormData }) {
     const handleChange = (e) => {
         const { name, value } = e.target;
+        const numericValue = value.replace(/\D/g, '');
         setFormData((prevFormData) => ({
           ...prevFormData,
-          [name]: value,
+          [name]: numericValue ? parseInt(numericValue, 10) : '',
         }));
       };
 
     return (
         <form>
-            <Box sx={{ display: 'flex', flexDirection: "column", textAlign: 'center', alignItems: 'center', gap: 3 }}>
+            <Box sx={{ display: 'flex', flexDirection: "column", textAlign: 'center', alignItems: 'center', justifyContent: 'center', gap: 3, height: '400px' }}>
                 <FormLabel sx={{ color: 'black', fontSize: '40px' }}>
                     How many years are you hoping to reach your goal?
                 </FormLabel>
