@@ -225,7 +225,7 @@ export default function StrategiesForms() {
                   onClick={handleNext}
                   variant='contained'
                   color='primary'
-                  //disabled={!isStepValid()}
+                  disabled={!isStepValid()}
                   sx={{
                     fontFamily: "MontBlancBold",
                     textTransform: 'none',
