@@ -8,7 +8,7 @@ import {
   CardMedia,
 } from "@mui/material";
 import { Link } from "react-router-dom";
-import Logo from "../assets/images/logo/WealthifyAI.png";
+import Logo from "../assets/images/logo/WealthifyAI-logo.png"
 
 function Header() {
   return (
@@ -36,7 +36,7 @@ function Header() {
               component="img"
               alt="Investify AI logo"
               image={Logo}
-              sx={{ width: "70px" }}
+              sx={{ width: "65px" }}
             />
           </Typography>
           <Box>
