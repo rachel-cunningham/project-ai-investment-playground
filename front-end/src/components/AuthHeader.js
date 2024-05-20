@@ -1,8 +1,11 @@
-import React from "react";
-import { Button, Box, AppBar, Typography, Toolbar } from "@mui/material";
-import { Link } from "react-router-dom";
+// header for when the user is logged in
 
-function Header() {
+import React from "react";
+import { Button, Box, AppBar, Typography, Toolbar, CardMedia } from "@mui/material";
+import { Link } from "react-router-dom";
+import Logo from "../assets/images/logo/WealthifyAI.png";
+
+function AuthHeader() {
   // possible future implementation of only showing the user specific sections of the navigation if they're logged in vs when they are not
 
   // const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -27,73 +30,68 @@ function Header() {
           <Typography
             component={Link}
             to="/"
-            variant="header2"
+            variant="header1"
             sx={{
               flexGrow: "1",
               textDecoration: "none",
               display: { xs: "none", sm: "block" },
-              fontSize: "1.5rem",
             }}
           >
-            Wealthify AI
+            <CardMedia
+          component="img"
+          alt="logo"
+          image={Logo}
+          sx={{ width: '80px', height: 'auto' }}
+        /> 
           </Typography>
           <Box>
             <Typography
               component={Link}
-              to="/about"
-              variant="header2"
-              sx={{
-                textDecoration: "none",
-                fontSize: "1.5rem",
-                marginRight: 5,
-              }}
-            >
-              About Us
-            </Typography>
-            {/* <Typography
-              component={Link}
-              to="/how-it-works"
-              variant="header2"
-              sx={{
-                textDecoration: "none",
-                fontSize: "1.5rem",
-                marginRight: 8,
-              }}
-            >
-              How it Works
-            </Typography> */}
-            {/* <Typography
-              component={Link}
               to="/dashboard"
-              variant="h6"
-              sx={{ textDecoration: "none", marginRight: 1 }}
+              variant="header2"
+              sx={{ textDecoration: "none", fontSize: "1.5rem", marginRight: 30 }}
             >
               Dashboard
-            </Typography> */}
-          </Box>
-          <Box>
-            <Button
+            </Typography>
+            <Typography
               component={Link}
-              to="/log-in"
-              variant="contained"
-              color="primary"
-              sx={{ marginRight: 2 }}
+              to="/get-advice"
+              variant="header2"
+              sx={{ textDecoration: "none", fontSize: "1.5rem", marginRight: 30 }}
             >
-              Log In
-            </Button>
+              Get Advice
+            </Typography>
+            <Typography
+              component={Link}
+              to="/plans"
+              variant="header2"
+              sx={{ textDecoration: "none", fontSize: "1.5rem", marginRight: 30}}
+            >
+              View Plans
+            </Typography>
+            <Typography
+              component={Link}
+              to="/account"
+              variant="header2"
+              sx={{ textDecoration: "none", fontSize: "1.5rem", marginRight: 2 }}
+            >
+              Account
+            </Typography>
+          </Box>
+          {/* <Box>
             <Button
               component={Link}
               to="/sign-up"
               variant="contained"
               color="primary"
             >
-              Sign Up
+              Sign Out
             </Button>
-          </Box>
+          </Box> */}
         </Toolbar>
       </AppBar>
     </Box>
   );
 }
 
-export default Header;
+export default AuthHeader;
