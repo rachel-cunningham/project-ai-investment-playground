@@ -16,6 +16,7 @@ import ExampleDashboard from "../pages/GoalsExamplePages/ExampleDashboard";
 import PlansPage from "../pages/PlansPage";
 import NewPlanPage from "../pages/NewPlanPage";
 import LatestPlanPage from "../pages/LatestPlanPage";
+import AccountPage from "../pages/AccountPage";
 // import ExampleEditGoal from "../pages/GoalsExamplePages/ExampleEditGoal";
 
 function Layout() {
@@ -31,8 +32,15 @@ function Layout() {
           <Route path="/example-login" element={<ExampleLoginPage />} />
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/dashboard/:userId/plans" element={<PlansPage />} />
-          <Route path="/dashboard/:userId/plans/new" element={<NewPlanPage />} />
-          <Route path="/dashboard/:userId/plans/latest" element={<LatestPlanPage />} />
+          <Route
+            path="/dashboard/:userId/plans/new"
+            element={<NewPlanPage />}
+          />
+          <Route
+            path="/dashboard/:userId/plans/latest"
+            element={<LatestPlanPage />}
+          />
+          <Route path="/dashboard/:userId/account" element={<AccountPage />} />
           <Route
             path="/dashboard/:userId/goals/:goalId"
             element={<DisplayOneGoal />}
