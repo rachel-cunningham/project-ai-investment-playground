@@ -72,8 +72,6 @@ export async function listUsers(signal) {
     return await fetchJson(url, { headers, signal });
 }
 
-
-
 /*
     How to call userLogin function:
     const responseFromAPI = await userLogin(username, password, signal)
@@ -108,7 +106,9 @@ export async function userLogin(username, password, signal) {
     const options = {
         method: "POST",
         headers,
-        body: JSON.stringify({ data: { username: username, password: password } }),
+        body: JSON.stringify({
+            data: { username: username, password: password },
+        }),
         signal,
     };
 
@@ -116,8 +116,6 @@ export async function userLogin(username, password, signal) {
 
     return user;
 }
-
-
 
 /* 
     How to call readUserByUsername function:
@@ -153,103 +151,6 @@ export async function readUserByUsername(username, signal) {
 
     return await fetchJson(url, options);
 }
-
-
-
-/*
-    Objects returned from createGoal, readGoal, updateGoal, and listGoals will look like this:
-    {
-        data: {
-            goal_id: 23,
-            user_id: 1,
-            created_at: "2024-05-19T20:38:06.602Z",
-            updated_at: "2024-05-19T20:38:06.602Z",
-            goal_name: "test goals 1 million",
-            goal_statement: "I want to... test my ai controller",
-            years_to_invest_for: 30,
-            risk_comfort_level: "low",
-            starting_amount_to_invest: 10000,
-            ai_response: {
-                lowRisk: {
-                    bondsPercentage: 40,
-                    shortTermPercentage: 10,
-                    foreignStockPercentage: 20,
-                    domesticStockPercentage: 30
-                },
-                highRisk: {
-                    bondsPercentage: 10,
-                    shortTermPercentage: 10,
-                    foreignStockPercentage: 30,
-                    domesticStockPercentage: 50
-                },
-                mediumRisk: {
-                    bondsPercentage: 20,
-                    shortTermPercentage: 10,
-                    foreignStockPercentage: 30,
-                    domesticStockPercentage: 40
-                }
-            }
-        }
-    }
-*/
-/**
- * Saves a new goal to the database.
- * @param newGoal
- *  the new goal to save
- * @param userId
- *  the userId of the user creating the goal
- * @param signal
- *  optional AbortController.signal
- * @returns {Promise<deck>}
- *  a promise that resolves the saved Goal, which will now have an `id` property.
- */
-export async function createGoal(newGoal, userId, signal) {
-    console.log("CREATE GOAL POST REQUEST:", newGoal, userId);
-    const url = `${API_BASE_URL}/users/${userId}/goals`;
-    const options = {
-        method: "POST",
-        headers,
-        body: JSON.stringify({ data: newGoal }),
-        signal,
-    };
-    return await fetchJson(url, options, newGoal);
-}
-
-/**
- * Retrieves all existing goals with matching userId.
- * @returns {Promise<[reservation]>}
- *  a promise that resolves to a possibly empty array of goals saved in the database.
- */
-export async function listGoals(userId, signal) {
-    const url = new URL(`${API_BASE_URL}/users/${userId}/goals`);
-    const options = {
-        method: "GET",
-        headers,
-        signal,
-    };
-    return await fetchJson(url, options);
-}
-
-/**
- * Retrieves the goal with the specified `goalId`
- * @param goalId
- *  the `id` property matching the desired goal.
- * @param signal
- *  optional AbortController.signal
- * @returns {Promise<any>}
- *  a promise that resolves to the saved Goal.
- */
-export async function readGoal(userId, goalId, signal) {
-    const url = `${API_BASE_URL}/users/${userId}/goals/${goalId}`;
-    const options = {
-        method: "GET",
-        headers,
-        signal,
-    };
-    return await fetchJson(url, options);
-}
-
-
 
 /*
     How to call creatUser function:
@@ -302,8 +203,6 @@ export async function createUser(user, signal) {
 
     return await fetchJson(url, options);
 }
-
-
 
 /*
     How to call updateUser function:
@@ -358,8 +257,6 @@ export async function updateUser(updatedUser, signal) {
     return await fetchJson(url, options);
 }
 
-
-
 /*
     How to call deleteUser function:
     const responseFromAPI = await deleteUser(username, signal)
@@ -377,8 +274,6 @@ export async function deleteUser(username, signal) {
 
     return await fetchJson(url, options);
 }
-
-
 
 /* 
     How to call patchUser function:
@@ -412,13 +307,156 @@ export async function deleteUser(username, signal) {
     ...or an error describing why the request failed will be returned
 */
 export async function patchUser(username, patch, signal) {
-    const url = `${API_BASE_URL}/users/${username}`
+    const url = `${API_BASE_URL}/users/${username}`;
     const options = {
         method: "PATCH",
         headers,
         body: JSON.stringify(patch),
-        signal
+        signal,
+    };
+
+    return await fetchJson(url, options);
+}
+
+/*
+    Objects returned from createGoal, readGoal, updateGoal, and listGoals will look like this:
+    {
+        data: {
+            goal_id: 23,
+            user_id: 1,
+            created_at: "2024-05-19T20:38:06.602Z",
+            updated_at: "2024-05-19T20:38:06.602Z",
+            goal_name: "test goals 1 million",
+            goal_statement: "I want to... test my ai controller",
+            years_to_invest_for: 30,
+            risk_comfort_level: "low",
+            starting_amount_to_invest: 10000,
+            ai_response: {
+                lowRisk: {
+                    bondsPercentage: 40,
+                    shortTermPercentage: 10,
+                    foreignStockPercentage: 20,
+                    domesticStockPercentage: 30
+                },
+                highRisk: {
+                    bondsPercentage: 10,
+                    shortTermPercentage: 10,
+                    foreignStockPercentage: 30,
+                    domesticStockPercentage: 50
+                },
+                mediumRisk: {
+                    bondsPercentage: 20,
+                    shortTermPercentage: 10,
+                    foreignStockPercentage: 30,
+                    domesticStockPercentage: 40
+                }
+            }
+        }
     }
+*/
+
+/**
+ * Saves a new goal to the database.
+ * @param newGoal
+ *  the new goal to save
+ * @param user_id
+ *  the userId of the user creating the goal
+ * @param signal
+ *  optional AbortController.signal
+ * @returns {Promise<deck>}
+ *  a promise that resolves the saved Goal, which will now have an `id` property.
+ */
+export async function createGoal(newGoal, user_id, signal) {
+    console.log("CREATE GOAL POST REQUEST:", newGoal, user_id);
+
+    const url = `${API_BASE_URL}/users/${user_id}/goals`;
+
+    const options = {
+        method: "POST",
+        headers,
+        body: JSON.stringify({ data: newGoal }),
+        signal,
+    };
+
+    return await fetchJson(url, options, newGoal);
+}
+
+/**
+ * Retrieves all existing goals with matching userId.
+ * @param user_id
+ *  the userId of the user creating the goal
+ */
+export async function listGoals(user_id, signal) {
+    const url = new URL(`${API_BASE_URL}/users/${user_id}/goals`);
+
+    const options = {
+        method: "GET",
+        headers,
+        signal,
+    };
+
+    return await fetchJson(url, options);
+}
+
+/**
+ * Retrieves the goal with the specified "goal_id" from the user with specified "user_id"
+ * @param user_id
+ *  the id of the user creating the goal
+ * @param goal_id
+ *  the "id" property matching the desired goal
+ * @param signal
+ *  optional AbortController.signal
+ */
+export async function readGoal(user_id, goal_id, signal) {
+    const url = `${API_BASE_URL}/users/${user_id}/goals/${goal_id}`;
+
+    const options = {
+        method: "GET",
+        headers,
+        signal,
+    };
+
+    return await fetchJson(url, options);
+}
+
+/**
+ * Updates an existing goal
+ * @param updatedGoal
+ *  the new goal to be used to update
+ * @param signal
+ *  optional AbortController.signal
+ */
+export async function updateGoal(updatedGoal, signal) {
+    const { goal_id, user_id } = updatedGoal;
+
+    const url = `${API_BASE_URL}/users/${user_id}/goals/${goal_id}`;
+    const options = {
+        method: "PATCH",
+        body: JSON.stringify({ data: { ...updatedGoal } }),
+        headers,
+        signal,
+    };
+
+    return await fetchJson(url, options, updatedGoal);
+}
+
+/**
+ * Deletes a
+ * @param user_id
+ *  the id of the user to remove the goal from
+ * @param goal_id
+ *  the id of the goal to remove
+ * @param signal
+ *  optional AbortController.signal
+ */
+export async function deleteGoal(user_id, goal_id, signal) {
+    const url = `${API_BASE_URL}/users/${user_id}/goals/${goal_id}`;
+
+    const options = {
+        method: "DELETE",
+        headers,
+        signal,
+    };
 
     return await fetchJson(url, options);
 }

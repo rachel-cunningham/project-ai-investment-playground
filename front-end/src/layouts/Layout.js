@@ -1,7 +1,6 @@
 import React from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Footer from "../components/Footer";
-import Header from "../components/Header";
 import About from "../pages/About";
 import HomePage from "../pages/HomePage";
 import LogInPage from "../pages/LogInPage";
@@ -10,52 +9,48 @@ import SignUpPage from "../pages/SignUpPage";
 import Articles from "../learningLibrary/articles";
 
 // For api testing
+import DashboardPage from "../pages/DashboardPage";
 import ExampleLoginPage from "../pages/ExampleLoginPage";
 import DisplayOneGoal from "../pages/GoalsExamplePages/DisplayOneGoal";
 import ExampleCreateGoal from "../pages/GoalsExamplePages/ExampleCreateGoal";
 import ExampleDashboard from "../pages/GoalsExamplePages/ExampleDashboard";
-import DashboardPage from "../pages/DashboardPage";
+import PlansPage from "../pages/PlansPage";
+import NewPlanPage from "../pages/NewPlanPage";
+import LatestPlanPage from "../pages/LatestPlanPage";
+// import ExampleEditGoal from "../pages/GoalsExamplePages/ExampleEditGoal";
 
 function Layout() {
-    return (
-        <Router>
-            <Header />
-            <div className="Layout">
-                <Routes>
-                    <Route path="/" element={<HomePage />} />
-                    {/* <Route path="/dashboard" element={<DashboardPage />} /> */}
-                    <Route path="/log-in" element={<LogInPage />} />
-                    <Route path="/sign-up" element={<SignUpPage />} />
-                    <Route path="/about" element={<About />} />
-                    <Route path="*" element={<NotFoundPage />} />
-                    <Route path="/learning-paths/articles" element={<Articles />}/>
-                    <Route
-                        path="/example-login"
-                        element={<ExampleLoginPage />}
-                    />
-                    <Route
-                        path="/dashboard/:userId"
-                        element={<DashboardPage />}
-                    />
-                    <Route
-                        path="/dashboard/:userId/goals/:goalId"
-                        element={<DisplayOneGoal />}
-                    />
-                    <Route
-                        path="/dashboard/:userId/create"
-                        element={<ExampleCreateGoal />}
-                    />
-                    <Route
-                        path="/dashboard/:userId/goals"
-                        element={<ExampleDashboard />}
-                    />
-                </Routes>
-            
-            </div>
-
-            <Footer />
-        </Router>
-    );
+  return (
+    <Router>
+      <div className="Layout">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/log-in" element={<LogInPage />} />
+          <Route path="/sign-up" element={<SignUpPage />} />
+          <Route path="/about" element={<About />} />
+          <Route path="*" element={<NotFoundPage />} />
+          <Route path="/example-login" element={<ExampleLoginPage />} />
+          <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/dashboard/:userId/plans" element={<PlansPage />} />
+          <Route path="/dashboard/:userId/plans/new" element={<NewPlanPage />} />
+          <Route path="/dashboard/:userId/plans/latest" element={<LatestPlanPage />} />
+          <Route
+            path="/dashboard/:userId/goals/:goalId"
+            element={<DisplayOneGoal />}
+          />
+          <Route
+            path="/dashboard/:userId/create"
+            element={<ExampleCreateGoal />}
+          />
+          <Route
+            path="/dashboard/:userId/goals"
+            element={<ExampleDashboard />}
+          />
+        </Routes>
+      </div>
+      <Footer />
+    </Router>
+  );
 }
 
 export default Layout;
