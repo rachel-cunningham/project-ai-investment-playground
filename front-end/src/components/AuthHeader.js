@@ -15,7 +15,7 @@ import {
   MenuItem,
 } from "@mui/material";
 import { Link } from "react-router-dom";
-import Logo from "../assets/images/logo/WealthifyAI.png";
+import Logo from "../assets/images/logo/WealthifyAI-logo.png"
 import theme from "../styles/theme";
 
 // IN ORDER FOR USERID TO WORK AND GO TO THE CORRECT PAGE IN THE DASHBOARD, USERID NEEDS TO BE IMPLEMENTED WITH USEPARAMS IN THE DASHBOARD FILE
@@ -61,7 +61,7 @@ function AuthHeader({ userId }) {
                 component="img"
                 alt="Investify AI logo"
                 image={Logo}
-                sx={{ width: "70px" }}
+                sx={{ width: "65px" }}
               />
             </Typography>
             <Box sx={{ flexGrow: 0 }}>
