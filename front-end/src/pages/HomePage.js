@@ -9,7 +9,7 @@ import {
   Modal,
   ButtonBase,
 } from "@mui/material";
-import Logo from "../artwork/landing/wealthify-logo.png";
+import Logo from "../assets/images/logo/WealthifyAI-logo.png";
 import next from "../artwork/landing/next-button.png";
 import back from "../artwork/landing/back-button.png";
 import create from "../artwork/landing/create.png";
