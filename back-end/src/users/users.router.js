@@ -14,6 +14,7 @@ router
     .route("/:username")
     .get(usersController.read)
     .put(usersController.update)
+    .patch(usersController.patch)
     .delete(usersController.deleteUser)
     .all(methodNotAllowed);
 
@@ -27,6 +28,8 @@ router
 router
     .route("/:userId/goals/:goalId")
     .get(goalsController.read)
+    .patch(goalsController.update)
+    .delete(goalsController.destroy)
     .all(methodNotAllowed);
 
 module.exports = router;

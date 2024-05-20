@@ -37,6 +37,7 @@ function validateInput(req, res, next) {
         password_hash: { type: "string", max: 60 },
         age: { type: "number", min: 0, max: 200 }, // 200 seems like a safe max age I think :)
         occupation: { type: "string", max: 50 },
+        img_src: {type: "string", max: 100}
     };
 
     for (const field in validationRules) {

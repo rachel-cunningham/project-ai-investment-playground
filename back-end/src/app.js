@@ -20,6 +20,9 @@ app.use(
 app.use(express.json());
 app.use(cookieParser());
 
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/index.html');
+});
 app.use("/users", usersRouter);
 app.use("/login", loginRouter);
 

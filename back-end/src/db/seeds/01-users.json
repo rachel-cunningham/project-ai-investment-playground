@@ -4,7 +4,7 @@
         "last_name": "Smith",
         "username": "jsmith",
         "email": "johnsmith@email.com",
-        "password": "securepassword",
+        "password_hash": "$2a$10$0F73jgnHZczW8XzFHkLCTOgjaPUqtYlVuF49n7G.iivWvhN7FHjhC",
         "age": 30,
         "occupation": "Cook"
     },
@@ -13,7 +13,7 @@
         "last_name": "Doe",
         "username": "jdoe",
         "email": "janedoe@email.com",
-        "password": "anotherpw",
+        "password_hash": "$2a$10$0UVZwHgVlu1rU5jtdYxv4OY0o9Bl6H/9FfgGg50o2I2uf3ARDWejG",
         "age": 20,
         "occupation": "Hairstylist"
     },
@@ -22,7 +22,7 @@
         "last_name": "Green",
         "username": "mgreen",
         "email": "mikegreen@email.com",
-        "password": "pwtime222",
+        "password_hash": "$2a$10$Hi14G5Ls9.fPjxIzXDm9PeJHQmsWyS9ETD6hukaU8yiaV56nOATM.",
         "age": 63,
         "occupation": "Retired"
     },
@@ -31,7 +31,7 @@
         "last_name": "Anderson",
         "username": "eanderson",
         "email": "emanderson@email.com",
-        "password": "password123",
+        "password_hash": "$2a$10$4qRffSqiuwJGO1vaZWoS/.acknHaPlt30eGi8FqKzRPPmK.AOe6Lq",
         "age": 50,
         "occupation": "Manager"
     }
