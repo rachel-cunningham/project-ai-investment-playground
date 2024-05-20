@@ -7,6 +7,7 @@ import HomePage from "../pages/HomePage";
 import LogInPage from "../pages/LogInPage";
 import NotFoundPage from "../pages/NotFoundPage";
 import SignUpPage from "../pages/SignUpPage";
+import Articles from "../learningLibrary/articles";
 
 // For api testing
 import ExampleLoginPage from "../pages/ExampleLoginPage";
@@ -27,6 +28,7 @@ function Layout() {
                     <Route path="/sign-up" element={<SignUpPage />} />
                     <Route path="/about" element={<About />} />
                     <Route path="*" element={<NotFoundPage />} />
+                    <Route path="/learning-paths/articles" element={<Articles />}/>
                     <Route
                         path="/example-login"
                         element={<ExampleLoginPage />}
@@ -48,6 +50,7 @@ function Layout() {
                         element={<ExampleDashboard />}
                     />
                 </Routes>
+            
             </div>
 
             <Footer />
