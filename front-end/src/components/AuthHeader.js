@@ -58,7 +58,7 @@ function AuthHeader() {
                 component="img"
                 alt="Investify AI logo"
                 image={Logo}
-                sx={{ width: "60px" }}
+                sx={{ width: "70px" }}
               />
             </Typography>
             <Box sx={{ flexGrow: 0 }}>
@@ -66,6 +66,7 @@ function AuthHeader() {
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                   <Avatar
                     alt="User Avatar"
+                    sx={{ width: "48px", height: "48px" }}
                     // src=""  add a src dymanically based on user image upload from backend
                   />
                 </IconButton>
