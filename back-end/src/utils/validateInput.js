@@ -44,7 +44,11 @@ function validateInput(req, res, next) {
         goal_name: { type: "string", max: 200 },
         goal_statement: { type: "string", max: 400 },
         years_to_invest_for: { type: "number", min: 1, max: 50 },
-        risk_comfort_level: { type: "string", enum: ["Low, Medium, High"] },
+        risk_comfort_level: {
+            type: "string",
+            max: 10,
+            enum: ["low, medium, high"],
+        },
         starting_amount_to_invest: { type: "number", min: 1 },
     };
 

@@ -9,11 +9,12 @@ import NotFoundPage from "../pages/NotFoundPage";
 import SignUpPage from "../pages/SignUpPage";
 
 // For api testing
+import DashboardPage from "../pages/DashboardPage";
 import ExampleLoginPage from "../pages/ExampleLoginPage";
 import DisplayOneGoal from "../pages/GoalsExamplePages/DisplayOneGoal";
 import ExampleCreateGoal from "../pages/GoalsExamplePages/ExampleCreateGoal";
 import ExampleDashboard from "../pages/GoalsExamplePages/ExampleDashboard";
-import DashboardPage from "../pages/DashboardPage";
+import ExampleEditGoal from "../pages/GoalsExamplePages/ExampleEditGoal";
 
 function Layout() {
     return (
@@ -31,9 +32,10 @@ function Layout() {
                         path="/example-login"
                         element={<ExampleLoginPage />}
                     />
+                    <Route path="/dashboard" element={<DashboardPage />} />
                     <Route
-                        path="/dashboard"
-                        element={<DashboardPage />}
+                        path="/dashboard/:userId/goals/:goalId/edit"
+                        element={<ExampleEditGoal />}
                     />
                     <Route
                         path="/dashboard/:userId/goals/:goalId"

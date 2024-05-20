@@ -147,7 +147,7 @@ module.exports = {
             "risk_comfort_level",
             "starting_amount_to_invest"
         ),
-        validateInput,
+        // validateInput,
         asyncErrorBoundary(create),
     ],
     read: [authenticateToken, asyncErrorBoundary(goalExists), read],
@@ -161,7 +161,7 @@ module.exports = {
             "risk_comfort_level",
             "starting_amount_to_invest"
         ),
-        validateInput,
+        // validateInput,
         asyncErrorBoundary(update),
     ],
     destroy: [

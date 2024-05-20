@@ -5,7 +5,7 @@ import ExampleGoal from "./ExampleGoal";
 
 function DisplayOneGoal() {
     const { userId, goalId } = useParams();
-    const [goal, setGoal] = useState(null);
+    const [goal, setGoal] = useState({});
 
     useEffect(() => {
         const abortController = new AbortController();
@@ -17,6 +17,7 @@ function DisplayOneGoal() {
                     goalId,
                     abortController.signal
                 );
+                console.log("RESPONSE FROM READ:", response); // getting an error here?
                 setGoal(response.data);
             } catch (error) {
                 console.log(error);

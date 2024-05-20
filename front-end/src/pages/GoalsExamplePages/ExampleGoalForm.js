@@ -1,6 +1,6 @@
 import React from "react";
 
-function GoalForm({ handleSubmit, handleChange, formData }) {
+function GoalForm({ handleSubmit, handleChange, handleCancel, formData }) {
     return (
         <form onSubmit={handleSubmit} className="pb-3 pt-2 px-2">
             <div className="form-group">
@@ -28,7 +28,7 @@ function GoalForm({ handleSubmit, handleChange, formData }) {
                     type="text"
                     required={true}
                     value={formData.goal_statement}
-                    maxLength="100"
+                    maxLength="100" // length should be long for statement
                     onChange={handleChange}
                 />
             </div>
@@ -46,7 +46,7 @@ function GoalForm({ handleSubmit, handleChange, formData }) {
                     type="number"
                     required={true}
                     value={formData.years_to_invest_for}
-                    maxLength="12"
+                    maxLength="12" // length should be longer, also has to be > 0
                     onChange={handleChange}
                 />
             </div>
@@ -60,7 +60,7 @@ function GoalForm({ handleSubmit, handleChange, formData }) {
                     name="risk_comfort_level"
                     type="text"
                     required={true}
-                    value={formData.risk_comfort_level}
+                    value={formData.risk_comfort_level} // only options should be low, medium, high (drop down box?)
                     onChange={handleChange}
                 />
             </div>
@@ -77,7 +77,7 @@ function GoalForm({ handleSubmit, handleChange, formData }) {
                     name="starting_amount_to_invest"
                     type="number"
                     required={true}
-                    value={formData.starting_amount_to_invest}
+                    value={formData.starting_amount_to_invest} // has to be > 0
                     onChange={handleChange}
                 />
             </div>
@@ -85,6 +85,7 @@ function GoalForm({ handleSubmit, handleChange, formData }) {
             <button type="submit" className="btn btn-primary">
                 Submit
             </button>
+            <button onSubmit={handleCancel}>Cancel</button>
         </form>
     );
 }
