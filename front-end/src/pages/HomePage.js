@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Typography, Button, Container, Box, CardMedia, Modal, ButtonBase } from "@mui/material";
-import Logo from "../artwork/landing/wealthify-logo.png";
+import Logo from "../artwork/landing/logo.png";
 import next from "../artwork/landing/next-button.png";
 import back from "../artwork/landing/back-button.png";
 import create from "../artwork/landing/create.png";
@@ -17,8 +17,8 @@ const modalStyle = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: '90%',
-  maxWidth: 650,
-  height: '90%',
+  maxWidth: 900,
+  height: '100%',
   maxHeight: 650,
   bgcolor: 'background.paper',
   border: '12px solid #87DBA8',
@@ -28,7 +28,7 @@ const modalStyle = {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  justifyContent: 'space-between',
+  justifyContent: 'center',
 };
 
 const gradientTextStyle = {
@@ -165,48 +165,58 @@ function HomePage() {
               {modalContent[modalStep].title}
             </Typography>
           </Box>
-          <Box sx={{ textAlign: 'center', width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-            {modalContent[modalStep].images.length > 0 && (
-              <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}>
-                {modalContent[modalStep].images.map((image, index) => (
-                  <Box key={index} sx={{ textAlign: 'center', margin: "auto" }}>
-                    <CardMedia
-                      component="img"
-                      alt={`image-${index}`}
-                      image={image.src}
-                      sx={{ width: '100%', maxWidth: '200px', height: 'auto', margin: "auto" }}
-                    />
-                    <Typography sx={{ mt: 1, color: 'black', fontSize: 30 }}>
-                      {image.description}
-                    </Typography>
-                  </Box>
-                ))}
-              </Box>
-            )}
-          </Box>
-          <Box sx={{ mt: 4, display: 'flex', justifyContent: 'space-between', width: '100%' }}>
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%', position: 'relative' }}>
             <ButtonBase
               onClick={handleBack}
               disabled={modalStep === 0}
-              sx={{ color: "#87DBA8" }}
+              sx={{
+                color: "#87DBA8",
+                ...(modalStep === 0 && disabledStyle),
+                position: 'absolute',
+                left: '-25px',
+              }}
             >
               <CardMedia
                 component="img"
                 alt="back button"
                 image={back}
-                sx={{ width: 50, height: 50, ...(modalStep === 0 && disabledStyle) }}
+                sx={{ width: 50, height: 50 }}
               />
             </ButtonBase>
+            <Box sx={{ textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', flexGrow: 1 }}>
+              {modalContent[modalStep].images.length > 0 && (
+                <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2, gap: 2 }}>
+                  {modalContent[modalStep].images.map((image, index) => (
+                    <Box key={index} sx={{ textAlign: 'center', margin: "auto", display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                      <CardMedia
+                        component="img"
+                        alt={`image-${index}`}
+                        image={image.src}
+                        sx={{ width: '200px', height: '200px', maxWidth: '100%', objectFit: 'contain' }}
+                      />
+                      <Typography sx={{ mt: 1, color: 'black', fontSize: 30 }}>
+                        {image.description}
+                      </Typography>
+                    </Box>
+                  ))}
+                </Box>
+              )}
+            </Box>
             <ButtonBase
               onClick={handleNext}
               disabled={modalStep === modalContent.length - 1}
-              sx={{ color: "#87DBA8" }}
+              sx={{
+                color: "#87DBA8",
+                ...(modalStep === modalContent.length - 1 && disabledStyle),
+                position: 'absolute',
+                right: '-25px',
+              }}
             >
               <CardMedia
                 component="img"
                 alt="next button"
                 image={next}
-                sx={{ width: 50, height: 50, ...(modalStep === modalContent.length - 1 && disabledStyle) }}
+                sx={{ width: 50, height: 50 }}
               />
             </ButtonBase>
           </Box>
