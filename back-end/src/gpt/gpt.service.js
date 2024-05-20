@@ -13,8 +13,13 @@ const openai = new OpenAI({
 // Please don't change any of this stuff, not all of openAI's docs are up to date so it took me a minute to figure this out
 async function gpt(prompt) {
   const completion = await openai.chat.completions.create({
-    messages: [{ role: "user", content: prompt }],
+    messages: [
+        { role: "system", content: "You are a financial advisor providing consistent investment advice." },
+        { role: "user", content: prompt }
+    ],
     model: "gpt-3.5-turbo",
+    temperature: 0.2, 
+    frequency_penalty: 0.5
   });
 
   return completion.choices[0].message.content
