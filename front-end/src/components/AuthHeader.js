@@ -1,20 +1,39 @@
 // header for when the user is logged in
 
-import React from "react";
-import { Button, Box, AppBar, Typography, Toolbar, CardMedia } from "@mui/material";
+import React, { useState } from "react";
+import {
+  Box,
+  AppBar,
+  Typography,
+  Toolbar,
+  CardMedia,
+  Container,
+  Menu,
+  IconButton,
+  Tooltip,
+  Avatar,
+  MenuItem,
+} from "@mui/material";
 import { Link } from "react-router-dom";
 import Logo from "../assets/images/logo/WealthifyAI.png";
+import theme from "../styles/theme";
 
 function AuthHeader() {
-  // possible future implementation of only showing the user specific sections of the navigation if they're logged in vs when they are not
+  const [anchorElUser, setAnchorElUser] = useState(null);
 
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const menuItems = [
+    { label: "Account", path: "/account" },
+    { label: "Dashboard", path: "/dashboard" },
+    { label: "Logout", path: "/" }, // logout logic needing implemented. does it go to screen that says "you have successfully logged out"? or back to home page? how does user actually log out or know that they logged out?
+  ];
 
-  // const navItems = ["About"];
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
+  };
 
-  // if (isLoggedIn) {
-  //   navItems.push("View Plans", "Dashboard", "Account");
-  // }
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
 
   return (
     <Box
@@ -26,69 +45,80 @@ function AuthHeader() {
       }}
     >
       <AppBar component="nav" color="transparent">
-        <Toolbar>
-          <Typography
-            component={Link}
-            to="/"
-            variant="header1"
-            sx={{
-              flexGrow: "1",
-              textDecoration: "none",
-              display: { xs: "none", sm: "block" },
-            }}
-          >
-            <CardMedia
-          component="img"
-          alt="logo"
-          image={Logo}
-          sx={{ width: '80px', height: 'auto' }}
-        /> 
-          </Typography>
-          <Box>
+        <Container maxWidth="xxl">
+          <Toolbar disableGutters>
             <Typography
               component={Link}
-              to="/dashboard"
-              variant="header2"
-              sx={{ textDecoration: "none", fontSize: "1.5rem", marginRight: 30 }}
+              to="/dashboard" //  this should link to User Dashboard which should eventually be /dashboard/:userId
+              sx={{
+                flexGrow: "1",
+              }}
             >
-              Dashboard
+              <CardMedia
+                component="img"
+                alt="Investify AI logo"
+                image={Logo}
+                sx={{ width: "60px" }}
+              />
             </Typography>
-            <Typography
-              component={Link}
-              to="/get-advice"
-              variant="header2"
-              sx={{ textDecoration: "none", fontSize: "1.5rem", marginRight: 30 }}
-            >
-              Get Advice
-            </Typography>
-            <Typography
-              component={Link}
-              to="/plans"
-              variant="header2"
-              sx={{ textDecoration: "none", fontSize: "1.5rem", marginRight: 30}}
-            >
-              View Plans
-            </Typography>
-            <Typography
-              component={Link}
-              to="/account"
-              variant="header2"
-              sx={{ textDecoration: "none", fontSize: "1.5rem", marginRight: 2 }}
-            >
-              Account
-            </Typography>
-          </Box>
-          {/* <Box>
-            <Button
-              component={Link}
-              to="/sign-up"
-              variant="contained"
-              color="primary"
-            >
-              Sign Out
-            </Button>
-          </Box> */}
-        </Toolbar>
+            <Box sx={{ flexGrow: 0 }}>
+              <Tooltip title="Open Menu" variant="header2">
+                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                  <Avatar
+                    alt="User Avatar"
+                    // src=""  add a src dymanically based on user image upload from backend
+                  />
+                </IconButton>
+              </Tooltip>
+              <Menu
+                sx={{
+                  mt: "45px",
+                  "& .MuiPaper-root": {
+                    background: "#3B0B47",
+                  },
+                }}
+                id="menu-appbar"
+                anchorEl={anchorElUser}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                open={Boolean(anchorElUser)}
+                onClose={handleCloseUserMenu}
+              >
+                {menuItems.map((menu) => (
+                  <MenuItem
+                    key={menu.label}
+                    onClick={handleCloseUserMenu}
+                    sx={{
+                      "&:hover": {
+                        background: `linear-gradient(to top, ${theme.palette.custom.LightPurple}, ${theme.palette.custom.DarkPurple})`,
+                      },
+                    }}
+                  >
+                    <Typography
+                      component={Link}
+                      to={menu.path}
+                      variant="header2"
+                      textAlign="center"
+                      sx={{
+                        textDecoration: "none",
+                        fontSize: "1.1rem",
+                      }}
+                    >
+                      {menu.label}
+                    </Typography>
+                  </MenuItem>
+                ))}
+              </Menu>
+            </Box>
+          </Toolbar>
+        </Container>
       </AppBar>
     </Box>
   );
