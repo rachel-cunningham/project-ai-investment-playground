@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Unstable_Grid2";
 import Avatar from "@mui/material/Avatar";
 import { createTheme } from '@mui/material/styles';
+import AuthHeader from "../components/AuthHeader";
 import EditIcon from "../assets/images/icons/EditPlans_Icon.png";
 import ViewPlanIcon from "../assets/images/icons/ViewPlans_icon.png";
 import StartPlanIcon from "../assets/images/icons/StartPlan_Icon.png";
@@ -48,6 +49,7 @@ function DashboardPage({name}) {
 
   return (
     <Box>
+      <AuthHeader />
       <Box className="top-box">
         <Grid className="top" container direction="row" justifyContent="flex-start" spacing={1}>
           <Avatar sx ={{bgcolor:theme, width: 86, height: 86}} xs={1} src={BlankProfile}></Avatar>          

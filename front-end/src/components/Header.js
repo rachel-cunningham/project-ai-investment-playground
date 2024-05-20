@@ -1,43 +1,99 @@
 import React from "react";
-import { Button, Box, useMediaQuery } from "@mui/material";
+import {
+  Button,
+  Box,
+  AppBar,
+  Typography,
+  Toolbar,
+  CardMedia,
+} from "@mui/material";
 import { Link } from "react-router-dom";
+import Logo from "../assets/images/logo/WealthifyAI.png";
 
 function Header() {
-  // useMediaQuery hook to check if the screen width is at least 600px
-  const isLargeScreen = useMediaQuery('(min-width:600px)');
-
-  // Render the component only if the screen width is at least 600px
-  if (!isLargeScreen) {
-    return null;
-  }
-
   return (
-    <Box component="header" sx={{ display: "flex", justifyContent: "space-between", padding: 2, backgroundColor: "#f5f5f5" }}>
-      <Button  
-        component={Link} 
-        to="/" 
-        variant="outlined"
-        sx={{ textDecoration: 'none', color: 'inherit' }}>
-        WealthifyAI
-      </Button>
-      <Box>
-        <Button 
-          component={Link} 
-          to="/log-in" 
-          variant="contained" 
-          color="primary" 
-          sx={{ marginRight: 2 }}>
-          Log In
-        </Button>
-        <Button 
-          component={Link} 
-          to="/sign-up" 
-          variant="contained" 
-          color="primary" 
-          sx={{ marginRight: 2 }}>
-          Sign Up
-        </Button>
-      </Box>
+    <Box
+      component="header"
+      sx={{
+        display: "flex",
+        justifyContent: "space-between",
+        padding: 2,
+      }}
+    >
+      <AppBar component="nav" color="transparent">
+        <Toolbar>
+          <Typography
+            component={Link}
+            to="/"
+            variant="header2"
+            sx={{
+              flexGrow: "1",
+              textDecoration: "none",
+              fontSize: "1.5rem",
+            }}
+          >
+            <CardMedia
+              component="img"
+              alt="Investify AI logo"
+              image={Logo}
+              sx={{ width: "70px" }}
+            />
+          </Typography>
+          <Box>
+            <Typography
+              component={Link}
+              to="/about"
+              variant="header2"
+              sx={{
+                textDecoration: "none",
+                fontSize: "1.5rem",
+                marginRight: 5,
+              }}
+            >
+              About Us
+            </Typography>
+          </Box>
+          <Box>
+            <Button
+              component={Link}
+              to="/log-in"
+              variant="contained"
+              color="primary"
+              sx={{
+                marginRight: 2,
+                borderRadius: 2,
+                fontFamily: "MontBlancBold",
+                textTransform: "none",
+                color: "#3B0347",
+                bgcolor: "#87DBA8",
+                "&:hover": {
+                  bgcolor: "#639577",
+                },
+              }}
+            >
+              Log In
+            </Button>
+            <Button
+              component={Link}
+              to="/sign-up"
+              variant="contained"
+              color="primary"
+              sx={{
+                borderRadius: 2,
+                fontFamily: "MontBlancBold",
+                textTransform: "none",
+                color: "#3B0347",
+                bgcolor: "#87DBA8",
+                "&:hover": {
+                  bgcolor: "#639577",
+                },
+              }}
+            >
+              Sign Up
+            </Button>
+          </Box>
+        </Toolbar>
+      </AppBar>
     </Box>
   );
 }

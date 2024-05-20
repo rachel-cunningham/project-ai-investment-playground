@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import AuthForm from "../components/AuthForm";
+import Header from "../components/Header";
 
 function LogInPage() {
   const [loginError, setLoginError] = useState("");
@@ -16,6 +17,7 @@ function LogInPage() {
 
   return (
     <div>
+      <Header />
       <header>
         <h1>Welcome Back</h1>
         <AuthForm isSignup={false} onSubmit={handleLoginSubmit} />
