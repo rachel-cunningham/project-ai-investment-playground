@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Unstable_Grid2";
 import Avatar from "@mui/material/Avatar";
 import { createTheme } from '@mui/material/styles';
+import AuthHeader from "../components/AuthHeader";
 import EditIcon from "../assets/images/icons/EditPlans_Icon.png";
 import ViewPlanIcon from "../assets/images/icons/ViewPlans_icon.png";
 import StartPlanIcon from "../assets/images/icons/StartPlan_Icon.png";
@@ -14,9 +15,16 @@ import Plans_icon from "../assets/images/icons/Plans_icon.png";
 import Dashboard_icon from "../assets/images/icons/Dashboard_icon.png";
 import BenchMarkIcon from "../assets/images/icons/BenchMark_Icon.png";
 import BlankProfile from "../assets/images/dashboard/blank-profile-picture.png";
-import "./DashboardPage.css"
+import "./DashboardPage.css";
 
-function DashboardPage() {
+
+function DashboardPage({name}) {
+  const [displayName, setDisplayName] = useState(name);
+  const handleName=(name)=>{
+    setDisplayName(name);
+  } 
+
+ let salutation = "Good Morning,";
   const theme = createTheme({
     palette:{
       primary:{
@@ -24,18 +32,34 @@ function DashboardPage() {
       }
     }
   })
+  React.useEffect(()=>{
+    const queryParameters = new URLSearchParams(window.location.search)
+    const lname = queryParameters.get("userId");
+    if(lname){
+      setDisplayName(lname);
+    }
+    let date = new Date();
+    let hours= date.getHours();
+    if (hours >= 12 && hours <= 17){
+      salutation ="Good Afternoon," ;
+    } else if (hours >= 17 && hours <= 24) {
+      salutation = "Good Evening,";
+    }  
+  },[])
+
   return (
     <Box>
-      <Box class="top-box">
+      <AuthHeader />
+      <Box className="top-box">
         <Grid className="top" container direction="row" justifyContent="flex-start" spacing={1}>
           <Avatar sx ={{bgcolor:theme, width: 86, height: 86}} xs={1} src={BlankProfile}></Avatar>          
           <Grid xs={9}>
-            <h1>Good Morning,</h1>
-            <h1>Rachel</h1>
+            <h1>{salutation} </h1>
+            <h1>{displayName}</h1>
           </Grid>
         </Grid>
       </Box>
-      <Box class="middle-box">
+      <Box className="middle-box">
         <Grid className="main-grid" container direction="column" spacing={2}>
           <Grid container direction="row" spacing={1} justifyContent="space-evenly">
               <Grid xs={12}>
@@ -43,7 +67,7 @@ function DashboardPage() {
               </Grid>
               <Grid className="card" xs={3}>
                 <img src={EditIcon}></img>
-                <Box>Edit My Plans</Box>
+                <Box>Most Recent Plan</Box>
               </Grid>
               <Grid className="card" xs={3}>
                 <img src={ViewPlanIcon}></img>
@@ -65,10 +89,6 @@ function DashboardPage() {
             <Grid className="card" xs={3}>
               <img src={TermIcon}></img>
               <Box>Terminology</Box>
-            </Grid>
-            <Grid className="card" xs={3}>
-              <img src={BenchMarkIcon}></img>
-              <Box>Benchmark Examples</Box>
             </Grid>
           </Grid>
         </Grid>

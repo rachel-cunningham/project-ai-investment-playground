@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import AuthForm from "../components/AuthForm";
+import Header from "../components/Header";
 
 function SignUpPage() {
   const [passwordError, setPasswordError] = useState("");
@@ -28,6 +29,7 @@ function SignUpPage() {
   };
   return (
     <div>
+      <Header />
       <header>
         <h1>Let's create an account</h1>
         <AuthForm

@@ -8,7 +8,7 @@ function ExampleDashboard() {
     console.log(goals);
 
     const params = useParams();
-    console.log(params);
+    console.log("PARAMS", params);
     const userId = params.userId;
 
     useEffect(() => {
