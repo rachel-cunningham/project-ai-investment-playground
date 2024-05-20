@@ -13,4 +13,4 @@ async function hashPassword(password) {
 
 // Input the password as an arg here, as a string, and save the file
 // run "node hashPassword.js" and copy the log from the console
-hashPassword("password123")
+hashPassword("SimplePass4$")

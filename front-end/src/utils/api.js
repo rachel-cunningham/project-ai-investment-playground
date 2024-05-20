@@ -1,6 +1,6 @@
 /*
     API Calls!
-    use ctrl/cmd + f and type in the name of the function that you want to jump to it
+    use ctrl/cmd + f and type in the name of the function that you want to jump to
     instructions for calling the function are commented above each
 
 
@@ -154,6 +154,44 @@ export async function readUserByUsername(username, signal) {
     return await fetchJson(url, options);
 }
 
+
+
+/*
+    Objects returned from createGoal, readGoal, updateGoal, and listGoals will look like this:
+    {
+        data: {
+            goal_id: 23,
+            user_id: 1,
+            created_at: "2024-05-19T20:38:06.602Z",
+            updated_at: "2024-05-19T20:38:06.602Z",
+            goal_name: "test goals 1 million",
+            goal_statement: "I want to... test my ai controller",
+            years_to_invest_for: 30,
+            risk_comfort_level: "low",
+            starting_amount_to_invest: 10000,
+            ai_response: {
+                lowRisk: {
+                    bondsPercentage: 40,
+                    shortTermPercentage: 10,
+                    foreignStockPercentage: 20,
+                    domesticStockPercentage: 30
+                },
+                highRisk: {
+                    bondsPercentage: 10,
+                    shortTermPercentage: 10,
+                    foreignStockPercentage: 30,
+                    domesticStockPercentage: 50
+                },
+                mediumRisk: {
+                    bondsPercentage: 20,
+                    shortTermPercentage: 10,
+                    foreignStockPercentage: 30,
+                    domesticStockPercentage: 40
+                }
+            }
+        }
+    }
+*/
 /**
  * Saves a new goal to the database.
  * @param newGoal

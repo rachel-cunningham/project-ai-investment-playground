@@ -12,7 +12,7 @@ function list(userId) {
 // Create a new goal
 function create(goal, userId) {
     goal.user_id = userId;
-    console.log("GOAL", goal);
+    //console.log("GOAL", goal);
 
     return knex("goals")
         .insert(goal)
