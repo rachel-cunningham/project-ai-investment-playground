@@ -6,7 +6,6 @@ import HomePage from "../pages/HomePage";
 import LogInPage from "../pages/LogInPage";
 import NotFoundPage from "../pages/NotFoundPage";
 import SignUpPage from "../pages/SignUpPage";
-import Articles from "../learningLibrary/articles";
 
 // For api testing
 import DashboardPage from "../pages/DashboardPage";
@@ -48,6 +47,7 @@ function Layout() {
           />
         </Routes>
       </div>
+
       <Footer />
     </Router>
   );
