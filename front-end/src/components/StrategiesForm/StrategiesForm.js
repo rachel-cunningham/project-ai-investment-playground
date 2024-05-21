@@ -53,7 +53,7 @@ const style = {
 
 const steps = ["Start", 'Goal', 'Initial Investment', 'Investment Length', 'Risk', 'Confirm'];
 
-export default function StrategiesForms() {
+export default function StrategiesForm() {
   const initialFormData = {
     goalName: '',
     return: '',

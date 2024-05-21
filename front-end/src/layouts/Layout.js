@@ -6,6 +6,7 @@ import HomePage from "../pages/HomePage";
 import LogInPage from "../pages/LogInPage";
 import NotFoundPage from "../pages/NotFoundPage";
 import SignUpPage from "../pages/SignUpPage";
+import StrategiesForm from "../components/StrategiesForm/StrategiesForm";
 
 // For api testing
 import DashboardPage from "../pages/DashboardPage";
@@ -14,7 +15,6 @@ import DisplayOneGoal from "../pages/GoalsExamplePages/DisplayOneGoal";
 import ExampleCreateGoal from "../pages/GoalsExamplePages/ExampleCreateGoal";
 import ExampleDashboard from "../pages/GoalsExamplePages/ExampleDashboard";
 import PlansPage from "../pages/PlansPage";
-import NewPlanPage from "../pages/NewPlanPage";
 import LatestPlanPage from "../pages/LatestPlanPage";
 // import ExampleEditGoal from "../pages/GoalsExamplePages/ExampleEditGoal";
 
@@ -31,7 +31,7 @@ function Layout() {
           <Route path="/example-login" element={<ExampleLoginPage />} />
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/dashboard/:userId/plans" element={<PlansPage />} />
-          <Route path="/dashboard/:userId/plans/new" element={<NewPlanPage />} />
+          <Route path="/dashboard/:userId/plans/new" element={<StrategiesForm />} />
           <Route path="/dashboard/:userId/plans/latest" element={<LatestPlanPage />} />
           <Route
             path="/dashboard/:userId/goals/:goalId"
