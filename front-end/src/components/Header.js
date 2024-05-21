@@ -54,7 +54,7 @@ function Header() {
               sx={{
                 textDecoration: "none",
                 fontSize: {
-                  xs: "1rem",
+                  xs: "0.9rem",
                   sm: "1.5rem",
                   lg: "1.5rem",
                 },
@@ -75,8 +75,13 @@ function Header() {
               color="primary"
               sx={{
                 marginRight: 2,
-                borderRadius: 2,
+                borderRadius: 3,
                 fontFamily: "MontBlancBold",
+                fontSize: {
+                  xs: "0.8rem",
+                  sm: "1rem",
+                  lg: "1rem",
+                },
                 textTransform: "none",
                 color: "#3B0347",
                 bgcolor: "#87DBA8",
@@ -93,8 +98,13 @@ function Header() {
               variant="contained"
               color="primary"
               sx={{
-                borderRadius: 2,
+                borderRadius: 3,
                 fontFamily: "MontBlancBold",
+                fontSize: {
+                  xs: "0.8rem",
+                  sm: "1rem",
+                  lg: "1rem",
+                },
                 textTransform: "none",
                 color: "#3B0347",
                 bgcolor: "#87DBA8",

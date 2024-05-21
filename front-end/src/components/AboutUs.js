@@ -64,7 +64,7 @@ function AboutUs() {
                 fontFamily: "MontBlancBold",
                 textAlign: { xs: "center", md: "left" },
                 color: "#87DBA8",
-                fontSize: { xs: "2.5rem", md: "3.8rem" },
+                fontSize: { xs: "2.5rem", md: "3rem", lg: "3.8rem" },
                 mb: { xs: 2, md: 0 },
               }}
             >
@@ -113,8 +113,8 @@ function AboutUs() {
                 fontFamily: "MontBlancBold",
                 textAlign: { xs: "center", md: "left" },
                 color: "#87DBA8",
-                fontSize: { xs: "2.5rem", md: "3.8rem" },
-                mb: { xs: 2, md: 0 },
+                fontSize: { xs: "2.5rem", md: "3rem", lg: "3.8rem" },
+                mb: { xs: 2 },
               }}
             >
               Our Mission
@@ -128,7 +128,7 @@ function AboutUs() {
                 p: 2,
                 display: "flex",
                 alignItems: "center",
-                mb: 6,
+                mb: { xs: 5, lg: 1 },
               }}
             >
               <Typography
