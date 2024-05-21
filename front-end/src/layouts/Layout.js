@@ -6,6 +6,8 @@ import HomePage from "../pages/HomePage";
 import LogInPage from "../pages/LogInPage";
 import NotFoundPage from "../pages/NotFoundPage";
 import SignUpPage from "../pages/SignUpPage";
+import Articles from "../learningLibrary/articles";
+import Terms from "../learningLibrary/terms";
 
 // For api testing
 import DashboardPage from "../pages/DashboardPage";
@@ -17,6 +19,7 @@ import PlansPage from "../pages/PlansPage";
 import NewPlanPage from "../pages/NewPlanPage";
 import LatestPlanPage from "../pages/LatestPlanPage";
 import AccountPage from "../pages/AccountPage";
+
 // import ExampleEditGoal from "../pages/GoalsExamplePages/ExampleEditGoal";
 
 function Layout() {
@@ -41,6 +44,8 @@ function Layout() {
             element={<LatestPlanPage />}
           />
           <Route path="/dashboard/:userId/account" element={<AccountPage />} />
+          <Route path="/learning-paths/articles" element={<Articles />}/>
+          <Route path="/learning-paths/terms" element={<Terms />}/>
           <Route
             path="/dashboard/:userId/goals/:goalId"
             element={<DisplayOneGoal />}
