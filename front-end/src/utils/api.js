@@ -18,6 +18,10 @@
 
     readGoal --- takes a userId and a goalId and returns that one single specific goal
 
+    updateGoal --- takes a goal object and returns the updated goal
+
+    deleteGoal --- takes userId and a goalId and deletes the specified goal, returns 204 no content
+
     createUser --- takes a user object and returns a newly created user
 
     updateUser --- takes a user object and returns the updated user
@@ -64,6 +68,10 @@ async function fetchJson(url, options, onCancel) {
         return Promise.resolve(onCancel);
     }
 }
+
+/*
+ * USERS API CALLS
+ */
 
 // Returns an array of all users
 export async function listUsers(signal) {
@@ -319,7 +327,11 @@ export async function patchUser(username, patch, signal) {
 }
 
 /*
-    Objects returned from createGoal, readGoal, updateGoal, and listGoals will look like this:
+ * GOALS API CALLS
+ */
+
+/*
+    Object returned from createGoal, readGoal, updateGoal, and listGoals will look like this:
     {
         data: {
             goal_id: 23,
@@ -327,7 +339,7 @@ export async function patchUser(username, patch, signal) {
             created_at: "2024-05-19T20:38:06.602Z",
             updated_at: "2024-05-19T20:38:06.602Z",
             goal_name: "test goals 1 million",
-            goal_statement: "I want to... test my ai controller",
+            "expected_return_on_investment": 10000,
             years_to_invest_for: 30,
             risk_comfort_level: "low",
             starting_amount_to_invest: 10000,
@@ -365,10 +377,43 @@ export async function patchUser(username, patch, signal) {
  *  optional AbortController.signal
  * @returns {Promise<deck>}
  *  a promise that resolves the saved Goal, which will now have an `id` property.
+
+    Call: const responseFromAPI = await createGoal(newGoal, user_id/userId, signal)
+
+    Method: POST
+
+    JSON body examples:
+
+    *the whole goal data object
+        {
+            "data": {
+                "goal_name": "New goal",
+                "expected_return_on_investment": 10000,
+                "years_to_invest_for": 5,
+                "risk_comfort_level": "medium",
+                "starting_amount_to_invest": 30000,
+            }
+        }
+    
+    *one property
+        {
+            "data": {
+                "goal_name": "New goal",
+            }
+        }
+
+    If successful, returns: new goal data object
+    {
+        "data": {
+            "user_id": 2,
+            "goal_id": 5,
+            "goal_name": "Example New Goal Name",
+            "expected_return_on_investment": 1000,
+            ...
+        }
+    }
  */
 export async function createGoal(newGoal, user_id, signal) {
-    console.log("CREATE GOAL POST REQUEST:", newGoal, user_id);
-
     const url = `${API_BASE_URL}/users/${user_id}/goals`;
 
     const options = {
@@ -385,6 +430,22 @@ export async function createGoal(newGoal, user_id, signal) {
  * Retrieves all existing goals with matching userId.
  * @param user_id
  *  the userId of the user creating the goal
+ 
+    Call: const responseFromAPI = await listGoals(user_id/userId, signal)
+
+    Method: GET
+    
+    JSON body: N/A, no body necessary
+
+    If successful, returns: data object with an array of goal objects for the specified user
+    {
+        "data": [
+            { ...goal1 }, 
+            { ...goal2 }, 
+            { ...goal3 }, 
+            ...
+        ]
+    }
  */
 export async function listGoals(user_id, signal) {
     const url = new URL(`${API_BASE_URL}/users/${user_id}/goals`);
@@ -406,6 +467,23 @@ export async function listGoals(user_id, signal) {
  *  the "id" property matching the desired goal
  * @param signal
  *  optional AbortController.signal
+ 
+    Call: const responseFromAPI = await readGoal(user_id/userId, goal_id/goalId, signal)
+
+    Method: GET
+
+    JSON body: N/A, no body necessary
+
+    If successful, returns: specified goal data object
+    {
+        "data": {
+            "user_id": 2,
+            "goal_id": 5,
+            "goal_name": "Example Goal Name",
+            "expected_return_on_investment": 1000,
+            ...
+        }
+    }
  */
 export async function readGoal(user_id, goal_id, signal) {
     const url = `${API_BASE_URL}/users/${user_id}/goals/${goal_id}`;
@@ -425,6 +503,38 @@ export async function readGoal(user_id, goal_id, signal) {
  *  the new goal to be used to update
  * @param signal
  *  optional AbortController.signal
+ 
+    Call: const responseFromAPI = await updateGoal(updatedGoal, signal)
+
+    Method: PATCH 
+    //allows for updating of properties that you send it without interfering with data that is already present
+
+    JSON body examples:
+
+    *the whole goal object
+        {
+            "data": {
+                "goal_name": "New goal",
+                "expected_return_on_investment": 10000,
+                "years_to_invest_for": 5,
+                "risk_comfort_level": "medium",
+                "starting_amount_to_invest": 30000,
+            }
+        }
+    
+    *one property
+        {
+            "data": {
+                "goal_name": "New goal",
+            }
+        }
+
+    If successful, returns: updated goal data object with new updated information
+    {
+        "data": {
+            ...updatedGoal
+        }
+    }
  */
 export async function updateGoal(updatedGoal, signal) {
     const { goal_id, user_id } = updatedGoal;
@@ -441,14 +551,23 @@ export async function updateGoal(updatedGoal, signal) {
 }
 
 /**
- * Deletes a
+ * Deletes an existing goal
  * @param user_id
  *  the id of the user to remove the goal from
  * @param goal_id
  *  the id of the goal to remove
  * @param signal
  *  optional AbortController.signal
+ 
+    Call: const responseFromAPI = await deleteGoal(user_id/userId, goal_id/goalId, signal)
+
+    Method: DELETE
+
+    JSON body: N/A, no body necessary
+
+    If successful, returns: N/A, but there is a console log that will return "Goal deleted!"
  */
+
 export async function deleteGoal(user_id, goal_id, signal) {
     const url = `${API_BASE_URL}/users/${user_id}/goals/${goal_id}`;
 

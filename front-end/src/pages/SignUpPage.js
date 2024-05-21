@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import AuthForm from "../components/AuthForm";
+import { Box, CardMedia ,Container, Typography } from "@mui/material";
+import create from "../assets/images/signup/Icon.png";
 import Header from "../components/Header";
+
 
 function SignUpPage() {
   const [passwordError, setPasswordError] = useState("");
@@ -28,10 +31,24 @@ function SignUpPage() {
     console.log("Signup data:", formData);
   };
   return (
-    <div>
+    <Container >
       <Header />
+      <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+        <CardMedia
+          component="img"
+          alt="create"
+          image={create}
+          sx={{ width: '175px', height: '135px', display: 'flex' }}
+        />
+      </Box>
+      <Typography
+        color="white"
+        sx={{ fontSize: '48px', fontFamily: 'MontBlancBold', textAlign: 'center' }}
+      >
+        Let's create an account
+      </Typography>
+      <div>
       <header>
-        <h1>Let's create an account</h1>
         <AuthForm
           isSignup={true}
           onSubmit={handleSignupSubmit}
@@ -39,6 +56,8 @@ function SignUpPage() {
         />
       </header>
     </div>
+    </Container>
+
   );
 }
 

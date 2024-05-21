@@ -1,13 +1,14 @@
 import React from "react";
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Footer from "../components/Footer";
-import About from "../pages/About";
+
 import HomePage from "../pages/HomePage";
 import LogInPage from "../pages/LogInPage";
 import NotFoundPage from "../pages/NotFoundPage";
 import SignUpPage from "../pages/SignUpPage";
 import Articles from "../learningLibrary/articles";
 import Terms from "../learningLibrary/terms";
+import StrategiesForm from "../components/StrategiesForm/StrategiesForm";
 
 // For api testing
 import DashboardPage from "../pages/DashboardPage";
@@ -16,7 +17,6 @@ import DisplayOneGoal from "../pages/GoalsExamplePages/DisplayOneGoal";
 import ExampleCreateGoal from "../pages/GoalsExamplePages/ExampleCreateGoal";
 import ExampleDashboard from "../pages/GoalsExamplePages/ExampleDashboard";
 import PlansPage from "../pages/PlansPage";
-import NewPlanPage from "../pages/NewPlanPage";
 import LatestPlanPage from "../pages/LatestPlanPage";
 import AccountPage from "../pages/AccountPage";
 
@@ -24,26 +24,20 @@ import AccountPage from "../pages/AccountPage";
 
 function Layout() {
   return (
-    <Router>
+    <>
+    
       <div className="Layout">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/log-in" element={<LogInPage />} />
           <Route path="/sign-up" element={<SignUpPage />} />
-          <Route path="/about" element={<About />} />
+          
           <Route path="*" element={<NotFoundPage />} />
           <Route path="/example-login" element={<ExampleLoginPage />} />
-          <Route path="/dashboard/:userId" element={<DashboardPage />} />
+          <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/dashboard/:userId/plans" element={<PlansPage />} />
-          <Route
-            path="/dashboard/:userId/plans/new"
-            element={<NewPlanPage />}
-          />
-          <Route
-            path="/dashboard/:userId/plans/latest"
-            element={<LatestPlanPage />}
-          />
-          <Route path="/dashboard/:userId/account" element={<AccountPage />} />
+          <Route path="/strategy" element={<StrategiesForm />} />
+          <Route path="/dashboard/:userId/plans/latest" element={<LatestPlanPage />} />
           <Route path="/learning-paths/articles" element={<Articles />}/>
           <Route path="/learning-paths/terms" element={<Terms/>}/>
           <Route
@@ -62,7 +56,7 @@ function Layout() {
       </div>
 
       <Footer />
-    </Router>
+      </>
   );
 }
 
