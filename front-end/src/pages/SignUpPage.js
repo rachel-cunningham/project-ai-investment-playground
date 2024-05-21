@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import AuthForm from "../components/AuthForm";
 import { Box, CardMedia ,Container, Typography } from "@mui/material";
 import create from "../assets/images/signup/Icon.png";
+import Header from "../components/Header";
 
 
 function SignUpPage() {
@@ -31,6 +32,7 @@ function SignUpPage() {
   };
   return (
     <Container >
+      <Header />
       <Box sx={{ display: 'flex', justifyContent: 'center' }}>
         <CardMedia
           component="img"
