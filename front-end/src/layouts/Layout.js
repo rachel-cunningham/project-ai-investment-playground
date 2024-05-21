@@ -34,7 +34,6 @@ function Layout() {
                     />
                     <Route path="/dashboard" element={<DashboardPage />} />
                     <Route
-                    <Route
                         path="/dashboard/:userId/goals/:goalId"
                         element={<DisplayOneGoal />}
                     />
