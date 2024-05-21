@@ -18,9 +18,6 @@ import { Link } from "react-router-dom";
 import Logo from "../assets/images/logo/WealthifyAI-logo.png"
 import theme from "../styles/theme";
 
-// IN ORDER FOR USERID TO WORK AND GO TO THE CORRECT PAGE IN THE DASHBOARD, USERID NEEDS TO BE IMPLEMENTED WITH USEPARAMS IN THE DASHBOARD FILE
-// NEED: IMPORT useParams AND IMPLEMENT const { userId } = useParams(); AND <AuthHeader userId={userId} />
-
 function AuthHeader({ userId }) {
   const [anchorElUser, setAnchorElUser] = useState(null);
 
@@ -52,7 +49,7 @@ function AuthHeader({ userId }) {
           <Toolbar disableGutters>
             <Typography
               component={Link}
-              to={`/dashboard/${userId}`} //  this should link to User Dashboard which should eventually be /dashboard/:userId
+              to={`/dashboard/${userId}`}
               sx={{
                 flexGrow: "1",
               }}
