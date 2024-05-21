@@ -45,7 +45,7 @@ function Layout() {
           />
           <Route path="/dashboard/:userId/account" element={<AccountPage />} />
           <Route path="/learning-paths/articles" element={<Articles />}/>
-          <Route path="/learning-paths/terms" element={<Terms />}/>
+          <Route path="/learning-paths/terms" element={<Terms/>}/>
           <Route
             path="/dashboard/:userId/goals/:goalId"
             element={<DisplayOneGoal />}

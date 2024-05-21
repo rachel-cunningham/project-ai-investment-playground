@@ -1,9 +1,5 @@
 import React from "react";
-import Box from '@mui/material/Box';
-import ImageList from '@mui/material/ImageList';
-import ImageListItem from '@mui/material/ImageListItem';
-import ImageListItemBar from '@mui/material/ImageListItemBar';
-import ListSubheader from '@mui/material/ListSubheader';
+import {Box, ImageList, ImageListItem,ImageListItemBar, ListSubheader} from '@mui/material/';
 import AuthHeader from "../components/AuthHeader";
 import { useParams } from "react-router-dom";
 import "./articles.css";

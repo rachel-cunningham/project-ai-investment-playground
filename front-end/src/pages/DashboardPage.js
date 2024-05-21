@@ -14,11 +14,10 @@ import Account_Icon from "../assets/images/icons/Account_Icon.png";
 import Advice_icon from "../assets/images/icons/Advice_icon.png";
 import Plans_icon from "../assets/images/icons/Plans_icon.png";
 import Dashboard_icon from "../assets/images/icons/Dashboard_icon.png";
-import BenchMarkIcon from "../assets/images/icons/BenchMark_Icon.png";
 import BlankProfile from "../assets/images/dashboard/blank-profile-picture.png";
 import "./DashboardPage.css";
 import { Typography } from "@mui/material";
-import Button from "@mui/material/Button";
+
 
 
 function DashboardPage({ name }) {
