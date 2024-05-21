@@ -18,7 +18,7 @@ async function gpt(prompt) {
         { role: "user", content: prompt }
     ],
     model: "gpt-3.5-turbo",
-    temperature: 0.2, 
+    temperature: 0.1, 
     frequency_penalty: 0.5
   });
 
