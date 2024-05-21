@@ -7,10 +7,13 @@ import {
   Toolbar,
   CardMedia,
 } from "@mui/material";
-import { Link } from "react-router-dom";
-import Logo from "../assets/images/logo/WealthifyAI-logo.png";
+import { Link as RouterLink } from "react-router-dom";
+import { HashLink as RouterHashLink } from 'react-router-hash-link';
+import { useTheme } from '@mui/material/styles';
+import Logo from "../assets/images/logo/WealthifyAI-logo.png"
 
 function Header() {
+  const theme = useTheme();
   return (
     <Box
       component="header"
@@ -20,40 +23,38 @@ function Header() {
         padding: 2,
       }}
     >
-      <AppBar component="nav" sx={{ backgroundColor: "#3B0B47" }}>
+      <AppBar component="nav" sx={{ backgroundColor: theme.palette.custom.DarkPurple }}>
         <Toolbar>
           <Typography
-            component={Link}
+            component={RouterLink}
             to="/"
             variant="header2"
             sx={{
               flexGrow: "1",
               textDecoration: "none",
+              fontSize: "1.5rem",
             }}
           >
             <CardMedia
               component="img"
               alt="Investify AI logo"
               image={Logo}
-              sx={{ width: { xs: "50px", sm: "60px", md: "65px", lg: "65px" } }}
+              sx={{ width: "65px" }}
             />
           </Typography>
           <Box>
             <Typography
-              component={Link}
-              to="/about"
+              component={RouterHashLink}
+              to="/#about-us"
+              smooth
+              offset={-70}
               variant="header2"
               sx={{
+                cursor: "pointer",
                 textDecoration: "none",
-                fontSize: {
-                  xs: "0.9rem",
-                  sm: "1.5rem",
-                  lg: "1.5rem",
-                },
-                "&:hover": {
-                  color: "#87DBA8",
-                },
-                marginRight: 4,
+                fontSize: "1.5rem",
+                marginRight: 5,
+                color: '#87DBA8',
               }}
             >
               About Us
@@ -61,19 +62,14 @@ function Header() {
           </Box>
           <Box>
             <Button
-              component={Link}
+              component={RouterLink}
               to="/log-in"
               variant="contained"
               color="primary"
               sx={{
                 marginRight: 2,
-                borderRadius: 3,
+                borderRadius: 2,
                 fontFamily: "MontBlancBold",
-                fontSize: {
-                  xs: "0.8rem",
-                  sm: "1rem",
-                  lg: "1rem",
-                },
                 textTransform: "none",
                 color: "#3B0347",
                 bgcolor: "#87DBA8",
@@ -85,19 +81,13 @@ function Header() {
               Log In
             </Button>
             <Button
-              component={Link}
+              component={RouterLink}
               to="/sign-up"
               variant="contained"
               color="primary"
               sx={{
-                borderRadius: 3,
+                borderRadius: 2,
                 fontFamily: "MontBlancBold",
-                fontSize: {
-                  xs: "0.8rem",
-                  sm: "1rem",
-                  lg: "1rem",
-                },
-
                 textTransform: "none",
                 color: "#3B0347",
                 bgcolor: "#87DBA8",
