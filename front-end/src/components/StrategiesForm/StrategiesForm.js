@@ -6,7 +6,7 @@ import StepLabel from '@mui/material/StepLabel';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import StepOne from './StepOne';
 import StepTwo from './StepTwo';
 import StepThree from './StepThree';
@@ -53,7 +53,8 @@ const style = {
 
 const steps = ["Start", 'Goal', 'Initial Investment', 'Investment Length', 'Risk', 'Confirm'];
 
-export default function StrategiesForm() {
+const StrategiesForm = () => {
+  const { user_id } = useParams();
   const initialFormData = {
     goalName: '',
     return: '',
@@ -66,8 +67,12 @@ export default function StrategiesForm() {
   const [formData, setFormData] = React.useState(initialFormData);
   const navigate = useNavigate();
 
-  const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+  const handleNext = async () => {
+    if (activeStep === steps.length - 1) {
+      await handleSubmit();
+    } else {
+      setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    }
   };
 
   const handleBack = () => {
@@ -105,9 +110,35 @@ export default function StrategiesForm() {
       case 4:
         return <StepFive formData={formData} setFormData={setFormData} />;
       case 5:
-        return <Confirm formData={formData} setFormData={setFormData}/>;
+        return <Confirm formData={formData} />;
       default:
         return 'Unknown step';
+    }
+  };
+
+  const handleSubmit = async () => {
+    const API_BASE_URL = 'https://api.example.com'; // Replace with your actual API base URL
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/users/${user_id}/goals`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const result = await response.json();
+      console.log('Submission successful', result);
+
+      // Redirect to dashboard or show a success message
+      navigate('/dashboard');
+    } catch (error) {
+      console.error('There was a problem with the fetch operation:', error);
     }
   };
 
@@ -259,3 +290,5 @@ export default function StrategiesForm() {
     </ThemeProvider>
   );
 }
+
+export default StrategiesForm;

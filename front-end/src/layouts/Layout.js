@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Footer from "../components/Footer";
 
 import HomePage from "../pages/HomePage";
@@ -32,7 +32,7 @@ function Layout() {
           <Route path="/example-login" element={<ExampleLoginPage />} />
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/dashboard/:userId/plans" element={<PlansPage />} />
-          <Route path="/dashboard/:userId/plans/new" element={<StrategiesForm />} />
+          <Route path="/strategy" element={<StrategiesForm />} />
           <Route path="/dashboard/:userId/plans/latest" element={<LatestPlanPage />} />
           <Route
             path="/dashboard/:userId/goals/:goalId"
