@@ -8,9 +8,9 @@ import {
   CardMedia,
 } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
-import { HashLink as RouterHashLink } from 'react-router-hash-link';
-import { useTheme } from '@mui/material/styles';
-import Logo from "../assets/images/logo/WealthifyAI-logo.png"
+import { HashLink as RouterHashLink } from "react-router-hash-link";
+import { useTheme } from "@mui/material/styles";
+import Logo from "../assets/images/logo/WealthifyAI-logo.png";
 
 function Header() {
   const theme = useTheme();
@@ -23,7 +23,10 @@ function Header() {
         padding: 2,
       }}
     >
-      <AppBar component="nav" sx={{ backgroundColor: theme.palette.custom.DarkPurple }}>
+      <AppBar
+        component="nav"
+        sx={{ backgroundColor: theme.palette.custom.DarkPurple }}
+      >
         <Toolbar>
           <Typography
             component={RouterLink}
@@ -32,14 +35,13 @@ function Header() {
             sx={{
               flexGrow: "1",
               textDecoration: "none",
-              fontSize: "1.5rem",
             }}
           >
             <CardMedia
               component="img"
               alt="Investify AI logo"
               image={Logo}
-              sx={{ width: "65px" }}
+              sx={{ width: { xs: "50px", sm: "60px", md: "65px", lg: "65px" } }}
             />
           </Typography>
           <Box>
@@ -50,11 +52,16 @@ function Header() {
               offset={-70}
               variant="header2"
               sx={{
-                cursor: "pointer",
                 textDecoration: "none",
-                fontSize: "1.5rem",
-                marginRight: 5,
-                color: '#87DBA8',
+                fontSize: {
+                  xs: "1rem",
+                  sm: "1.5rem",
+                  lg: "1.5rem",
+                },
+                "&:hover": {
+                  color: "#87DBA8",
+                },
+                marginRight: 4,
               }}
             >
               About Us
