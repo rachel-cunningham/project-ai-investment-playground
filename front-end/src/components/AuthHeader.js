@@ -15,7 +15,7 @@ import {
   MenuItem,
 } from "@mui/material";
 import { Link } from "react-router-dom";
-import Logo from "../assets/images/logo/WealthifyAI-logo.png"
+import Logo from "../assets/images/logo/WealthifyAI-logo.png";
 import theme from "../styles/theme";
 
 function AuthHeader({ userId }) {
@@ -44,7 +44,10 @@ function AuthHeader({ userId }) {
         padding: 2,
       }}
     >
-      <AppBar component="nav" color="transparent">
+      <AppBar
+        component="nav"
+        sx={{ backgroundColor: theme.palette.custom.DarkPurple }}
+      >
         <Container maxWidth="xxl">
           <Toolbar disableGutters>
             <Typography
