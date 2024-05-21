@@ -1,12 +1,14 @@
-import { Box, Typography } from "@mui/material";
 import React from "react";
+import { Link } from "react-router-dom";
+import { Box, Typography, Button } from "@mui/material";
 import AuthHeader from "../../components/AuthHeader";
 import CustomDivider from "../../components/CustomDivider";
 
 // LOGIC NEEDED TO BE IMPLEMENTED TO DO GET REQUEST IN PLANS AND HAVE THEM SHOW UP ON THIS PAGE
 // PLACEHOLDER DONE
+// IF NO PLAN, SHOW THE NO PLAN CARD, OTHERWISE, SHOW THE PLANS 
 
-function PlansPage() {
+function PlansPage({ userId }) {
   return (
     <Box sx={{ mt: { xs: 5, md: 0 } }}>
       <AuthHeader />
@@ -68,22 +70,41 @@ function PlansPage() {
                 variant="h4"
                 sx={{
                   color: "#3B0347",
-                  px: 4,
-                  py: 2,
+                  mb: 5,
                 }}
               >
                 You haven't started any plans.
-              </Typography>
-              <Typography
-                variant="h4"
-                sx={{
-                  color: "#3B0347",
-                  px: 4,
-                  py: 2,
-                }}
-              >
+                <br />
+                <br />
                 When you do, they'll be located here.
               </Typography>
+              <Button
+                component={Link}
+                to={`/dashboard/${userId}/plans/new`}
+                color="primary"
+                size="small"
+                sx={{
+                  fontFamily: "MontBlancBold",
+                  fontSize: {
+                    xs: "0.8rem",
+                    sm: "0.8rem",
+                    md: "0.8rem",
+                    lg: "1rem",
+                  },
+                  textTransform: "none",
+                  borderRadius: "15px",
+                  boxShadow: "0 9px 0 #639577",
+                  padding: "10px 20px",
+                  color: "#3B0347",
+                  bgcolor: "#87DBA8",
+                  "&:hover": {
+                    bgcolor: "#639577",
+                  },
+                  mb: 1,
+                }}
+              >
+                Create a Plan
+              </Button>
             </Box>
           </Box>
         </Box>
