@@ -7,10 +7,13 @@ import {
   Toolbar,
   CardMedia,
 } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
+import { Link } from "react-scroll";
+import { useTheme } from '@mui/material/styles';
 import Logo from "../assets/images/logo/WealthifyAI-logo.png"
 
 function Header() {
+  const theme = useTheme();
   return (
     <Box
       component="header"
@@ -20,10 +23,10 @@ function Header() {
         padding: 2,
       }}
     >
-      <AppBar component="nav" color="transparent">
+      <AppBar component="nav" sx={{ backgroundColor: theme.palette.custom.DarkPurple }}>
         <Toolbar>
           <Typography
-            component={Link}
+            component={RouterLink}
             to="/"
             variant="header2"
             sx={{
@@ -42,12 +45,17 @@ function Header() {
           <Box>
             <Typography
               component={Link}
-              to="/about"
+              to="about-us"
+              smooth={true}
+              duration={500}
+              offset={-50} // Adjust this value as needed
               variant="header2"
               sx={{
+                cursor: "pointer",
                 textDecoration: "none",
                 fontSize: "1.5rem",
                 marginRight: 5,
+                color: '#87DBA8', // To maintain the same text color
               }}
             >
               About Us
@@ -55,7 +63,7 @@ function Header() {
           </Box>
           <Box>
             <Button
-              component={Link}
+              component={RouterLink}
               to="/log-in"
               variant="contained"
               color="primary"
@@ -74,7 +82,7 @@ function Header() {
               Log In
             </Button>
             <Button
-              component={Link}
+              component={RouterLink}
               to="/sign-up"
               variant="contained"
               color="primary"

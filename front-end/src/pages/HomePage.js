@@ -18,6 +18,8 @@ import select from "../artwork/landing/select.png";
 import question from "../artwork/landing/question.png";
 import graph from "../artwork/landing/graph.png";
 import Header from "../components/Header";
+import background from "../assets/images/landing/Landing_Page_Image.png";
+import AboutUs from "../components/AboutUs";
 
 // modal style variables
 const modalStyle = {
@@ -91,202 +93,219 @@ function HomePage() {
   ];
 
   return (
-    <Box>
-      <Header />
-      <Container sx={{ textAlign: "center" }}>
-        <Box sx={{ display: "flex", justifyContent: "center" }}>
-          <CardMedia
-            component="img"
-            alt="logo"
-            image={Logo}
-            sx={{ width: "339px", height: "auto", display: "flex" }}
-          />
-        </Box>
-        <Typography
-          color="white"
-          sx={{ fontSize: "3rem", fontFamily: "MontBlancBold" }}
-        >
-          WEALTHIFYAI
-        </Typography>
-        <Typography
-          variant="body1"
-          color="white"
-          paragraph
-          sx={{ fontFamily: "Afacad" }}
-        >
-          "Investment advice that works, just for you."
-        </Typography>
-        <Box
-          sx={{
-            marginY: 4,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <Button
-            component={Link}
-            to="/sign-up"
-            variant="contained"
-            color="primary"
-            size="large"
+    <Box sx={{ width: "100%" }}>
+      <Box sx={{ position: "relative", zIndex: 1 }}>
+        <Header />
+      </Box>
+      <Box
+        sx={{
+          backgroundImage: `url(${background})`,
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+          minHeight: "100vh",
+          display: "flex",
+          flexDirection: "column",
+          width: "100%",
+          position: "relative",
+          zIndex: 0,
+          marginTop: "33px",
+          backgroundAttachment: 'fixed'
+        }}
+      >
+        <Container sx={{ textAlign: "center" }}>
+          <Typography
+            color="white"
             sx={{
+              position: "absolute",
+              top: "22%",
+              left: "25%", 
+              transform: "translate(-50%, -50%)",
+              fontSize: "4rem",
               fontFamily: "MontBlancBold",
-              textTransform: "none",
-              marginX: 1,
-              borderRadius: "15px",
-              boxShadow: "0 9px 0 #639577",
-              width: "auto",
-              paddingX: 3,
-              color: "#3B0347",
-              bgcolor: "#87DBA8",
-              "&:hover": {
-                bgcolor: "#639577",
-              },
+              ...gradientTextStyle,
+              border: '3px #87DBA8 solid',
+              display: 'inline-block',
+              borderRadius: '25px',
+              px: 2,
             }}
           >
-            Get Started
-          </Button>
-          <Button
-            component={Link}
-            to="/log-in"
-            variant="contained"
-            color="primary"
-            size="large"
-            sx={{
-              fontFamily: "MontBlancBold",
-              textTransform: "none",
-              marginX: 1,
-              borderRadius: "15px",
-              boxShadow: "0 10px 0 #639577",
-              width: "auto",
-              paddingX: 3,
-              color: "#3B0347",
-              bgcolor: "#87DBA8",
-              "&:hover": {
-                bgcolor: "#639577",
-              },
-            }}
-          >
-            Log In
-          </Button>
-        </Box>
-        <Typography>
-          <Button
-            onClick={handleOpen}
-            sx={{
-              textDecoration: "none",
-              color: "#87DBA8",
-              textTransform: "none",
+            WEALTHIFYAI
+          </Typography>
+          <Typography
+            variant="body1"
+            color="white"
+            paragraph
+            sx={{ 
               fontFamily: "Afacad",
+              fontSize: '1.1rem',
+              position: "absolute",
+              top: "35%",
+              left: "40%", 
+              transform: "translate(-50%, -50%)",
+              ...gradientTextStyle,
+              fontWeight: '500',
             }}
           >
-            How does it work?
-          </Button>
-        </Typography>
-        <Modal
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="website description"
-          aria-describedby="slides that show how it works"
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <Box sx={modalStyle}>
-            <Box
-              className="modal-header"
-              sx={{ width: "100%", textAlign: "center" }}
-            >
-              <Typography
-                variant="h6"
-                component="h2"
-                sx={{ ...gradientTextStyle, marginTop: 0, fontSize: 58 }}
-              >
-                {modalContent[modalStep].title}
-              </Typography>
-            </Box>
-            <Box
+            "Investment advice that works, just for you."
+          </Typography>
+          <Box
+            sx={{
+              marginY: 4,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <Button
+              component={Link}
+              to="/sign-up"
+              variant="contained"
+              color="primary"
+              size="large"
               sx={{
-                textAlign: "center",
-                width: "100%",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
+                position: "absolute",
+                top: "45%",
+                left: "25%", 
+                transform: "translate(-50%, -50%)",
+                fontFamily: "MontBlancBold",
+                textTransform: "none",
+                marginX: 1,
+                borderRadius: "15px",
+                boxShadow: "0 9px 0 #639577",
+                width: "auto",
+                paddingX: 3,
+                color: "#3B0347",
+                bgcolor: "#87DBA8",
+                "&:hover": {
+                  bgcolor: "#639577",
+                },
               }}
             >
-              {modalContent[modalStep].images.length > 0 && (
-                <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
-                  {modalContent[modalStep].images.map((image, index) => (
-                    <Box
-                      key={index}
-                      sx={{ textAlign: "center", margin: "auto" }}
-                    >
-                      <CardMedia
-                        component="img"
-                        alt={`image-${index}`}
-                        image={image.src}
-                        sx={{
-                          width: "100%",
-                          maxWidth: "200px",
-                          height: "auto",
-                          margin: "auto",
-                        }}
-                      />
-                      <Typography sx={{ mt: 1, color: "black", fontSize: 30 }}>
-                        {image.description}
-                      </Typography>
-                    </Box>
-                  ))}
-                </Box>
-              )}
-            </Box>
-            <Box
-              sx={{
-                mt: 4,
-                display: "flex",
-                justifyContent: "space-between",
-                width: "100%",
-              }}
-            >
-              <ButtonBase
-                onClick={handleBack}
-                disabled={modalStep === 0}
-                sx={{ color: "#87DBA8" }}
-              >
-                <CardMedia
-                  component="img"
-                  alt="back button"
-                  image={back}
-                  sx={{
-                    width: 50,
-                    height: 50,
-                    ...(modalStep === 0 && disabledStyle),
-                  }}
-                />
-              </ButtonBase>
-              <ButtonBase
-                onClick={handleNext}
-                disabled={modalStep === modalContent.length - 1}
-                sx={{ color: "#87DBA8" }}
-              >
-                <CardMedia
-                  component="img"
-                  alt="next button"
-                  image={next}
-                  sx={{
-                    width: 50,
-                    height: 50,
-                    ...(modalStep === modalContent.length - 1 && disabledStyle),
-                  }}
-                />
-              </ButtonBase>
-            </Box>
+              Sign Up
+            </Button>
           </Box>
-        </Modal>
-      </Container>
+          <Typography>
+            <Button
+              onClick={handleOpen}
+              sx={{
+                textDecoration: "none",
+                color: "#87DBA8",
+                textTransform: "none",
+                fontFamily: "Afacad",
+              }}
+            >
+              How does it work?
+            </Button>
+          </Typography>
+          <Modal
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="website description"
+            aria-describedby="slides that show how it works"
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <Box sx={modalStyle}>
+              <Box
+                className="modal-header"
+                sx={{ width: "100%", textAlign: "center" }}
+              >
+                <Typography
+                  variant="h6"
+                  component="h2"
+                  sx={{ ...gradientTextStyle, marginTop: 0, fontSize: 58 }}
+                >
+                  {modalContent[modalStep].title}
+                </Typography>
+              </Box>
+              <Box
+                sx={{
+                  textAlign: "center",
+                  width: "100%",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                }}
+              >
+                {modalContent[modalStep].images.length > 0 && (
+                  <Box
+                    sx={{ display: "flex", justifyContent: "center", mt: 2 }}
+                  >
+                    {modalContent[modalStep].images.map((image, index) => (
+                      <Box
+                        key={index}
+                        sx={{ textAlign: "center", margin: "auto" }}
+                      >
+                        <CardMedia
+                          component="img"
+                          alt={`image-${index}`}
+                          image={image.src}
+                          sx={{
+                            width: "100%",
+                            maxWidth: "200px",
+                            height: "auto",
+                            margin: "auto",
+                          }}
+                        />
+                        <Typography sx={{ mt: 1, color: "black", fontSize: 30 }}>
+                          {image.description}
+                        </Typography>
+                      </Box>
+                    ))}
+                  </Box>
+                )}
+              </Box>
+              <Box
+                sx={{
+                  mt: 4,
+                  display: "flex",
+                  justifyContent: "space-between",
+                  width: "100%",
+                }}
+              >
+                <ButtonBase
+                  onClick={handleBack}
+                  disabled={modalStep === 0}
+                  sx={{ color: "#87DBA8" }}
+                >
+                  <CardMedia
+                    component="img"
+                    alt="back button"
+                    image={back}
+                    sx={{
+                      width: 50,
+                      height: 50,
+                      ...(modalStep === 0 && disabledStyle),
+                    }}
+                  />
+                </ButtonBase>
+                <ButtonBase
+                  onClick={handleNext}
+                  disabled={modalStep === modalContent.length - 1}
+                  sx={{ color: "#87DBA8" }}
+                >
+                  <CardMedia
+                    component="img"
+                    alt="next button"
+                    image={next}
+                    sx={{
+                      width: 50,
+                      height: 50,
+                      ...(modalStep === modalContent.length - 1 &&
+                        disabledStyle),
+                    }}
+                  />
+                </ButtonBase>
+              </Box>
+            </Box>
+          </Modal>
+        </Container>
+      </Box>
+      <AboutUs />
     </Box>
   );
 }
