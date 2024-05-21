@@ -99,20 +99,31 @@ function HomePage() {
         backgroundPosition: "center",
         backgroundAttachment: "fixed",
         height: "100vh",
-        mt: 8,
+        mt: 7,
       }}
     >
       <Header />
       <Container
-        sx={{ textAlign: "left", paddingTop: "30vh", height: "100vh" }}
+        sx={{
+          textAlign: "left",
+          paddingTop: "30vh",
+          height: "100vh",
+          paddingLeft: { lg: "0" },
+        }}
       >
-        <Box>
+        <Box sx={{ ml: { xl: -10 } }}>
           <Typography
             variant="h1"
             color="#3B0B47"
             sx={{
               fontFamily: "MontBlancBold",
-              fontSize: { xs: "3rem", sm: "4rem", md: "5rem", lg: "4.8rem" },
+              fontSize: {
+                xs: "3rem",
+                sm: "4rem",
+                md: "5rem",
+                lg: "4.8rem",
+                xl: "5.5rem",
+              },
             }}
           >
             WEALTHIFY AI
@@ -124,8 +135,8 @@ function HomePage() {
             sx={{
               fontFamily: "Afacad",
               fontSize: {
-                xs: "1.5rem",
-                sm: "2.5rem",
+                xs: "1.3rem",
+                sm: "2rem",
                 md: "2.2rem",
                 lg: "2rem",
               },
@@ -151,7 +162,7 @@ function HomePage() {
                 fontFamily: "MontBlancBold",
                 fontSize: {
                   xs: "1rem",
-                  sm: "2rem",
+                  sm: "1.7rem",
                   md: "2rem",
                   lg: "1.4rem",
                 },
