@@ -11,7 +11,7 @@ function Articles(){
   return (
     <Box>
       <AuthHeader userId={userId} />
-      <ImageList sx={{ width: 350, height: 500 }}>
+      <ImageList sx={{ width: 375, height: 500 }}>
       <ImageListItem key="Subheader" cols={2}>
         <ListSubheader component="div">Explore Investment Strategies, Analysis, Trends</ListSubheader>
       </ImageListItem>
@@ -24,7 +24,7 @@ function Articles(){
               alt={item.title}
               loading="lazy"
             />
-            <ImageListItemBar className="image-overlay"
+            <ImageListItemBar 
               title={item.title}
               link={item.link}
             />
