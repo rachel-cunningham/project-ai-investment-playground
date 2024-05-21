@@ -29,7 +29,6 @@ const AuthForm = ({ isSignup, onSubmit, passwordError }) => {
     onSubmit(formData);
   };
 
-  // Function to determine if password meets each requirement
   const checkPasswordRequirements = () => {
     const { password } = formData;
     const requirements = [
@@ -46,49 +45,89 @@ const AuthForm = ({ isSignup, onSubmit, passwordError }) => {
       },
       {
         label: "Significantly different from your previous passwords.",
-        met: false, // Placeholder for the requirement
+        met: false,
       },
     ];
-    return requirements;
+    return requirements.map((requirement) => ({
+      dot: "\u2022",
+      label: requirement.label,
+    }));
   };
 
   return (
-    <Box component="form" onSubmit={handleSubmit}>
-      <TextField
-        label="Username"
-        name="username"
-        value={formData.username}
-        onChange={handleChange}
-        fullWidth
-        margin="normal"
-        required
-      />
-      <TextField
-        label="Password"
-        name="password"
-        type="password"
-        value={formData.password}
-        onChange={handleChange}
-        fullWidth
-        margin="normal"
-        required
-        error={!!passwordError}
-        helperText={passwordError}
-      />
-      <Button type="submit" variant="contained" color="primary" fullWidth>
-        {isSignup ? "Create" : "Log In"}
-      </Button>
-      <Box mt={2}>
-        <List>
+    <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+      <Box component="form" onSubmit={handleSubmit} sx={{ width:'360px', height:'206px', mb: 2 }}>
+        <h2 style={{ color: "white" }}> Username</h2>
+        <TextField
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+          fullWidth
+          margin="normal"
+          sx={{
+            width: "348px",
+            height: "61px",
+            backgroundColor: "white",
+            fontFamily: "Afacad",
+            borderRadius: "5px",
+          }}
+          required
+        />
+        <h2 style={{ color: "white" }}>Password</h2>
+        <TextField
+          name="password"
+          type="password"
+          value={formData.password}
+          onChange={handleChange}
+          fullWidth
+          margin="normal"
+          sx={{
+            width: "348px",
+            height: "61px",
+            backgroundColor: "white",
+            fontFamily: "Afacad",
+            borderRadius: "5px",
+          }}
+          required
+          error={!!passwordError}
+          helperText={passwordError}
+        />
+      </Box>
+
+      <Box sx={{ width:'396', height:'272.43', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <List sx={{ fontFamily: 'Afacad', fontSize:'24px'}}>
           {checkPasswordRequirements().map((requirement, index) => (
             <ListItem key={index}>
               <ListItemIcon>
                 {requirement.met ? <CheckIcon color="primary" /> : null}
               </ListItemIcon>
-              <ListItemText primary={requirement.label} />
+              <ListItemText primary={`${requirement.dot} ${requirement.label}`} />
             </ListItem>
           ))}
         </List>
+        <Button
+          variant="contained"
+          color="primary"
+          size="large"
+          sx={{
+            fontFamily: "MontBlancBold",
+            textTransform: 'none',
+            marginX: 1,
+            borderRadius: '15px',
+            boxShadow: '0 10px 0 #639577',
+            width: 'auto',
+            paddingX: 3,
+            color: "#3B0347",
+            bgcolor: "#87DBA8",
+            '&:hover': {
+              bgcolor: "#639577"
+            }
+          }}
+          type="submit"
+          fullWidth
+        >
+          {isSignup ? "Create" : "Log In"}
+        </Button>
       </Box>
     </Box>
   );

@@ -1,7 +1,6 @@
 import React from "react";
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom"; 
 import Footer from "../components/Footer";
-import About from "../pages/About";
 import HomePage from "../pages/HomePage";
 import LogInPage from "../pages/LogInPage";
 import NotFoundPage from "../pages/NotFoundPage";
@@ -20,44 +19,39 @@ import AccountPage from "../pages/AccountPage";
 // import ExampleEditGoal from "../pages/GoalsExamplePages/ExampleEditGoal";
 
 function Layout() {
-  return (
-    <Router>
-      <div className="Layout">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/log-in" element={<LogInPage />} />
-          <Route path="/sign-up" element={<SignUpPage />} />
-          <Route path="/about" element={<About />} />
-          <Route path="*" element={<NotFoundPage />} />
-          <Route path="/example-login" element={<ExampleLoginPage />} />
-          <Route path="/dashboard/:userId" element={<DashboardPage />} />
-          <Route path="/dashboard/:userId/plans" element={<PlansPage />} />
-          <Route
-            path="/dashboard/:userId/plans/new"
-            element={<NewPlanPage />}
-          />
-          <Route
-            path="/dashboard/:userId/plans/latest"
-            element={<LatestPlanPage />}
-          />
-          <Route path="/dashboard/:userId/account" element={<AccountPage />} />
-          <Route
-            path="/dashboard/:userId/goals/:goalId"
-            element={<DisplayOneGoal />}
-          />
-          <Route
-            path="/dashboard/:userId/create"
-            element={<ExampleCreateGoal />}
-          />
-          <Route
-            path="/dashboard/:userId/goals"
-            element={<ExampleDashboard />}
-          />
-        </Routes>
-      </div>
+  const location = useLocation();
 
-      <Footer />
-    </Router>
+  return (
+    <div>
+    <div className="Layout">
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/log-in" element={<LogInPage />} />
+        <Route path="/sign-up" element={<SignUpPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+        <Route path="/example-login" element={<ExampleLoginPage />} />
+        <Route path="/dashboard/:userId" element={<DashboardPage />} />
+        <Route path="/dashboard/:userId/plans" element={<PlansPage />} />
+        <Route path="/dashboard/:userId/plans/new" element={<NewPlanPage />} />
+        <Route
+          path="/dashboard/:userId/plans/latest"
+          element={<LatestPlanPage />}
+        />
+        <Route path="/dashboard/:userId/account" element={<AccountPage />} />
+        <Route
+          path="/dashboard/:userId/goals/:goalId"
+          element={<DisplayOneGoal />}
+        />
+        <Route
+          path="/dashboard/:userId/create"
+          element={<ExampleCreateGoal />}
+        />
+        <Route path="/dashboard/:userId/goals" element={<ExampleDashboard />} />
+      </Routes>
+      
+    </div>
+    {location.pathname !== "/" && <Footer />}
+    </div>
   );
 }
 
