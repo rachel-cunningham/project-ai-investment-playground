@@ -1,7 +1,6 @@
 import React from "react";
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Footer from "../components/Footer";
-import About from "../pages/About";
 import HomePage from "../pages/HomePage";
 import LogInPage from "../pages/LogInPage";
 import NotFoundPage from "../pages/NotFoundPage";
@@ -18,18 +17,22 @@ import ExampleDashboard from "../pages/GoalsExamplePages/ExampleDashboard";
 import PlansPage from "../pages/PlansPage";
 import NewPlanPage from "../pages/NewPlanPage";
 import LatestPlanPage from "../pages/LatestPlanPage";
+import PrivacyPolicyPage from "../pages/PrivacyPolicyPage";
 import AccountPage from "../pages/AccountPage";
+
 
 // import ExampleEditGoal from "../pages/GoalsExamplePages/ExampleEditGoal";
 
 function Layout() {
+  const location = useLocation();
+
   return (
-    <Router>
+    <>
       <div className="Layout">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/log-in" element={<LogInPage />} />
-          <Route path="/sign-up" element={<SignUpPage />} />
+          <Route path="/sign-up" element={<SignUpPage />} />=
           <Route path="/about" element={<About />} />
           <Route path="*" element={<NotFoundPage />} />
           <Route path="/example-login" element={<ExampleLoginPage />} />
@@ -50,6 +53,10 @@ function Layout() {
             path="/dashboard/:userId/goals/:goalId"
             element={<DisplayOneGoal />}
           />
+          <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+
+          {/* example pages */}
+          <Route path="/example-login" element={<ExampleLoginPage />} />
           <Route
             path="/dashboard/:userId/create"
             element={<ExampleCreateGoal />}
@@ -58,11 +65,13 @@ function Layout() {
             path="/dashboard/:userId/goals"
             element={<ExampleDashboard />}
           />
+          {/* example pages end */}
+
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </div>
-
-      <Footer />
-    </Router>
+      {location.pathname !== "/" && <Footer />}
+    </>
   );
 }
 
