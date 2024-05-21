@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import {
   Typography,
@@ -9,6 +10,7 @@ import {
   Modal,
   ButtonBase,
 } from "@mui/material";
+import { Element, scroller } from "react-scroll"; // Import scroller from react-scroll
 import Logo from "../assets/images/logo/WealthifyAI-logo.png";
 import next from "../artwork/landing/next-button.png";
 import back from "../artwork/landing/back-button.png";
@@ -56,6 +58,19 @@ const disabledStyle = {
 function HomePage() {
   const [open, setOpen] = useState(false);
   const [modalStep, setModalStep] = useState(0);
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace("#", "");
+      scroller.scrollTo(id, {
+        duration: 800,
+        delay: 0,
+        smooth: "easeInOutQuart",
+        offset: -70, // Adjust this value to change the scroll offset
+      });
+    }
+  }, [location]);
 
   const handleOpen = () => {
     setModalStep(0);
@@ -305,7 +320,9 @@ function HomePage() {
           </Modal>
         </Container>
       </Box>
-      <AboutUs />
+      <Element name="about-us">
+        <AboutUs />
+      </Element>
     </Box>
   );
 }

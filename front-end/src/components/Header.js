@@ -8,7 +8,7 @@ import {
   CardMedia,
 } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
-import { Link } from "react-scroll";
+import { HashLink as RouterHashLink } from 'react-router-hash-link';
 import { useTheme } from '@mui/material/styles';
 import Logo from "../assets/images/logo/WealthifyAI-logo.png"
 
@@ -44,18 +44,17 @@ function Header() {
           </Typography>
           <Box>
             <Typography
-              component={Link}
-              to="about-us"
-              smooth={true}
-              duration={500}
-              offset={-50} // Adjust this value as needed
+              component={RouterHashLink}
+              to="/#about-us"
+              smooth
+              offset={-70}
               variant="header2"
               sx={{
                 cursor: "pointer",
                 textDecoration: "none",
                 fontSize: "1.5rem",
                 marginRight: 5,
-                color: '#87DBA8', // To maintain the same text color
+                color: '#87DBA8',
               }}
             >
               About Us
