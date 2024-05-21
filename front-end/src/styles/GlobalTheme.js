@@ -23,7 +23,7 @@ const GlobalTheme = () => (
         fontFamily: "Roboto, sans-serif",
         WebkitFontSmoothing: "antialiased",
         MozOsxFontSmoothing: "grayscale",
-        background: `linear-gradient(to top, ${theme.palette.custom.DarkPurple}, ${theme.palette.custom.LightPurple})`,
+        background: `linear-gradient(to top, ${theme.palette.custom.LightPurple}, ${theme.palette.custom.DarkPurple})`,
       },
       ".Layout": {
         display: "flex",
