@@ -29,6 +29,7 @@ function validateEnum(value, validValues) {
 // returns status 400 and "Invalid <field>" if any of the validationRules are not met
 function validateInput(req, res, next) {
     const validationRules = {
+        // for users create/update
         first_name: { type: "string", max: 50 },
         last_name: { type: "string", max: 50 },
         username: { type: "string", max: 50 },
@@ -36,8 +37,26 @@ function validateInput(req, res, next) {
         password: { type: "string", max: 50 },
         password_hash: { type: "string", max: 60 },
         age: { type: "number", min: 0, max: 200 }, // 200 seems like a safe max age I think :)
+
+        /* // for goals create/update
         occupation: { type: "string", max: 50 },
-        img_src: {type: "string", max: 100}
+        img_src: { type: "string", max: 100 },
+        goal_name: { type: "string", max: 200 },
+        expected_return_on_investment: {
+            type: "number",
+            min: 1,
+            max: 100000000000000,
+        },
+        years_to_invest_for: { type: "number", min: 1, max: 100 },
+        risk_comfort_level: {
+            type: "string",
+            max: 10,
+        },
+        starting_amount_to_invest: {
+            type: "number",
+            min: 1,
+            max: 100000000000000,
+        }, */
     };
 
     for (const field in validationRules) {
@@ -57,11 +76,9 @@ function validateInput(req, res, next) {
                 (validValues && !validateEnum(value, validValues)) ||
                 (custom && !custom(value))
             ) {
-                return res
-                    .status(400)
-                    .json({
-                        error: `Invalid ${field}, ${field} must be a ${validationRules[field].type} with a maximum length of ${validationRules[field].max}. Recieved: ${value}`,
-                    });
+                return res.status(400).json({
+                    error: `Invalid ${field}, ${field} must be a ${validationRules[field].type} with a maximum length of ${validationRules[field].max}. Received: ${value}`,
+                });
             }
         }
     }

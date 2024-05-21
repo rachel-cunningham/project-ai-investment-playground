@@ -2,49 +2,169 @@
     {
         "user_id": 1,
         "goal_name": "Goaldie locks",
-        "goal_statement": "I want to earn... and do this...",
+        "expected_return_on_investment": 10000,
         "years_to_invest_for": 5,
         "risk_comfort_level": "medium",
-        "starting_amount_to_invest": 30000
+        "starting_amount_to_invest": 30000,
+        "ai_response": {
+            "lowRisk": {
+              "domesticStockPercentage": 20,
+              "foreignStockPercentage": 20,
+              "bondsPercentage": 50,
+              "shortTermPercentage": 10
+            },
+            "mediumRisk": {
+              "domesticStockPercentage": 40,
+              "foreignStockPercentage": 30,
+              "bondsPercentage": 20,
+              "shortTermPercentage": 10
+            },
+            "highRisk": {
+              "domesticStockPercentage": 60,
+              "foreignStockPercentage": 30,
+              "bondsPercentage": 5,
+              "shortTermPercentage": 5
+            }
+        }
     },
     {
         "user_id": 1,
         "goal_name": "Goalie goals",
-        "goal_statement": "I want to earn... and do this...",
+        "expected_return_on_investment": 50000,
         "years_to_invest_for": 10,
         "risk_comfort_level": "low",
-        "starting_amount_to_invest": 100000
+        "starting_amount_to_invest": 100000,
+        "ai_response": {
+            "lowRisk": {
+              "domesticStockPercentage": 20,
+              "foreignStockPercentage": 10,
+              "bondsPercentage": 60,
+              "shortTermPercentage": 10
+            },
+            "mediumRisk": {
+              "domesticStockPercentage": 40,
+              "foreignStockPercentage": 20,
+              "bondsPercentage": 30,
+              "shortTermPercentage": 10
+            },
+            "highRisk": {
+              "domesticStockPercentage": 60,
+              "foreignStockPercentage": 30,
+              "bondsPercentage": 5,
+              "shortTermPercentage": 5
+            }
+        }
     },
     {
         "user_id": 2,
         "goal_name": "Tiny tiny goal",
-        "goal_statement": "I want to earn... and do this...",
+        "expected_return_on_investment": 300,
         "years_to_invest_for": 3,
         "risk_comfort_level": "high",
-        "starting_amount_to_invest": 7000
+        "starting_amount_to_invest": 7000,
+        "ai_response": {
+            "lowRisk": {
+              "domesticStockPercentage": 20,
+              "foreignStockPercentage": 10,
+              "bondsPercentage": 50,
+              "shortTermPercentage": 20
+            },
+            "mediumRisk": {
+              "domesticStockPercentage": 40,
+              "foreignStockPercentage": 20,
+              "bondsPercentage": 20,
+              "shortTermPercentage": 20
+            },
+            "highRisk": {
+              "domesticStockPercentage": 60,
+              "foreignStockPercentage": 30,
+              "bondsPercentage": 5,
+              "shortTermPercentage": 5
+            }
+        }
     },
     {
         "user_id": 2,
         "goal_name": "Goal time",
-        "goal_statement": "I want to earn... and do this...",
+        "expected_return_on_investment": 3000,
         "years_to_invest_for": 15,
         "risk_comfort_level": "medium",
-        "starting_amount_to_invest": 5555
+        "starting_amount_to_invest": 5555,
+        "ai_response": {
+            "lowRisk": {
+              "domesticStockPercentage": 20,
+              "foreignStockPercentage": 10,
+              "bondsPercentage": 50,
+              "shortTermPercentage": 20
+            },
+            "mediumRisk": {
+              "domesticStockPercentage": 40,
+               "foreignStockPercentage": 20,
+              "bondsPercentage": 30,
+              "shortTermPercentage": 10
+            },
+            "highRisk": {
+              "domesticStockPercentage": 60,
+              "foreignStockPercentage": 30,
+              "bondsPercentage": 10,
+              "shortTermPercentage": 0
+            }
+        }
     },
     {
         "user_id": 3,
         "goal_name": "Third goal",
-        "goal_statement": "I want to earn... and do this...",
+        "expected_return_on_investment": 60000,
         "years_to_invest_for": 2,
         "risk_comfort_level": "high",
-        "starting_amount_to_invest": 200000
+        "starting_amount_to_invest": 200000,
+        "ai_response": {
+            "lowRisk": {
+              "domesticStockPercentage": 20,
+              "foreignStockPercentage": 10,
+              "bondsPercentage": 60,
+              "shortTermPercentage": 10
+            },
+            "mediumRisk": {
+              "domesticStockPercentage": 40,
+              "foreignStockPercentage": 20,
+              "bondsPercentage": 30,
+              "shortTermPercentage": 10
+            },
+            "highRisk": {
+              "domesticStockPercentage": 60,
+              "foreignStockPercentage": 30,
+              "bondsPercentage": 5,
+              "shortTermPercentage": 5
+            }
+        }
     },
     {
         "user_id": 3,
         "goal_name": "GOALS",
-        "goal_statement": "I want to earn... and do this...",
+        "expected_return_on_investment": 70000,
         "years_to_invest_for": 5,
         "risk_comfort_level": "low",
-        "starting_amount_to_invest": 450000
+        "starting_amount_to_invest": 450000,
+        "ai_response": {
+            "lowRisk": {
+              "domesticStockPercentage": 20,
+              "foreignStockPercentage": 20,
+              "bondsPercentage": 50,
+              "shortTermPercentage": 10
+            },
+            "mediumRisk": {
+              "domesticStockPercentage": 40,
+              "foreignStockPercentage": 30,
+              "bondsPercentage": 20,
+              "shortTermPercentage": 10
+            },
+            "highRisk": {
+              "domesticStockPercentage": 60,
+              "foreignStockPercentage": 30,
+              "bondsPercentage": 5,
+              "shortTermPercentage": 5
+            }
+        }
     }
 ]

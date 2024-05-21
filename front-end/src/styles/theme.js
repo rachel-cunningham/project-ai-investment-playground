@@ -37,6 +37,16 @@ const typography = {
     fontWeight: 100, // light
     color: "#FFFFFF", // white text color for secondary body text
   },
+  header1: {
+    fontFamily: "Mont-Blanc-Trial, Roboto, sans-serif",
+    fontWeight: 400, // light
+    color: "#FFFFFF", // white text color for secondary body text
+  },
+  header2: {
+    fontFamily: "Mont-Blanc-Trial, Roboto, sans-serif",
+    fontWeight: 600, // light
+    color: "#FFFFFF", // white text color for secondary body text
+  },
 };
 
 const theme = createTheme({
@@ -48,8 +58,8 @@ const theme = createTheme({
       main: "#639577", // OliveGreen
     },
     custom: {
-      LightPurple: "#3B0B47",
-      DarkPurple: "#6E3979",
+      LightPurple: "#6E3979",
+      DarkPurple: "#3B0B47",
     },
     text: {
       primary: "#FFFFFF", // white text color

@@ -12,7 +12,6 @@ function list(userId) {
 // Create a new goal
 function create(goal, userId) {
     goal.user_id = userId;
-    console.log("GOAL", goal);
 
     return knex("goals")
         .insert(goal)
@@ -24,7 +23,9 @@ function create(goal, userId) {
 function read(goalId, userId) {
     return knex("goals")
         .select("*")
-        .where({ goal_id: goalId }, { user_id: userId })
+        .where(function () {
+            this.where({ goal_id: goalId }).andWhere({ user_id: userId });
+        })
         .first();
 }
 
