@@ -15,15 +15,18 @@ import {
   MenuItem,
 } from "@mui/material";
 import { Link } from "react-router-dom";
-import Logo from "../assets/images/logo/WealthifyAI.png";
+import Logo from "../assets/images/logo/WealthifyAI-logo.png"
 import theme from "../styles/theme";
 
-function AuthHeader() {
+// IN ORDER FOR USERID TO WORK AND GO TO THE CORRECT PAGE IN THE DASHBOARD, USERID NEEDS TO BE IMPLEMENTED WITH USEPARAMS IN THE DASHBOARD FILE
+// NEED: IMPORT useParams AND IMPLEMENT const { userId } = useParams(); AND <AuthHeader userId={userId} />
+
+function AuthHeader({ userId }) {
   const [anchorElUser, setAnchorElUser] = useState(null);
 
   const menuItems = [
-    { label: "Account", path: "/account" },
-    { label: "Dashboard", path: "/dashboard" },
+    { label: "Account", path: `/dashboard/${userId}/account` },
+    { label: "Dashboard", path: `/dashboard/${userId}` },
     { label: "Logout", path: "/" }, // logout logic needing implemented. does it go to screen that says "you have successfully logged out"? or back to home page? how does user actually log out or know that they logged out?
   ];
 
@@ -49,7 +52,7 @@ function AuthHeader() {
           <Toolbar disableGutters>
             <Typography
               component={Link}
-              to="/dashboard" //  this should link to User Dashboard which should eventually be /dashboard/:userId
+              to={`/dashboard/${userId}`} //  this should link to User Dashboard which should eventually be /dashboard/:userId
               sx={{
                 flexGrow: "1",
               }}
@@ -58,7 +61,7 @@ function AuthHeader() {
                 component="img"
                 alt="Investify AI logo"
                 image={Logo}
-                sx={{ width: "60px" }}
+                sx={{ width: "65px" }}
               />
             </Typography>
             <Box sx={{ flexGrow: 0 }}>
@@ -66,6 +69,7 @@ function AuthHeader() {
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                   <Avatar
                     alt="User Avatar"
+                    sx={{ width: "48px", height: "48px" }}
                     // src=""  add a src dymanically based on user image upload from backend
                   />
                 </IconButton>
