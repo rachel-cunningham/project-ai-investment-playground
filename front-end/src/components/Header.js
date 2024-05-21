@@ -50,6 +50,9 @@ function Header() {
                   sm: "1.5rem",
                   lg: "1.5rem",
                 },
+                "&:hover": {
+                  color: "#87DBA8",
+                },
                 marginRight: 4,
               }}
             >
