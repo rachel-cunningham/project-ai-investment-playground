@@ -8,7 +8,7 @@ import {
   CardMedia,
 } from "@mui/material";
 import { Link } from "react-router-dom";
-import Logo from "../assets/images/logo/WealthifyAI-logo.png"
+import Logo from "../assets/images/logo/WealthifyAI-logo.png";
 
 function Header() {
   return (
@@ -20,7 +20,7 @@ function Header() {
         padding: 2,
       }}
     >
-      <AppBar component="nav" color="transparent">
+      <AppBar component="nav" sx={{ backgroundColor: "#3B0B47" }}>
         <Toolbar>
           <Typography
             component={Link}
@@ -29,14 +29,13 @@ function Header() {
             sx={{
               flexGrow: "1",
               textDecoration: "none",
-              fontSize: "1.5rem",
             }}
           >
             <CardMedia
               component="img"
               alt="Investify AI logo"
               image={Logo}
-              sx={{ width: "65px" }}
+              sx={{ width: { xs: "50px", sm: "60px", md: "65px", lg: "65px" } }}
             />
           </Typography>
           <Box>
@@ -46,8 +45,12 @@ function Header() {
               variant="header2"
               sx={{
                 textDecoration: "none",
-                fontSize: "1.5rem",
-                marginRight: 5,
+                fontSize: {
+                  xs: "0.9rem",
+                  sm: "1.5rem",
+                  lg: "1.5rem",
+                },
+                marginRight: 4,
               }}
             >
               About Us
@@ -61,8 +64,13 @@ function Header() {
               color="primary"
               sx={{
                 marginRight: 2,
-                borderRadius: 2,
+                borderRadius: 3,
                 fontFamily: "MontBlancBold",
+                fontSize: {
+                  xs: "0.8rem",
+                  sm: "1rem",
+                  lg: "1rem",
+                },
                 textTransform: "none",
                 color: "#3B0347",
                 bgcolor: "#87DBA8",
@@ -79,8 +87,14 @@ function Header() {
               variant="contained"
               color="primary"
               sx={{
-                borderRadius: 2,
+                borderRadius: 3,
                 fontFamily: "MontBlancBold",
+                fontSize: {
+                  xs: "0.8rem",
+                  sm: "1rem",
+                  lg: "1rem",
+                },
+
                 textTransform: "none",
                 color: "#3B0347",
                 bgcolor: "#87DBA8",
