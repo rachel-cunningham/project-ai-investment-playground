@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate} from "react-router-dom";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Unstable_Grid2";
 import Avatar from "@mui/material/Avatar";
@@ -14,12 +14,14 @@ import Account_Icon from "../assets/images/icons/Account_Icon.png";
 import Advice_icon from "../assets/images/icons/Advice_icon.png";
 import Plans_icon from "../assets/images/icons/Plans_icon.png";
 import Dashboard_icon from "../assets/images/icons/Dashboard_icon.png";
-import BenchMarkIcon from "../assets/images/icons/BenchMark_Icon.png";
 import BlankProfile from "../assets/images/dashboard/blank-profile-picture.png";
 import "./DashboardPage.css";
 import { Typography } from "@mui/material";
 
+
+
 function DashboardPage({ name }) {
+  const history = useNavigate();
   const [displayName, setDisplayName] = useState(name);
 
   const { userId } = useParams();
@@ -50,7 +52,13 @@ function DashboardPage({ name }) {
       salutation = "Good Evening,";
     }
   }, []);
-
+  const goToPlanPage=planType=>()=>{
+    history(`/dashboard/${userId}/plans/${planType}`);
+  }
+  const goToPage=learningType=>()=>{
+    history(`/learning-paths/${learningType}`);
+  }
+  
   return (
     <Box>
       <AuthHeader userId={userId} />
@@ -86,15 +94,16 @@ function DashboardPage({ name }) {
             <Grid xs={12}>
               <h2 className="titles">Things To Do</h2>
             </Grid>
-            <Grid className="card" xs={3}>
+            <Grid className="card" xs={3} onClick={goToPlanPage('latest')}>
               <img src={EditIcon}></img>
               <Box>Most Recent Plan</Box>
             </Grid>
-            <Grid className="card" xs={3}>
+            <Grid className="card" xs={3} onClick={goToPlanPage('')}>
               <img src={ViewPlanIcon}></img>
-              <Box>View Plans</Box>
+              <Box >View Plans
+              </Box>
             </Grid>
-            <Grid className="card" xs={3}>
+            <Grid className="card" xs={3} onClick={goToPlanPage('new')}>
               <img src={StartPlanIcon}></img>
               <Box>Start New Plan</Box>
             </Grid>
@@ -108,11 +117,11 @@ function DashboardPage({ name }) {
             <Grid xs={12}>
               <h2 className="titles">Learning Paths</h2>
             </Grid>
-            <Grid className="card" xs={3}>
+            <Grid className="card" xs={3} onClick={goToPage('articles')}>
               <img src={ISIcon}></img>
               <Box>Investment Strategies</Box>
             </Grid>
-            <Grid className="card" xs={3}>
+            <Grid className="card" xs={3} onClick={goToPage('terms')}>
               <img src={TermIcon}></img>
               <Box>Terminology</Box>
             </Grid>
