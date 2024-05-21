@@ -2,7 +2,7 @@
     {
         "user_id": 1,
         "goal_name": "Goaldie locks",
-        "goal_statement": "I want to earn... and do this...",
+        "expected_return_on_investment": 10000,
         "years_to_invest_for": 5,
         "risk_comfort_level": "medium",
         "starting_amount_to_invest": 30000,
@@ -30,7 +30,7 @@
     {
         "user_id": 1,
         "goal_name": "Goalie goals",
-        "goal_statement": "I want to earn... and do this...",
+        "expected_return_on_investment": 50000,
         "years_to_invest_for": 10,
         "risk_comfort_level": "low",
         "starting_amount_to_invest": 100000,
@@ -58,7 +58,7 @@
     {
         "user_id": 2,
         "goal_name": "Tiny tiny goal",
-        "goal_statement": "I want to earn... and do this...",
+        "expected_return_on_investment": 300,
         "years_to_invest_for": 3,
         "risk_comfort_level": "high",
         "starting_amount_to_invest": 7000,
@@ -86,7 +86,7 @@
     {
         "user_id": 2,
         "goal_name": "Goal time",
-        "goal_statement": "I want to earn... and do this...",
+        "expected_return_on_investment": 3000,
         "years_to_invest_for": 15,
         "risk_comfort_level": "medium",
         "starting_amount_to_invest": 5555,
@@ -114,7 +114,7 @@
     {
         "user_id": 3,
         "goal_name": "Third goal",
-        "goal_statement": "I want to earn... and do this...",
+        "expected_return_on_investment": 60000,
         "years_to_invest_for": 2,
         "risk_comfort_level": "high",
         "starting_amount_to_invest": 200000,
@@ -142,7 +142,7 @@
     {
         "user_id": 3,
         "goal_name": "GOALS",
-        "goal_statement": "I want to earn... and do this...",
+        "expected_return_on_investment": 70000,
         "years_to_invest_for": 5,
         "risk_comfort_level": "low",
         "starting_amount_to_invest": 450000,
