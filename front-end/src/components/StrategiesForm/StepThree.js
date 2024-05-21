@@ -37,8 +37,8 @@ export default function StepThree({ formData, setFormData }) {
               },
             },
           }}
-          name="startingInvestment"
-          value={formData.startingInvestment}
+          name="starting_amount_to_invest"
+          value={formData.starting_amount_to_invest}
           onChange={handleChange}
           variant="outlined"
           placeholder="Enter Dollar Amount"

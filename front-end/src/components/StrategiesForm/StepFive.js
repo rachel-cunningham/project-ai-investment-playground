@@ -11,7 +11,7 @@ const marks = [
   },
   {
     value: 2,
-    label: 'Mid',
+    label: 'Medium',
   },
   {
     value: 3,
@@ -26,7 +26,7 @@ export default function StepFive({ formData, setFormData }) {
     setVal(newValue);
     setFormData((prevFormData) => ({
       ...prevFormData,
-      riskComfortLevel: marks.find(mark => mark.value === newValue)?.label,
+      risk_comfort_level: marks.find(mark => mark.value === newValue)?.label,
     }));
   };
 
