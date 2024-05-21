@@ -414,8 +414,6 @@ export async function patchUser(username, patch, signal) {
     }
  */
 export async function createGoal(newGoal, user_id, signal) {
-    console.log("CREATE GOAL POST REQUEST:", newGoal, user_id);
-
     const url = `${API_BASE_URL}/users/${user_id}/goals`;
 
     const options = {
