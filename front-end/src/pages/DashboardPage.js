@@ -128,27 +128,6 @@ function DashboardPage({ name }) {
           </Grid>
         </Grid>
       </Box>
-      <Box className="bottom">
-        <Grid
-          container
-          direction="row"
-          spacing={2}
-          justifyContent="space-evenly"
-        >
-          <Grid xs={2}>
-            <img src={Dashboard_icon}></img>
-          </Grid>
-          <Grid xs={2}>
-            <img src={Advice_icon}></img>
-          </Grid>
-          <Grid xs={2}>
-            <img src={Plans_icon}></img>
-          </Grid>
-          <Grid xs={2}>
-            <img src={Account_Icon}></img>
-          </Grid>
-        </Grid>
-      </Box>
     </Box>
   );
 }
