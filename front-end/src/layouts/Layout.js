@@ -14,14 +14,11 @@ import ExampleLoginPage from "../pages/ExampleLoginPage";
 import DisplayOneGoal from "../pages/GoalsExamplePages/DisplayOneGoal";
 import ExampleCreateGoal from "../pages/GoalsExamplePages/ExampleCreateGoal";
 import ExampleDashboard from "../pages/GoalsExamplePages/ExampleDashboard";
-import PlansPage from "../pages/PlansPage";
-import NewPlanPage from "../pages/NewPlanPage";
-import LatestPlanPage from "../pages/LatestPlanPage";
+import PlansPage from "../pages/plans/PlansPage";
+import NewPlanPage from "../pages/plans/NewPlanPage";
+import LatestPlanPage from "../pages/plans/LatestPlanPage";
 import PrivacyPolicyPage from "../pages/PrivacyPolicyPage";
 import AccountPage from "../pages/AccountPage";
-
-
-// import ExampleEditGoal from "../pages/GoalsExamplePages/ExampleEditGoal";
 
 function Layout() {
   const location = useLocation();
@@ -46,8 +43,8 @@ function Layout() {
             element={<LatestPlanPage />}
           />
           <Route path="/dashboard/:userId/account" element={<AccountPage />} />
-          <Route path="/learning-paths/articles" element={<Articles />}/>
-          <Route path="/learning-paths/terms" element={<Terms />}/>
+          <Route path="/learning-paths/articles" element={<Articles />} />
+          <Route path="/learning-paths/terms" element={<Terms />} />
           <Route
             path="/dashboard/:userId/goals/:goalId"
             element={<DisplayOneGoal />}
@@ -75,4 +72,3 @@ function Layout() {
 }
 
 export default Layout;
-

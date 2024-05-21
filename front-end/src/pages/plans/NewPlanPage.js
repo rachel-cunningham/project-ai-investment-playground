@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
-import AuthHeader from "../components/AuthHeader";
+import AuthHeader from "../../components/AuthHeader";
 
 function NewPlanPage() {
   return (
