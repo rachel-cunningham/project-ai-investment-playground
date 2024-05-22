@@ -1,6 +1,12 @@
 # WealthifyAI
+
+<img src="./front-end/src/assets/images/logo/WealthifyAI-logo.png" alt="Logo" width="110" height="90">
+
+---
+
 ## AI-Driven Investment Advice
-Designed to empower users to explore investment options, strategies, and make informed decisions to achieve their personal financial goals. 
+
+Designed to empower users to explore investment options, strategies, and make informed decisions to achieve their personal financial goals.
 
 ## Available Scripts
 
@@ -14,15 +20,15 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-
 In the back-end project directory, you can run:
 
-### 'npm start'
+### `npm start`
 
 Spins up a local server listening on localhost:5001 which contains the business logic necessary to access data.
 
 ## Try It Out
-The site is currently live here:<br>
+
+The site is currently live here:
 https://wealthifyai.onrender.com/
 
 The api can be accessed via this url:
@@ -30,21 +36,20 @@ https://wealthifyai-backend.onrender.com/
 
 Login credentials for demo users:
 
+username: jsmith <br>
+password: SimplePass1!
 
-username: jsmith<br>
-password: SimplePass1!<br>
+username: jdoe <br>
+password: SimplePass2@
 
-username: jdoe<br>
-password: SimplePass2@<br>
+username: mgreen <br>
+password: SimplePass3#
 
-username: mgreen<br>
-password: SimplePass3#<br>
-
-username: eanderson<br>
-password: SimplePass4$<br>
-
+username: eanderson <br>
+password: SimplePass4$
 
 ## How To Use WealthifyAI
+
 ### Sign up
 
 1. From the site homepage, click the "Get Started" button or click "Sign Up" at the top right of the screen
@@ -53,8 +58,8 @@ password: SimplePass4$<br>
 
 3. Click "Create" and you will be taken to your dashboard
 
-
 ### Dashboard
+
 Your dashboard is where you will find all the resources available to you with WealthifyAI.
 
 - Click the "Before starting..." link to get an overview of how WealthifyAI works.
@@ -69,8 +74,8 @@ Your dashboard is where you will find all the resources available to you with We
 
 - Select "Terminology" to see definitions of terms commonly used in the world of finance and investment
 
-
 ### Starting a new plan
+
 WealthifyAI makes it easy for you to start a new investment plan:
 
 1. From your dashboard, click the "Start New Plan" button
@@ -87,28 +92,30 @@ WealthifyAI makes it easy for you to start a new investment plan:
 
 Congratulations! You now have a new plan for your investment future.
 
-
 ## Contributors
-#### Team Advisor:<br>
-Phillip Bickerstaff<br> https://github.com/lighthawk68
 
+#### Team Advisor:
 
-#### UX/UI designer:<br>
-Kait Mahl<br>
+Phillip Bickerstaff <br>
+https://github.com/lighthawk68
+
+#### UX/UI designer:
+
+Kait Mahl <br>
 https://kaitmahluxdesign.weebly.com/
 
 #### Frontend team:
 
+Vanessa Garcia <br>
+https://github.com/petrihcour
 
+#### Backend team:
 
-#### Backend team:<br>
-James Lycett<br>
-https://github.com/james-lycett<br>
-<br>
-Lorraine Dong<br>
+James Lycett <br>
+https://github.com/james-lycett
+
+Lorraine Dong <br>
 https://github.com/raindmj
-
-
 
 ## License
 

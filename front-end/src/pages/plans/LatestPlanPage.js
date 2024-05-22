@@ -24,7 +24,7 @@ function LatestPlanPage() {
         <Typography
           variant="h2"
           sx={{
-            fontFamily: "MontBlancBold",
+            fontFamily: "MavenPro",
             textAlign: "center",
             color: "#87DBA8",
             fontSize: { xs: "3rem", sm: "4rem", md: "5rem", lg: "4.8rem" },

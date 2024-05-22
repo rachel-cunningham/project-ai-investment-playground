@@ -4,7 +4,6 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Unstable_Grid2";
 import Avatar from "@mui/material/Avatar";
 import AuthHeader from "../components/AuthHeader";
-import EditIcon from "../assets/images/icons/EditPlans_Icon.png";
 import ViewPlanIcon from "../assets/images/icons/ViewPlans_icon.png";
 import StartPlanIcon from "../assets/images/icons/StartPlan_Icon.png";
 import ISIcon from "../assets/images/icons/Strat_icon.png";
@@ -92,7 +91,6 @@ function DashboardPage() {
             <Typography
               variant="h2"
               sx={{
-                fontFamily: "MontBlancBold",
                 textTransform: "capitalize",
                 color: "white",
                 fontSize: {
@@ -137,7 +135,7 @@ function DashboardPage() {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            p: 3,
+            px: 3,
           }}
         >
           <Box
@@ -160,83 +158,23 @@ function DashboardPage() {
                 textAlign: "center",
                 p: 2,
                 mb: { xs: 5, lg: 1 },
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
+                mt: 4,
               }}
             >
               <Grid
                 container
                 direction="row"
-                justifyContent="space-evenly"
                 spacing={2}
+                justifyContent="space-evenly"
               >
                 <Grid xs={12}>
-                  <Typography variant="h4" sx={{ color: "black" }}>
+                  <Typography variant="h4">
                     Things To Do
                   </Typography>
                 </Grid>
                 <Grid
                   className="card"
-                  xs={4}
-                  onClick={goToPlanPage("latest")}
-                  sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  <Button
-                    size="large"
-                    sx={{
-                      textTransform: "none",
-                      border: "3px solid #87DBA8",
-                      borderRadius: "15px",
-                      boxShadow: "0 5px 0 #87DBA8",
-                      padding: { xs: "1px 50px", lg: "10px 30px" },
-                      "&:hover": {
-                        border: "3px solid #639577",
-                        boxShadow: "0 5px 0 #639577",
-                      },
-                      mb: 1,
-                      width: "100%",
-                      height: "100%",
-                    }}
-                  >
-                    <CardMedia
-                      component="img"
-                      src={EditIcon}
-                      alt="Pie graph icon"
-                      sx={{
-                        width: {
-                          xs: "20px",
-                          sm: "30px",
-                          md: "35px",
-                          lg: "40px",
-                        },
-                        mr: 1,
-                      }}
-                    />
-                    <Typography
-                      sx={{
-                        color: "#3B0347",
-                        fontFamily: "MontBlancBold",
-                        fontSize: {
-                          xs: "0.8rem",
-                          sm: "1rem",
-                          md: "1.5rem",
-                          lg: "1.2rem",
-                        },
-                        padding: { md: "10px 5px", lg: "10px 10px" },
-                      }}
-                    >
-                      Most Recent Plan
-                    </Typography>
-                  </Button>
-                </Grid>
-                <Grid
-                  className="card"
-                  xs={4}
+                  xs={6}
                   onClick={goToPlanPage("")}
                   sx={{
                     display: "flex",
@@ -278,7 +216,6 @@ function DashboardPage() {
                     <Typography
                       sx={{
                         color: "#3B0347",
-                        fontFamily: "MontBlancBold",
                         fontSize: {
                           xs: "0.8rem",
                           sm: "1rem",
@@ -294,7 +231,7 @@ function DashboardPage() {
                 </Grid>
                 <Grid
                   className="card"
-                  xs={4}
+                  xs={6}
                   onClick={goToPlanPage("new")}
                   sx={{
                     display: "flex",
@@ -336,7 +273,6 @@ function DashboardPage() {
                     <Typography
                       sx={{
                         color: "#3B0347",
-                        fontFamily: "MontBlancBold",
                         fontSize: {
                           xs: "0.8rem",
                           sm: "1rem",
@@ -372,7 +308,7 @@ function DashboardPage() {
                 justifyContent="space-evenly"
               >
                 <Grid xs={12}>
-                  <Typography variant="h4" sx={{ color: "black" }}>
+                  <Typography variant="h4">
                     Learning Path Resources
                   </Typography>
                 </Grid>
@@ -418,7 +354,6 @@ function DashboardPage() {
                     <Typography
                       sx={{
                         color: "#3B0347",
-                        fontFamily: "MontBlancBold",
                         fontSize: {
                           xs: "0.8rem",
                           sm: "1rem",
@@ -476,7 +411,6 @@ function DashboardPage() {
                     <Typography
                       sx={{
                         color: "#3B0347",
-                        fontFamily: "MontBlancBold",
                         fontSize: {
                           xs: "0.8rem",
                           sm: "1rem",

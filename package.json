@@ -1,10 +1,46 @@
 {
-  "dependencies": {
-    "@emotion/react": "^11.11.4",
-    "@emotion/styled": "^11.11.5",
-    "@mui/material": "^5.15.18"
+  "name": "project-ai-investment-playground",
+  "version": "1.0.0",
+  "description": "AI driven investment strategies designed to empower users to explore investment options, strategies, and make informed decisions to achieve their personal financial goals.",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rachel-cunningham/project-ai-investment-playground"
   },
-  "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
-  }
+  "scripts": {
+    "build": "npm -prefix front-end run build",
+    "preinstall": "cd ./back-end && npm install",
+    "install": "cd ./front-end && npm install",
+    "start": "npx concurrently 'npm run start:backend' 'npm run start:frontend'",
+    "start:backend": "npm --prefix ./back-end start",
+    "start:frontend": "npm --prefix ./front-end start",
+    "start:dev": "npx concurrently \"npm run start:dev --prefix ./back-end\" \"npm start --prefix ./front-end\" "
+  },
+  "contributors": [
+    {
+      "name": "James Lycett",
+      "url": "https://github.com/James-Lycett"
+    },
+    {
+      "name": "Vanessa Garcia",
+      "url": "https://github.com/petrihcour"
+    },
+    {
+      "name": "Lorraine Dong",
+      "url": "https://github.com/raindmj"
+    },
+    {
+      "name": "Collin DeWalt",
+      "url": "https://github.com/CollinDDD"
+    },
+    {
+      "name": "Rachel Cunningham",
+      "url": "https://github.com/rachel-cunningham"
+    },
+    {
+      "name": "Safaa Karamat",
+      "url": "https://github.com/safaakaramat"
+    }
+  ],
+  "license": "UNLICENSED"
 }

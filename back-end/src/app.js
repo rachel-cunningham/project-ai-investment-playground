@@ -11,17 +11,17 @@ const loginRouter = require("./authentication/login.router");
 
 const app = express();
 
-app.use(
-    cors({
-        origin: "http://localhost:3000",
-        credentials: true,
-    })
-);
+const corsOptions = {
+    origin: true,
+    credentials: true,
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
 
-app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/index.html');
+app.get("/", (req, res) => {
+    res.sendFile(__dirname + "/index.html");
 });
 app.use("/users", usersRouter);
 app.use("/login", loginRouter);

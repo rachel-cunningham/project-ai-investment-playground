@@ -160,7 +160,7 @@ const StrategiesForm = () => {
                   variant="contained"
                   color="primary"
                   sx={{
-                    fontFamily: "MontBlancBold",
+                    fontFamily: "Mavenpro",
                     textTransform: "none",
                     marginX: 5,
                     borderRadius: "15px",
@@ -204,7 +204,7 @@ const StrategiesForm = () => {
                   variant="contained"
                   color="primary"
                   sx={{
-                    fontFamily: "MontBlancBold",
+                    fontFamily: "MavenPro",
                     textTransform: "none",
                     marginX: 5,
                     borderRadius: "15px",
@@ -234,7 +234,7 @@ const StrategiesForm = () => {
                     color="primary"
                     size="large"
                     sx={{
-                      fontFamily: "MontBlancBold",
+                      fontFamily: "MavenPro",
                       textTransform: "none",
                       marginX: 1,
                       borderRadius: "15px",
@@ -260,7 +260,7 @@ const StrategiesForm = () => {
                     onClick={handleBack}
                     sx={{
                       mr: 1,
-                      fontFamily: "MontBlancBold",
+                      fontFamily: "MavenPro",
                       textTransform: "none",
                       marginX: 1,
                       borderRadius: "15px",
@@ -287,7 +287,7 @@ const StrategiesForm = () => {
                       (activeStep === steps.length - 1 && !isSubmitted)
                     }
                     sx={{
-                      fontFamily: "MontBlancBold",
+                      fontFamily: "MavenPro",
                       textTransform: "none",
                       marginX: 1,
                       borderRadius: "15px",
