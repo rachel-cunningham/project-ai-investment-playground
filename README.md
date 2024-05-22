@@ -36,16 +36,16 @@ https://wealthifyai-backend.onrender.com/
 
 Login credentials for demo users:
 
-username: jsmith
+username: jsmith <br>
 password: SimplePass1!
 
-username: jdoe
+username: jdoe <br>
 password: SimplePass2@
 
-username: mgreen
+username: mgreen <br>
 password: SimplePass3#
 
-username: eanderson
+username: eanderson <br>
 password: SimplePass4$
 
 ## How To Use WealthifyAI
@@ -96,25 +96,25 @@ Congratulations! You now have a new plan for your investment future.
 
 #### Team Advisor:
 
-Phillip Bickerstaff
+Phillip Bickerstaff <br>
 https://github.com/lighthawk68
 
 #### UX/UI designer:
 
-Kait Mahl
+Kait Mahl <br>
 https://kaitmahluxdesign.weebly.com/
 
 #### Frontend team:
 
-Vanessa Garcia
+Vanessa Garcia <br>
 https://github.com/petrihcour
 
 #### Backend team:
 
-James Lycett
+James Lycett <br>
 https://github.com/james-lycett
 
-Lorraine Dong
+Lorraine Dong <br>
 https://github.com/raindmj
 
 ## License
