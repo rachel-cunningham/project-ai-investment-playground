@@ -10,6 +10,7 @@ import StartPlanIcon from "../assets/images/icons/StartPlan_Icon.png";
 import ISIcon from "../assets/images/icons/Strat_icon.png";
 import TermIcon from "../assets/images/icons/Term_icon.png";
 import { Typography, Button, CardMedia } from "@mui/material";
+import HowItWorks from "../components/HowItWorks";
 
 {/* <Box
   sx={{
@@ -23,6 +24,7 @@ import { Typography, Button, CardMedia } from "@mui/material";
 </Box>; */}
 
 function DashboardPage() {
+
   const history = useNavigate();
   const [salutation, setSalutation] = useState("Good Morning");
 

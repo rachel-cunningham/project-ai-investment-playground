@@ -33,7 +33,6 @@ async function sendPrompt(req, res, next) {
     Please ensure the response is a valid JSON object and contains no additional text.
     `;
         const response = await gpt(prompt);
-        console.log(response)
         const parsedResponse = JSON.parse(response); // Gives us an actual object to work with
         return parsedResponse
     } catch (error) {

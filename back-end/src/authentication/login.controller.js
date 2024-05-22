@@ -41,6 +41,8 @@ async function login(req, res) {
             { expiresIn: "1h" }
         );
 
+
+        /* Chrome (amongst many other browsers) is phasing out third-party cookies
         res.cookie("token", token, {
             httpOnly: true,
             secure: process.env.NODE_ENV === "production", // set to process.env.NODE_ENV === 'production' if in production
@@ -48,9 +50,10 @@ async function login(req, res) {
             maxAge: 3600000, // 1 hour in milliseconds
             partitioned: true
         });
+        */
 
         // Sends user info back to frontend
-        res.status(200).json({ user: user });
+        res.status(200).json({ token, user });
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: "Internal server error" });
