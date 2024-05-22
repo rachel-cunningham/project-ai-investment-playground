@@ -96,6 +96,7 @@ Front-end developers:<br>
 Back-end developers:<br>
 James Lycett
 https://github.com/james-lycett
+<br>
 Lorraine Dong 
 https://github.com/raindmj
 
