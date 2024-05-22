@@ -40,7 +40,7 @@ const Confirm = ({ formData, userId, setIsSubmitted }) => {
     >
       <Typography variant="h1" 
         sx={{ 
-          fontFamily: "MontBlancBold", 
+          fontFamily: "MavenPro", 
           fontSize: "50px",
           background: 'linear-gradient(45deg, #6E3979, #3B0B47)',
           WebkitBackgroundClip: 'text',
@@ -64,7 +64,7 @@ const Confirm = ({ formData, userId, setIsSubmitted }) => {
           color='primary'
           disabled={isSubmitting}
           sx={{
-            fontFamily: "MontBlancBold",
+            fontFamily: "MavenPro",
             textTransform: 'none',
             borderRadius: '15px',
             boxShadow: '0 9px 0 #639577',
@@ -122,7 +122,7 @@ const Confirm = ({ formData, userId, setIsSubmitted }) => {
               color="primary" 
               autoFocus
               sx={{
-                fontFamily: "MontBlancBold",
+                fontFamily: "MavenPro",
                 textTransform: 'none',
                 borderRadius: '15px',
                 boxShadow: '0 9px 0 #639577',

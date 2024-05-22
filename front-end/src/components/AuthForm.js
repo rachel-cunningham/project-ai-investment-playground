@@ -110,7 +110,7 @@ const AuthForm = ({ isSignup, onSubmit, passwordError }) => {
           color="primary"
           size="large"
           sx={{
-            fontFamily: "MontBlancBold",
+            fontFamily: "MavenPro",
             textTransform: 'none',
             marginX: 1,
             borderRadius: '15px',

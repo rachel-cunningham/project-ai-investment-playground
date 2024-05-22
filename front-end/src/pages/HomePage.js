@@ -65,7 +65,6 @@ function HomePage() {
             variant="h1"
             color="#3B0B47"
             sx={{
-              fontFamily: "MontBlancBold",
               fontSize: {
                 xs: "3rem",
                 sm: "4rem",
@@ -79,7 +78,6 @@ function HomePage() {
           </Typography>
           <Typography
             variant="h4"
-            color="black"
             paragraph
             sx={{
               fontFamily: "Afacad",
@@ -104,11 +102,10 @@ function HomePage() {
             <Button
               component={Link}
               to="/sign-up"
-              variant="contained"
               color="primary"
               size="large"
               sx={{
-                fontFamily: "MontBlancBold",
+                fontFamily: "MavenPro",
                 fontSize: {
                   xs: "1rem",
                   sm: "1.7rem",

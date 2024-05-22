@@ -1,17 +1,17 @@
 import { GlobalStyles } from "@mui/material";
-import MontBlancBold from "../assets/fonts/MontBlanc-Trial-Bold.ttf";
 import theme from "./theme";
+import MavenProFont from "../assets/fonts/MavenPro-VariableFont_wght.ttf"; // Update the path to the MavenPro font file
 
 const GlobalTheme = () => (
   <GlobalStyles
     styles={{
       "@font-face": {
-        fontFamily: "MontBlancBold",
+        fontFamily: "MavenPro", // Change the font family name to MavenPro
         fontStyle: "normal",
         fontWeight: "bold",
         src: `
-          local('MontBlancBold'),
-          url(${MontBlancBold}) format('truetype')
+          local('MavenPro'),
+          url(${MavenProFont}) format('truetype') // Use MavenPro font file
         `,
       },
       "*": {
