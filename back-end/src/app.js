@@ -13,15 +13,17 @@ const app = express();
 
 app.use(
     cors({
-        origin: "http://localhost:3000",
+        origin:
+            "https://wealthifyai-backend.onrender.com" ||
+            "http://localhost:3000",
         credentials: true,
     })
 );
 app.use(express.json());
 app.use(cookieParser());
 
-app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/index.html');
+app.get("/", (req, res) => {
+    res.sendFile(__dirname + "/index.html");
 });
 app.use("/users", usersRouter);
 app.use("/login", loginRouter);
