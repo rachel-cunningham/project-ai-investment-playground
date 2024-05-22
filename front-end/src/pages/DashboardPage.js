@@ -12,19 +12,7 @@ import TermIcon from "../assets/images/icons/Term_icon.png";
 import { Typography, Button, CardMedia } from "@mui/material";
 import HowItWorks from "../components/HowItWorks";
 
-{/* <Box
-  sx={{
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    mb: 2,
-  }}
->
-  <HowItWorks />
-</Box>; */}
-
 function DashboardPage() {
-
   const history = useNavigate();
   const [salutation, setSalutation] = useState("Good Morning");
 
@@ -129,14 +117,20 @@ function DashboardPage() {
           </Box>
         </Grid>
 
-        <Box sx={{ pt: 3, pl: 3, pr: 3 }}>
-          <Typography>
-            Before creating your plan, check out your guide for How It Works
-          </Typography>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            pt: 3,
+            pl: 3,
+            pr: 3,
+          }}
+        >
+          <HowItWorks />
         </Box>
 
         {/* Box Layouts */}
-
         <Box
           sx={{
             display: "flex",
