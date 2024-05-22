@@ -3,7 +3,6 @@ const hasProperties = require("../utils/hasProperties");
 const goalsService = require("./goals.service");
 const authenticateToken = require("../authentication/authenticateToken");
 const gptController = require("../gpt/gpt.controller");
-const validateInput = require("../utils/validateInput");
 
 /*
  * Validation middleware
@@ -27,15 +26,13 @@ async function goalExists(req, res, next) {
             });
         }
     } catch (error) {
-        console.log(error);
+        console.error(error);
     }
 }
 
 // Check if the userId in params matches with the userId of the authorized user (aka the user that is logged in)
 function doesAuthorizedUserIdMatchUserIdInParams(req, res, next) {
-    console.log("PARAMS:", req.params);
     const paramsUserId = Number(req.params.userId);
-    console.log("REQ.USER:", req.user);
     const { userId } = req.user;
 
     if (paramsUserId === userId) {
@@ -230,12 +227,10 @@ async function update(req, res, next) {
  * Delete a user goal
  */
 async function destroy(req, res, next) {
-    console.log("PARAMS:", req.params);
     const { goal_id } = res.locals.goal;
 
     try {
         await goalsService.destroy(goal_id);
-        console.log("Plan deleted!");
         res.sendStatus(204);
     } catch (error) {
         next({
