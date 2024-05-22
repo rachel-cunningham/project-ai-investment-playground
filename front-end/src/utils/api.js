@@ -10,6 +10,8 @@
 
     userLogin --- takes user credentials and returns the matching user, sets cookie to say basically "<this user> is logged in"
 
+    userLogout --- logs the user out
+
     readUserByUsername --- takes a username and returns the matching user
 
     createGoal --- takes a goal object and a userId and returns the newly created goal
@@ -137,6 +139,10 @@ export async function userLogin(username, password, signal) {
     localStorage.setItem('token', token);
 
     return user;
+}
+
+function userLogout() {
+    localStorage.removeItem("token")
 }
 
 /* 
