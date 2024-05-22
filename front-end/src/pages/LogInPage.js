@@ -10,6 +10,7 @@ export default function LogInPage() {
         username: "",
         password: "",
     });
+    const [error, setError] = useState("");
     const navigate = useNavigate();
 
     const handleChange = (event) => {
@@ -23,15 +24,17 @@ export default function LogInPage() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const abortController = new AbortController();
+        setError(""); // Reset the error message
         try {
             const response = await userLogin(
                 credentials.username,
                 credentials.password,
                 abortController.signal
             );
-            console.log(`${response.username} logged in successfully`)
+            console.log(`${response.username} logged in successfully`);
             navigate(`/dashboard/${response.user_id}`);
         } catch (err) {
+            setError("* Invalid username or password *");
             console.error(err);
         }
     };
@@ -54,6 +57,15 @@ export default function LogInPage() {
             >
                 Welcome Back
             </Typography>
+            {error && (
+                <Typography
+                    variant="body1"
+                    color="error"
+                    sx={{ textAlign: 'center', my: 2, fontSize: '28px' }}
+                >
+                    {error}
+                </Typography>
+            )}
             <form onSubmit={handleSubmit} style={{ width: '100%', maxWidth: '400px' }}>
                 <Box sx={{ mb: 2 }}>
                     <h2 style={{ color: "white", mb: 0 }}>Username</h2>
@@ -95,7 +107,6 @@ export default function LogInPage() {
                     <Button
                         variant="contained"
                         type="submit"
-                        onClick={handleSubmit}
                         sx={{
                             fontFamily: "MavenPro",
                             textTransform: 'none',
