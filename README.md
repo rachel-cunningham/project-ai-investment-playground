@@ -89,15 +89,19 @@ Congratulations! You now have a new plan for your investment future.
 
 
 ## Contributors
+Team Advisor:<br>
+Phillip Bickerstaff https://github.com/lighthawk68
+
+
 UX/UI designer:<br>
 Kait Mahl
 https://kaitmahluxdesign.weebly.com/
 
-Front-end developers:<br>
+Frontend team:<br>
 
 
 
-Back-end developers:<br>
+Backend team:<br>
 James Lycett
 https://github.com/james-lycett
 <br>
