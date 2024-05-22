@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
+import {useNavigate} from "react-router-dom"; 
 import { Box, Typography, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Stack, CircularProgress } from '@mui/material';
 import { createGoal } from '../../utils/api';
 
 const Confirm = ({ formData, userId, setIsSubmitted }) => {
   const [open, setOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const navigate = useNavigate();
+
   const bodyStyle = {
     fontSize: '20px'
   };
@@ -26,8 +30,10 @@ const Confirm = ({ formData, userId, setIsSubmitted }) => {
     return () => abortController.abort;
   }
 
+  // VANESSA CHANGED THIS. IT CAN BE CHANGED BACK IF WE CAN GET FINISHED BUTTON TO DISPLAY PROPERLY, BUT I DONT THINK WE HAVE ENOUGH TIME FOR THAT. MAYBE BEST TO REDUCE A STEP AND DECREASE MOVING PARTS. 
   const handleClose = () => {
     setOpen(false);
+    navigate(`/dashboard/${userId}/plans`);
   };
 
   return (
@@ -106,16 +112,16 @@ const Confirm = ({ formData, userId, setIsSubmitted }) => {
                 textAlign: 'center', 
                 justifyContent: 'center', 
                 alignItems: 'center',
-                padding: 6,
+                // padding: 6,
               }}
             >
               {"Investment Strategy Successfully Submitted"}
             </DialogTitle>
-            <DialogContent>
+            {/* <DialogContent>
               <DialogContentText id="alert-dialog-description">
                 Your investment strategy has been successfully submitted.
               </DialogContentText>
-            </DialogContent>
+            </DialogContent> */}
             <DialogActions>
               <Button 
               onClick={handleClose} 
@@ -138,7 +144,7 @@ const Confirm = ({ formData, userId, setIsSubmitted }) => {
                 }
               }}
               >
-                Close
+                Go to Your Plans
               </Button>
             </DialogActions>
           </>
