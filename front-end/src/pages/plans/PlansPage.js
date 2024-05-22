@@ -23,7 +23,7 @@ import { PieChart } from '@mui/x-charts';
         if (userId) {
           listGoals(userId, signal)
             .then((resp) => {
-              setPlans(resp.data); // Assuming the API response is in `resp.data`
+              setPlans(resp.data); 
               setPlansError(null);
             })
             .catch((err) => {
