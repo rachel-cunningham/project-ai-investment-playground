@@ -54,25 +54,23 @@ const style = {
 const steps = ["Start", 'Goal', 'Initial Investment', 'Investment Length', 'Risk', 'Confirm'];
 
 const StrategiesForm = () => {
-  const { user_id } = useParams();
+  const { userId } = useParams();
+
   const initialFormData = {
-    goalName: '',
-    return: '',
-    yearsToInvest: '',
-    riskComfortLevel: 'Low',
-    startingInvestment: ''
+    goal_name: '',
+    expected_return_on_investment: '',
+    years_to_invest_for: '',
+    risk_comfort_level: 'low',
+    starting_amount_to_invest: '',
   };
 
   const [activeStep, setActiveStep] = React.useState(0);
   const [formData, setFormData] = React.useState(initialFormData);
+  const [isSubmitted, setIsSubmitted] = React.useState(false);
   const navigate = useNavigate();
 
-  const handleNext = async () => {
-    if (activeStep === steps.length - 1) {
-      await handleSubmit();
-    } else {
-      setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    }
+  const handleNext = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
 
   const handleBack = () => {
@@ -82,16 +80,17 @@ const StrategiesForm = () => {
   const handleReset = () => {
     setActiveStep(0);
     setFormData(initialFormData);
+    setIsSubmitted(false); // Reset submission status
   };
 
   const isStepValid = () => {
     switch (activeStep) {
       case 1:
-        return formData.goalName.trim() !== '' && formData.return !== '' && formData.return > 0;
+        return formData.goal_name.trim() !== '' && formData.expected_return_on_investment !== '' && formData.expected_return_on_investment > 0;
       case 2:
-        return formData.startingInvestment !== '' && formData.startingInvestment > 0;
+        return formData.starting_amount_to_invest !== '' && formData.starting_amount_to_invest > 0;
       case 3:
-        return formData.yearsToInvest !== '' && formData.yearsToInvest > 0;
+        return formData.years_to_invest_for !== '' && formData.years_to_invest_for > 0;
       default:
         return true;
     }
@@ -110,35 +109,9 @@ const StrategiesForm = () => {
       case 4:
         return <StepFive formData={formData} setFormData={setFormData} />;
       case 5:
-        return <Confirm formData={formData} />;
+        return <Confirm formData={formData} userId={userId} setIsSubmitted={setIsSubmitted} />;
       default:
         return 'Unknown step';
-    }
-  };
-
-  const handleSubmit = async () => {
-    const API_BASE_URL = 'https://api.example.com'; // Replace with your actual API base URL
-
-    try {
-      const response = await fetch(`${API_BASE_URL}/users/${user_id}/goals`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-
-      const result = await response.json();
-      console.log('Submission successful', result);
-
-      // Redirect to dashboard or show a success message
-      navigate('/dashboard');
-    } catch (error) {
-      console.error('There was a problem with the fetch operation:', error);
     }
   };
 
@@ -152,7 +125,7 @@ const StrategiesForm = () => {
             </Typography>
             <Box sx={{ display: 'flex', justifyContent: 'center', pt: 2, mb: 7 }}>
               <Button
-                onClick={() => navigate('/dashboard')}
+                onClick={() => navigate(`/dashboard/${userId}`)}
                 variant='contained'
                 color='primary'
                 sx={{
@@ -256,7 +229,7 @@ const StrategiesForm = () => {
                   onClick={handleNext}
                   variant='contained'
                   color='primary'
-                  disabled={!isStepValid()}
+                  disabled={!isStepValid() || (activeStep === steps.length - 1 && !isSubmitted)} 
                   sx={{
                     fontFamily: "MontBlancBold",
                     textTransform: 'none',
@@ -273,7 +246,7 @@ const StrategiesForm = () => {
                     }
                   }}
                 >
-                  {activeStep === steps.length - 1 ? 'Submit' : 'Next'}
+                  {activeStep === steps.length - 1 ? 'Finished' : 'Next'}
                 </Button>
               </Box>
             )}

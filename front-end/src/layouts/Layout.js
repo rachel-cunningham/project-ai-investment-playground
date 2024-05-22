@@ -7,6 +7,7 @@ import NotFoundPage from "../pages/NotFoundPage";
 import SignUpPage from "../pages/SignUpPage";
 import Articles from "../learningLibrary/articles";
 import Terms from "../learningLibrary/terms";
+import StrategiesForm from "../components/StrategiesForm/StrategiesForm";
 
 // For api testing
 import DashboardPage from "../pages/DashboardPage";
@@ -36,7 +37,7 @@ function Layout() {
           <Route path="/dashboard/:userId/plans" element={<PlansPage />} />
           <Route
             path="/dashboard/:userId/plans/new"
-            element={<NewPlanPage />}
+            element={<StrategiesForm />}
           />
           <Route
             path="/dashboard/:userId/plans/latest"
