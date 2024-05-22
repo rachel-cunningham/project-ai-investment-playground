@@ -89,6 +89,10 @@ Congratulations! You now have a new plan for your investment future.
 
 
 ## Contributors
+UX/UI designer:<br>
+Kait Mahl
+https://kaitmahluxdesign.weebly.com/
+
 Front-end developers:<br>
 
 
