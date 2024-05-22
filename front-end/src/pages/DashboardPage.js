@@ -1,55 +1,46 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Unstable_Grid2";
 import Avatar from "@mui/material/Avatar";
-import { createTheme } from "@mui/material/styles";
 import AuthHeader from "../components/AuthHeader";
 import EditIcon from "../assets/images/icons/EditPlans_Icon.png";
 import ViewPlanIcon from "../assets/images/icons/ViewPlans_icon.png";
 import StartPlanIcon from "../assets/images/icons/StartPlan_Icon.png";
 import ISIcon from "../assets/images/icons/Strat_icon.png";
 import TermIcon from "../assets/images/icons/Term_icon.png";
-import Account_Icon from "../assets/images/icons/Account_Icon.png";
-import Advice_icon from "../assets/images/icons/Advice_icon.png";
-import Plans_icon from "../assets/images/icons/Plans_icon.png";
-import Dashboard_icon from "../assets/images/icons/Dashboard_icon.png";
-import BlankProfile from "../assets/images/dashboard/blank-profile-picture.png";
-import "./DashboardPage.css";
-import { Typography } from "@mui/material";
+import { Typography, Button, CardMedia } from "@mui/material";
 import HowItWorks from "../components/HowItWorks";
 
-function DashboardPage({ name }) {
+{/* <Box
+  sx={{
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    mb: 2,
+  }}
+>
+  <HowItWorks />
+</Box>; */}
+
+function DashboardPage() {
+
   const history = useNavigate();
-  const [displayName, setDisplayName] = useState(name);
+  const [salutation, setSalutation] = useState("Good Morning");
 
   const { userId } = useParams();
 
-  const handleName = (name) => {
-    setDisplayName(name);
-  };
-
-  let salutation = "Good Morning,";
-  const theme = createTheme({
-    palette: {
-      primary: {
-        main: "#87DBA8",
-      },
-    },
-  });
-
   useEffect(() => {
-    const queryParameters = new URLSearchParams(window.location.search);
-    const lname = queryParameters.get("userId");
-    if (lname) {
-      setDisplayName(lname);
-    }
     let date = new Date();
+
     let hours = date.getHours();
-    if (hours >= 12 && hours <= 17) {
-      salutation = "Good Afternoon,";
+
+    if (hours >= 12 && hours < 17) {
+      setSalutation("Good Afternoon");
     } else if (hours >= 17 && hours <= 24) {
-      salutation = "Good Evening,";
+      setSalutation("Good Evening");
+    } else {
+      setSalutation("Good Morning");
     }
   }, []);
 
@@ -62,96 +53,455 @@ function DashboardPage({ name }) {
   };
 
   return (
-    <Box>
+    <Box sx={{ mt: { xs: 8, sm: 2, md: 10, lg: 0 } }}>
       <AuthHeader userId={userId} />
-      <Box className="top-box" sx={{ mb: 2 }}>
+      <Box
+        id="plans"
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          minHeight: "100vh",
+        }}
+      >
         <Grid
-          className="top"
           container
           direction="row"
-          justifyContent="flex-start"
-          spacing={1}
+          sx={{
+            border: {
+              xs: "1px solid #639577",
+              sm: "2px solid #639577",
+            },
+            borderRadius: {
+              xs: 20,
+              sm: 50,
+            },
+            padding: {
+              xs: 0,
+            },
+          }}
         >
           <Avatar
-            sx={{ bgcolor: theme, width: 86, height: 86 }}
-            xs={1}
-            src={BlankProfile}
-          ></Avatar>
-          <Grid xs={9}>
-            <Typography variant="h3">{salutation} </Typography>
-            <Typography variant="h3" sx={{ textTransform: "capitalize" }}>
-              {userId}
+            alt="User Avatar"
+            sx={{
+              width: {
+                xs: "60px",
+                sm: "120px",
+              },
+              height: {
+                xs: "60px",
+                sm: "120px",
+              },
+              mr: {
+                xs: 2,
+                sm: 5,
+              },
+            }}
+            // src=""  add a src dynamically based on user image upload from backend
+          />
+          <Box>
+            <Typography
+              variant="h2"
+              sx={{
+                fontFamily: "MontBlancBold",
+                textTransform: "capitalize",
+                color: "white",
+                fontSize: {
+                  xs: "1.4rem",
+                  sm: "2.7rem",
+                  md: "3rem",
+                  lg: "3.5rem",
+                },
+                mt: {
+                  xs: 2.5,
+                  sm: 4,
+                  md: 3,
+                },
+                mr: {
+                  xs: 2,
+                  sm: 5,
+                },
+              }}
+            >
+              {salutation}, {userId}
             </Typography>
-          </Grid>
+          </Box>
         </Grid>
-      </Box>
-      <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', mb: 2 }}>
-        <HowItWorks />
-      </Box>
-      <Box className="middle-box">
-        <Grid className="main-grid" container direction="column" spacing={2}>
-          <Grid
-            container
-            direction="row"
-            spacing={1}
-            justifyContent="space-evenly"
-          >
-            <Grid xs={12}>
-              <h2 className="titles">Things To Do</h2>
-            </Grid>
-            <Grid className="card" xs={3} onClick={goToPlanPage('latest')}>
-              <img src={EditIcon} alt="Edit Plan"></img>
-              <Box>Most Recent Plan</Box>
-            </Grid>
-            <Grid className="card" xs={3} onClick={goToPlanPage('')}>
-              <img src={ViewPlanIcon} alt="View Plan"></img>
-              <Box>View Plans</Box>
-            </Grid>
-            <Grid className="card" xs={3} onClick={goToPlanPage('new')}>
-              <img src={StartPlanIcon} alt="Start New Plan"></img>
-              <Box>Start New Plan</Box>
-            </Grid>
-          </Grid>
-          <Grid
-            container
-            direction="row"
-            spacing={1}
-            justifyContent="space-evenly"
-          >
-            <Grid xs={12}>
-              <h2 className="titles">Learning Paths</h2>
-            </Grid>
-            <Grid className="card" xs={3} onClick={goToPage('articles')}>
-              <img src={ISIcon} alt="Investment Strategies"></img>
-              <Box>Investment Strategies</Box>
-            </Grid>
-            <Grid className="card" xs={3} onClick={goToPage('terms')}>
-              <img src={TermIcon} alt="Terminology"></img>
-              <Box>Terminology</Box>
-            </Grid>
-          </Grid>
-        </Grid>
-      </Box>
-      <Box className="bottom">
-        <Grid
-          container
-          direction="row"
-          spacing={2}
-          justifyContent="space-evenly"
+
+        <Box sx={{ pt: 3, pl: 3, pr: 3 }}>
+          <Typography>
+            Before creating your plan, check out your guide for How It Works
+          </Typography>
+        </Box>
+
+        {/* Box Layouts */}
+
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            p: 3,
+          }}
         >
-          <Grid xs={2}>
-            <img src={Dashboard_icon} alt="Dashboard"></img>
-          </Grid>
-          <Grid xs={2}>
-            <img src={Advice_icon} alt="Advice"></img>
-          </Grid>
-          <Grid xs={2}>
-            <img src={Plans_icon} alt="Plans"></img>
-          </Grid>
-          <Grid xs={2}>
-            <img src={Account_Icon} alt="Account"></img>
-          </Grid>
-        </Grid>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              width: "100%",
+              mt: 1,
+            }}
+          >
+            {/* Box 1 */}
+            <Box
+              sx={{
+                bgcolor: "white",
+                border: "8px solid #87DBA8",
+                borderRadius: "25px",
+                width: "100%",
+                textAlign: "center",
+                p: 2,
+                mb: { xs: 5, lg: 1 },
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+              }}
+            >
+              <Grid
+                container
+                direction="row"
+                justifyContent="space-evenly"
+                spacing={2}
+              >
+                <Grid xs={12}>
+                  <Typography variant="h4" sx={{ color: "black" }}>
+                    Things To Do
+                  </Typography>
+                </Grid>
+                <Grid
+                  className="card"
+                  xs={4}
+                  onClick={goToPlanPage("latest")}
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <Button
+                    size="large"
+                    sx={{
+                      textTransform: "none",
+                      border: "3px solid #87DBA8",
+                      borderRadius: "15px",
+                      boxShadow: "0 5px 0 #87DBA8",
+                      padding: { xs: "1px 50px", lg: "10px 30px" },
+                      "&:hover": {
+                        border: "3px solid #639577",
+                        boxShadow: "0 5px 0 #639577",
+                      },
+                      mb: 1,
+                      width: "100%",
+                      height: "100%",
+                    }}
+                  >
+                    <CardMedia
+                      component="img"
+                      src={EditIcon}
+                      alt="Pie graph icon"
+                      sx={{
+                        width: {
+                          xs: "20px",
+                          sm: "30px",
+                          md: "35px",
+                          lg: "40px",
+                        },
+                        mr: 1,
+                      }}
+                    />
+                    <Typography
+                      sx={{
+                        color: "#3B0347",
+                        fontFamily: "MontBlancBold",
+                        fontSize: {
+                          xs: "0.8rem",
+                          sm: "1rem",
+                          md: "1.5rem",
+                          lg: "1.2rem",
+                        },
+                        padding: { md: "10px 5px", lg: "10px 10px" },
+                      }}
+                    >
+                      Most Recent Plan
+                    </Typography>
+                  </Button>
+                </Grid>
+                <Grid
+                  className="card"
+                  xs={4}
+                  onClick={goToPlanPage("")}
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <Button
+                    size="large"
+                    sx={{
+                      textTransform: "none",
+                      border: "3px solid #87DBA8",
+                      borderRadius: "15px",
+                      boxShadow: "0 5px 0 #87DBA8",
+                      padding: { xs: "1px 50px", lg: "10px 30px" },
+                      "&:hover": {
+                        border: "3px solid #639577",
+                        boxShadow: "0 5px 0 #639577",
+                      },
+                      mb: 1,
+                      width: "100%",
+                      height: "100%",
+                    }}
+                  >
+                    <CardMedia
+                      component="img"
+                      src={ViewPlanIcon}
+                      alt="Bar chart icon"
+                      sx={{
+                        width: {
+                          xs: "20px",
+                          sm: "30px",
+                          md: "35px",
+                          lg: "40px",
+                        },
+                        mr: 1,
+                      }}
+                    />
+                    <Typography
+                      sx={{
+                        color: "#3B0347",
+                        fontFamily: "MontBlancBold",
+                        fontSize: {
+                          xs: "0.8rem",
+                          sm: "1rem",
+                          md: "1.5rem",
+                          lg: "1.2rem",
+                        },
+                        padding: { md: "10px 5px", lg: "10px 10px" },
+                      }}
+                    >
+                      View Plans
+                    </Typography>
+                  </Button>
+                </Grid>
+                <Grid
+                  className="card"
+                  xs={4}
+                  onClick={goToPlanPage("new")}
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <Button
+                    size="large"
+                    sx={{
+                      textTransform: "none",
+                      border: "3px solid #87DBA8",
+                      borderRadius: "15px",
+                      boxShadow: "0 5px 0 #87DBA8",
+                      padding: { xs: "1px 50px", lg: "10px 30px" },
+                      "&:hover": {
+                        border: "3px solid #639577",
+                        boxShadow: "0 5px 0 #639577",
+                      },
+                      mb: 1,
+                      width: "100%",
+                      height: "100%",
+                    }}
+                  >
+                    <CardMedia
+                      component="img"
+                      src={StartPlanIcon}
+                      alt="Plus sign icon"
+                      sx={{
+                        width: {
+                          xs: "20px",
+                          sm: "30px",
+                          md: "35px",
+                          lg: "40px",
+                        },
+                        mr: 1,
+                      }}
+                    />
+                    <Typography
+                      sx={{
+                        color: "#3B0347",
+                        fontFamily: "MontBlancBold",
+                        fontSize: {
+                          xs: "0.8rem",
+                          sm: "1rem",
+                          md: "1.5rem",
+                          lg: "1.2rem",
+                        },
+                        padding: { md: "10px 5px", lg: "10px 10px" },
+                      }}
+                    >
+                      Start New Plan
+                    </Typography>
+                  </Button>
+                </Grid>
+              </Grid>
+            </Box>
+            {/* Box 2  */}
+            <Box
+              sx={{
+                bgcolor: "white",
+                border: "8px solid #87DBA8",
+                borderRadius: "25px",
+                width: "100%",
+                textAlign: "center",
+                p: 2,
+                mb: { xs: 5, lg: 1 },
+                mt: 4,
+              }}
+            >
+              <Grid
+                container
+                direction="row"
+                spacing={2}
+                justifyContent="space-evenly"
+              >
+                <Grid xs={12}>
+                  <Typography variant="h4" sx={{ color: "black" }}>
+                    Learning Path Resources
+                  </Typography>
+                </Grid>
+                <Grid
+                  className="card"
+                  xs={6}
+                  onClick={goToPage("articles")}
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <Button
+                    size="large"
+                    sx={{
+                      textTransform: "none",
+                      border: "3px solid #87DBA8",
+                      borderRadius: "15px",
+                      boxShadow: "0 5px 0 #87DBA8",
+                      padding: { xs: "1px 65px", lg: "10px 30px" },
+                      "&:hover": {
+                        border: "3px solid #639577",
+                        boxShadow: "0 5px 0 #639577",
+                      },
+                      mb: 1,
+                      width: "100%",
+                      height: "100%",
+                    }}
+                  >
+                    <CardMedia
+                      component="img"
+                      src={ISIcon}
+                      alt="Light bulb icon"
+                      sx={{
+                        width: {
+                          xs: "20px",
+                          sm: "30px",
+                          md: "35px",
+                          lg: "40px",
+                        },
+                        mr: 1,
+                      }}
+                    />
+                    <Typography
+                      sx={{
+                        color: "#3B0347",
+                        fontFamily: "MontBlancBold",
+                        fontSize: {
+                          xs: "0.8rem",
+                          sm: "1rem",
+                          md: "1.5rem",
+                          lg: "1.2rem",
+                        },
+                        padding: { md: "10px 5px", lg: "10px 10px" },
+                      }}
+                    >
+                      Investment Strategies
+                    </Typography>
+                  </Button>
+                </Grid>
+                <Grid
+                  className="card"
+                  xs={6}
+                  onClick={goToPage("terms")}
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <Button
+                    size="large"
+                    sx={{
+                      textTransform: "none",
+                      border: "3px solid #87DBA8",
+                      borderRadius: "15px",
+                      boxShadow: "0 5px 0 #87DBA8",
+                      padding: { xs: "1px 65px", lg: "10px 30px" },
+                      "&:hover": {
+                        border: "3px solid #639577",
+                        boxShadow: "0 5px 0 #639577",
+                      },
+                      mb: 1,
+                      width: "100%",
+                      height: "100%",
+                    }}
+                  >
+                    <CardMedia
+                      component="img"
+                      src={TermIcon}
+                      alt="Letter icon"
+                      sx={{
+                        width: {
+                          xs: "20px",
+                          sm: "30px",
+                          md: "35px",
+                          lg: "40px",
+                        },
+                        mr: 1,
+                      }}
+                    />
+                    <Typography
+                      sx={{
+                        color: "#3B0347",
+                        fontFamily: "MontBlancBold",
+                        fontSize: {
+                          xs: "0.8rem",
+                          sm: "1rem",
+                          md: "1.5rem",
+                          lg: "1.2rem",
+                        },
+                        padding: { md: "10px 5px", lg: "10px 10px" },
+                      }}
+                    >
+                      Terminology
+                    </Typography>
+                  </Button>
+                </Grid>
+              </Grid>
+            </Box>
+          </Box>
+        </Box>
       </Box>
     </Box>
   );
