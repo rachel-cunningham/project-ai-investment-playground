@@ -12,11 +12,7 @@ const style = {
   alignItems: 'center'
 };
 
-const gradientTextStyle = {
-  background: 'linear-gradient(45deg, #6E3979, #3B0B47)',
-  WebkitBackgroundClip: 'text',
-  WebkitTextFillColor: 'transparent',
-};
+
 
 export default function StepOne() {
   return (
