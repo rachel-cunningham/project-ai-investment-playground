@@ -66,7 +66,7 @@ const StrategiesForm = () => {
 
   const [activeStep, setActiveStep] = React.useState(0);
   const [formData, setFormData] = React.useState(initialFormData);
-  const [isSubmitted, setIsSubmitted] = React.useState(false); // Track if form is submitted
+  const [isSubmitted, setIsSubmitted] = React.useState(false);
   const navigate = useNavigate();
 
   const handleNext = () => {
@@ -114,7 +114,7 @@ const StrategiesForm = () => {
         return 'Unknown step';
     }
   };
-  console.log(formData)
+
   return (
     <ThemeProvider theme={theme}>
       <Box sx={style}>
@@ -125,7 +125,7 @@ const StrategiesForm = () => {
             </Typography>
             <Box sx={{ display: 'flex', justifyContent: 'center', pt: 2, mb: 7 }}>
               <Button
-                onClick={() => navigate('/dashboard')}
+                onClick={() => navigate(`/dashboard/${userId}`)}
                 variant='contained'
                 color='primary'
                 sx={{
@@ -229,7 +229,7 @@ const StrategiesForm = () => {
                   onClick={handleNext}
                   variant='contained'
                   color='primary'
-                  //disabled={!isStepValid() || (activeStep === steps.length - 1 && !isSubmitted)} // Disable on last step if not submitted
+                  disabled={!isStepValid() || (activeStep === steps.length - 1 && !isSubmitted)} 
                   sx={{
                     fontFamily: "MontBlancBold",
                     textTransform: 'none',
