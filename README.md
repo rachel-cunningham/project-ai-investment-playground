@@ -90,11 +90,11 @@ Congratulations! You now have a new plan for your investment future.
 
 ## Contributors
 #### Team Advisor:<br>
-Phillip Bickerstaff https://github.com/lighthawk68
+Phillip Bickerstaff<br> https://github.com/lighthawk68
 
 
 #### UX/UI designer:<br>
-Kait Mahl
+Kait Mahl<br>
 https://kaitmahluxdesign.weebly.com/
 
 #### Frontend team:
@@ -102,10 +102,10 @@ https://kaitmahluxdesign.weebly.com/
 
 
 #### Backend team:<br>
-James Lycett
+James Lycett<br>
 https://github.com/james-lycett<br>
 <br>
-Lorraine Dong 
+Lorraine Dong<br>
 https://github.com/raindmj
 
 
