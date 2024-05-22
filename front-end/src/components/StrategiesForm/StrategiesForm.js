@@ -178,6 +178,28 @@ const StrategiesForm = () => {
                   Back To Dashboard
                 </Button>
                 <Button
+                  onClick={() => navigate(`/dashboard/${userId}/plans`)}
+                  variant="contained"
+                  color="primary"
+                  sx={{
+                    fontFamily: "MontBlancBold",
+                    textTransform: "none",
+                    marginX: 5,
+                    borderRadius: "15px",
+                    boxShadow: "0 9px 0 #639577",
+                    width: "auto",
+                    paddingX: 3,
+                    color: "#3B0347",
+                    bgcolor: "#87DBA8",
+                    "&:hover": {
+                      bgcolor: "#639577",
+                      boxShadow: "0px",
+                    },
+                  }}
+                >
+                  View My Plans
+                </Button>
+                <Button
                   onClick={handleReset}
                   variant="contained"
                   color="primary"

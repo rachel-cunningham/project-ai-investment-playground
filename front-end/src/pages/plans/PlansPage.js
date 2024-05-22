@@ -8,6 +8,8 @@ import CustomDivider from "../../components/CustomDivider";
 // PLACEHOLDER DONE
 // IF NO PLAN, SHOW THE NO PLAN CARD, OTHERWISE, SHOW THE PLANS
 
+// MAKE SURE YOU USE GET THE USERID FROM THE PARAMS OTHERWISE THE NEW PLANS PAGE WONT WORK CORRECTLY
+
 function PlansPage({ userId }) {
   return (
     <Box sx={{ mt: { xs: 5, md: 0 } }}>
@@ -25,6 +27,7 @@ function PlansPage({ userId }) {
         <Typography
           variant="h2"
           sx={{
+            fontFamily: "MontBlancBold",
             textAlign: "center",
             color: "#87DBA8",
             fontSize: { xs: "3rem", sm: "4rem", md: "5rem", lg: "4.8rem" },
@@ -68,7 +71,6 @@ function PlansPage({ userId }) {
               <Typography
                 variant="h4"
                 sx={{
-                  fontFamily: "Afacad",
                   color: "#3B0347",
                   mb: 5,
                 }}
@@ -84,7 +86,7 @@ function PlansPage({ userId }) {
                 color="primary"
                 size="small"
                 sx={{
-                  fontFamily: "MavenPro",
+                  fontFamily: "MontBlancBold",
                   fontSize: {
                     xs: "0.8rem",
                     sm: "0.8rem",

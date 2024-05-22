@@ -5,6 +5,7 @@ import { createGoal } from '../../utils/api';
 const Confirm = ({ formData, userId, setIsSubmitted }) => {
   const [open, setOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(false); // New state for disabling the button
   const bodyStyle = {
     fontSize: '20px'
   };
@@ -19,6 +20,7 @@ const Confirm = ({ formData, userId, setIsSubmitted }) => {
       console.log("Goal created!");
       setIsSubmitted(true);
       setIsSubmitting(false);
+      setIsDisabled(true); // Disable the submit button after successful submission
     } catch (error) {
       console.log(error);
       setIsSubmitting(false); // Re-enable submit button if there's an error
@@ -62,7 +64,7 @@ const Confirm = ({ formData, userId, setIsSubmitted }) => {
           onClick={handleSubmit}
           variant='contained'
           color='primary'
-          disabled={isSubmitting}
+          disabled={isSubmitting || isDisabled} // Disable button based on isSubmitting or isDisabled state
           sx={{
             fontFamily: "MavenPro",
             textTransform: 'none',
