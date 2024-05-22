@@ -42,6 +42,16 @@ headers.append("Content-Type", "application/json");
 
 // Utility function, configured and called by the other functions in this file
 async function fetchJson(url, options, onCancel) {
+    const token = localStorage.getItem('token');
+
+    if (token) {
+        if (!options.headers) {
+            options.headers = new Headers();
+        }
+        options.headers.append("Authorization", `Bearer ${token}`);
+    }
+
+
     try {
         const response = await fetch(url, {
             ...options,
@@ -120,7 +130,9 @@ export async function userLogin(username, password, signal) {
         signal,
     };
 
-    const { user } = await fetchJson(url, options);
+    const { token, user } = await fetchJson(url, options);
+
+    localStorage.setItem('token', token);
 
     return user;
 }
