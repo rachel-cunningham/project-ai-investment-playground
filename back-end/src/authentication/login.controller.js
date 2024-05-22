@@ -46,6 +46,7 @@ async function login(req, res) {
             secure: process.env.NODE_ENV === "production", // set to process.env.NODE_ENV === 'production' if in production
             sameSite: "none",
             maxAge: 3600000, // 1 hour in milliseconds
+            partitioned
         });
 
         // Sends user info back to frontend
