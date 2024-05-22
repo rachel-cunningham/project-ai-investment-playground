@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { listGoals } from "../../utils/api";
 import { Link } from "react-router-dom";
 import { Box, Typography, Button } from "@mui/material";
-import Grid from "@mui/material/Unstable_Grid2";
 import AuthHeader from "../../components/AuthHeader";
 import CustomDivider from "../../components/CustomDivider";
 import { useParams, useNavigate} from "react-router-dom";
