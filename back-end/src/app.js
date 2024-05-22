@@ -13,9 +13,7 @@ const app = express();
 
 app.use(
     cors({
-        origin:
-            "https://wealthifyai-backend.onrender.com" ||
-            "http://localhost:3000",
+        origin: "https://wealthifyai.onrender.com" || "http://localhost:3000",
         credentials: true,
     })
 );
