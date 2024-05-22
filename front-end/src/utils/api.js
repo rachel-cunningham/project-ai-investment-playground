@@ -34,7 +34,7 @@
 
 // Will be either https://wealthifyai-backend.onrender.com or http://localhost:5001
 const API_BASE_URL =
-    /*process.env.REACT_APP_API_BASE_URL ||*/ "http://localhost:5001";
+    process.env.REACT_APP_API_BASE_URL || "http://localhost:5001";
 
 // Just a couple necessary request headers
 const headers = new Headers();
