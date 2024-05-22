@@ -35,8 +35,8 @@ export default function StepFour({ formData, setFormData }) {
               },
             },
           }}
-          name="yearsToInvest"
-          value={formData.yearsToInvest}
+          name="years_to_invest_for"
+          value={formData.years_to_invest_for}
           onChange={handleChange}
           variant="outlined"
           placeholder="Enter Number of Years"

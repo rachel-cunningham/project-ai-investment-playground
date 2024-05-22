@@ -76,7 +76,7 @@ function Header() {
               sx={{
                 marginRight: 2,
                 borderRadius: 3,
-                fontFamily: "MontBlancBold",
+                fontFamily: "MavenPro",
                 fontSize: {
                   xs: "0.8rem",
                   sm: "1rem",
@@ -99,7 +99,7 @@ function Header() {
               color="primary"
               sx={{
                 borderRadius: 3,
-                fontFamily: "MontBlancBold",
+                fontFamily: "MavenPro",
                 fontSize: {
                   xs: "0.8rem",
                   sm: "1rem",

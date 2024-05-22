@@ -44,8 +44,8 @@ export default function StepTwo({ formData, setFormData }) {
               },
             },
           }}
-          name="goalName"
-          value={formData.goalName}
+          name="goal_name"
+          value={formData.goal_name}
           onChange={handleChange}
           variant="outlined"
           placeholder="EX: General Savings Plan"
@@ -73,8 +73,8 @@ export default function StepTwo({ formData, setFormData }) {
               },
             },
           }}
-          name="return"
-          value={formData.return}
+          name="expected_return_on_investment"
+          value={formData.expected_return_on_investment}
           onChange={handleNumberChange}
           variant="outlined"
           placeholder="Enter Dollar Amount"

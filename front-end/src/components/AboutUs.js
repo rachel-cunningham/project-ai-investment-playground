@@ -21,7 +21,6 @@ function AboutUs() {
         <Typography
           variant="h2"
           sx={{
-            fontFamily: "MontBlancBold",
             textAlign: "center",
             color: "#87DBA8",
             fontSize: { xs: "3rem", sm: "4rem", md: "5rem", lg: "4.8rem" },
@@ -62,7 +61,6 @@ function AboutUs() {
           >
             <Typography
               sx={{
-                fontFamily: "MontBlancBold",
                 textAlign: { xs: "center", md: "left" },
                 color: "#87DBA8",
                 fontSize: { xs: "2.5rem", md: "3rem", lg: "3.8rem" },
@@ -110,7 +108,6 @@ function AboutUs() {
           >
             <Typography
               sx={{
-                fontFamily: "MontBlancBold",
                 textAlign: { xs: "center", md: "left" },
                 color: "#87DBA8",
                 fontSize: { xs: "2.5rem", md: "3rem", lg: "3.8rem" },
@@ -156,7 +153,7 @@ function AboutUs() {
                 color="primary"
                 size="small"
                 sx={{
-                  fontFamily: "MontBlancBold",
+                  fontFamily: "MavenPro",
                   fontSize: {
                     xs: "0.8rem",
                     sm: "0.8rem",
