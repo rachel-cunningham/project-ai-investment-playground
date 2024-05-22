@@ -10,9 +10,6 @@ import "../DashboardPage.css";
 import "./PlansPage.css";
 import { PieChart } from '@mui/x-charts';
 
-// LOGIC NEEDED TO BE IMPLEMENTED TO DO GET REQUEST IN PLANS AND HAVE THEM SHOW UP ON THIS PAGE
-// PLACEHOLDER DONE
-// IF NO PLAN, SHOW THE NO PLAN CARD, OTHERWISE, SHOW THE PLANS 
 
   const PlansPage = () => {
     const [plans, setPlans] = useState([]);
