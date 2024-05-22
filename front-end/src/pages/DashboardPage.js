@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate} from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Unstable_Grid2";
 import Avatar from "@mui/material/Avatar";
@@ -17,8 +17,7 @@ import Dashboard_icon from "../assets/images/icons/Dashboard_icon.png";
 import BlankProfile from "../assets/images/dashboard/blank-profile-picture.png";
 import "./DashboardPage.css";
 import { Typography } from "@mui/material";
-
-
+import HowItWorks from "../components/HowItWorks";
 
 function DashboardPage({ name }) {
   const history = useNavigate();
@@ -38,7 +37,8 @@ function DashboardPage({ name }) {
       },
     },
   });
-  React.useEffect(() => {
+
+  useEffect(() => {
     const queryParameters = new URLSearchParams(window.location.search);
     const lname = queryParameters.get("userId");
     if (lname) {
@@ -52,17 +52,19 @@ function DashboardPage({ name }) {
       salutation = "Good Evening,";
     }
   }, []);
-  const goToPlanPage=planType=>()=>{
+
+  const goToPlanPage = (planType) => () => {
     history(`/dashboard/${userId}/plans/${planType}`);
-  }
-  const goToPage=learningType=>()=>{
+  };
+
+  const goToPage = (learningType) => () => {
     history(`/learning-paths/${learningType}`);
-  }
-  
+  };
+
   return (
     <Box>
       <AuthHeader userId={userId} />
-      <Box className="top-box">
+      <Box className="top-box" sx={{ mb: 2 }}>
         <Grid
           className="top"
           container
@@ -83,6 +85,9 @@ function DashboardPage({ name }) {
           </Grid>
         </Grid>
       </Box>
+      <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', mb: 2 }}>
+        <HowItWorks />
+      </Box>
       <Box className="middle-box">
         <Grid className="main-grid" container direction="column" spacing={2}>
           <Grid
@@ -95,16 +100,15 @@ function DashboardPage({ name }) {
               <h2 className="titles">Things To Do</h2>
             </Grid>
             <Grid className="card" xs={3} onClick={goToPlanPage('latest')}>
-              <img src={EditIcon}></img>
+              <img src={EditIcon} alt="Edit Plan"></img>
               <Box>Most Recent Plan</Box>
             </Grid>
             <Grid className="card" xs={3} onClick={goToPlanPage('')}>
-              <img src={ViewPlanIcon}></img>
-              <Box >View Plans
-              </Box>
+              <img src={ViewPlanIcon} alt="View Plan"></img>
+              <Box>View Plans</Box>
             </Grid>
             <Grid className="card" xs={3} onClick={goToPlanPage('new')}>
-              <img src={StartPlanIcon}></img>
+              <img src={StartPlanIcon} alt="Start New Plan"></img>
               <Box>Start New Plan</Box>
             </Grid>
           </Grid>
@@ -118,11 +122,11 @@ function DashboardPage({ name }) {
               <h2 className="titles">Learning Paths</h2>
             </Grid>
             <Grid className="card" xs={3} onClick={goToPage('articles')}>
-              <img src={ISIcon}></img>
+              <img src={ISIcon} alt="Investment Strategies"></img>
               <Box>Investment Strategies</Box>
             </Grid>
             <Grid className="card" xs={3} onClick={goToPage('terms')}>
-              <img src={TermIcon}></img>
+              <img src={TermIcon} alt="Terminology"></img>
               <Box>Terminology</Box>
             </Grid>
           </Grid>
@@ -136,16 +140,16 @@ function DashboardPage({ name }) {
           justifyContent="space-evenly"
         >
           <Grid xs={2}>
-            <img src={Dashboard_icon}></img>
+            <img src={Dashboard_icon} alt="Dashboard"></img>
           </Grid>
           <Grid xs={2}>
-            <img src={Advice_icon}></img>
+            <img src={Advice_icon} alt="Advice"></img>
           </Grid>
           <Grid xs={2}>
-            <img src={Plans_icon}></img>
+            <img src={Plans_icon} alt="Plans"></img>
           </Grid>
           <Grid xs={2}>
-            <img src={Account_Icon}></img>
+            <img src={Account_Icon} alt="Account"></img>
           </Grid>
         </Grid>
       </Box>
