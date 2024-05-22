@@ -68,17 +68,23 @@ function SignUpPage() {
         }
         setErrors(validationErrors);
         if (Object.keys(validationErrors).length === 0) {
-            const abortController = new AbortController();
-            try {
-                
-                await createUser(userData, abortController.signal);
-                console.log("User created!");
-                setOpen(true);
-            } catch (error) {
-                console.log(error);
-            }
-            return () => abortController.abort();
-        }
+          const abortController = new AbortController();
+          try {
+              await createUser(userData, abortController.signal);
+              console.log("User created!");
+              setOpen(true);
+          } catch (error) {
+              if (error.message.includes("violates unique constraint")) {
+                  setErrors({ username: "Username is already taken" });
+              } else {
+                  console.log(error);
+                  setErrors({ general: "An unexpected error occurred. Please try again later." });
+              }
+          }
+          return () => abortController.abort();
+      } else {
+          setErrors(validationErrors);
+      }
     }
 
     const handleClose = () => {
