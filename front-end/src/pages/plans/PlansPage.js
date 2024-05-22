@@ -6,7 +6,6 @@ import AuthHeader from "../../components/AuthHeader";
 import CustomDivider from "../../components/CustomDivider";
 import { useParams, useNavigate} from "react-router-dom";
 import EditIcon from "../../assets/images/icons/EditPlans_Icon.png";
-import "../DashboardPage.css";
 import "./PlansPage.css";
 import { PieChart } from '@mui/x-charts';
 

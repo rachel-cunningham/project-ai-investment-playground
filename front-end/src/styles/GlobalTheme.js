@@ -1,12 +1,12 @@
 import { GlobalStyles } from "@mui/material";
 import theme from "./theme";
-import MavenProFont from "../assets/fonts/MavenPro-VariableFont_wght.ttf"; // Update the path to the MavenPro font file
+import MavenProFont from "../assets/fonts/MavenPro-VariableFont_wght.ttf";
 
 const GlobalTheme = () => (
   <GlobalStyles
     styles={{
       "@font-face": {
-        fontFamily: "MavenPro", // Change the font family name to MavenPro
+        fontFamily: "MavenPro",
         fontStyle: "normal",
         fontWeight: "bold",
         src: `
@@ -31,13 +31,6 @@ const GlobalTheme = () => (
         alignItems: "center",
         justifyContent: "center",
         minHeight: "100vh",
-      },
-      // to further add custom styles for elements in Layout.js
-      ".Header": {
-        // styles for the header component
-      },
-      ".Footer": {
-        //  styles for the footer component
       },
       // can add more styles as needed
     }}
