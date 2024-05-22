@@ -2,7 +2,7 @@ import React from "react";
 import {Box, ImageList, ImageListItem,ImageListItemBar, ListSubheader} from '@mui/material/';
 import AuthHeader from "../components/AuthHeader";
 import { useParams } from "react-router-dom";
-import "./articles.css";
+import "../styles/articles.css";
 
 
 function Articles(){

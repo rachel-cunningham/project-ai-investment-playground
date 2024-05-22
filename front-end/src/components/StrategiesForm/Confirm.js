@@ -18,7 +18,7 @@ const Confirm = ({ formData, userId, setIsSubmitted }) => {
       await createGoal(formData, userId, abortController.signal);
       console.log("Goal created!");
       setIsSubmitted(true);
-      setIsSubmitting(false); // Stop showing progress indicator
+      setIsSubmitting(false);
     } catch (error) {
       console.log(error);
       setIsSubmitting(false); // Re-enable submit button if there's an error

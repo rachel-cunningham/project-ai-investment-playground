@@ -16,7 +16,6 @@ import DisplayOneGoal from "../pages/GoalsExamplePages/DisplayOneGoal";
 import ExampleCreateGoal from "../pages/GoalsExamplePages/ExampleCreateGoal";
 import ExampleDashboard from "../pages/GoalsExamplePages/ExampleDashboard";
 import PlansPage from "../pages/plans/PlansPage";
-import NewPlanPage from "../pages/plans/NewPlanPage";
 import LatestPlanPage from "../pages/plans/LatestPlanPage";
 import PrivacyPolicyPage from "../pages/PrivacyPolicyPage";
 import AccountPage from "../pages/AccountPage";
