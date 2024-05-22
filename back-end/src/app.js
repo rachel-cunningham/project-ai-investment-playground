@@ -11,11 +11,12 @@ const loginRouter = require("./authentication/login.router");
 
 const app = express();
 
-app.use(
-    cors({
-        credentials: true,
-    })
-);
+const corsOptions = {
+    origin: process.env.CORS_ORIGIN_URL,
+    credentials: true,
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
 
