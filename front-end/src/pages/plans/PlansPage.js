@@ -10,7 +10,6 @@ import "../DashboardPage.css";
 import "./PlansPage.css";
 import { PieChart } from '@mui/x-charts';
 
-
   const PlansPage = () => {
     const [plans, setPlans] = useState([]);
     const { userId } = useParams();

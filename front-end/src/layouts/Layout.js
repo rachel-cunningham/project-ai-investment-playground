@@ -11,7 +11,7 @@ import StrategiesForm from "../components/StrategiesForm/StrategiesForm";
 
 // For api testing
 import DashboardPage from "../pages/DashboardPage";
-import ExampleLoginPage from "../pages/ExampleLoginPage";
+
 import DisplayOneGoal from "../pages/GoalsExamplePages/DisplayOneGoal";
 import ExampleCreateGoal from "../pages/GoalsExamplePages/ExampleCreateGoal";
 import ExampleDashboard from "../pages/GoalsExamplePages/ExampleDashboard";
@@ -31,7 +31,6 @@ function Layout() {
           <Route path="/log-in" element={<LogInPage />} />
           <Route path="/sign-up" element={<SignUpPage />} />
           <Route path="*" element={<NotFoundPage />} />
-          <Route path="/example-login" element={<ExampleLoginPage />} />
           <Route path="/dashboard/:userId" element={<DashboardPage />} />
           <Route path="/dashboard/:userId/plans" element={<PlansPage />} />
           <Route
@@ -52,7 +51,7 @@ function Layout() {
           <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
 
           {/* example pages */}
-          <Route path="/example-login" element={<ExampleLoginPage />} />
+
           <Route
             path="/dashboard/:userId/create"
             element={<ExampleCreateGoal />}
