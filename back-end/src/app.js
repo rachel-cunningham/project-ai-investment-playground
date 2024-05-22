@@ -12,7 +12,7 @@ const loginRouter = require("./authentication/login.router");
 const app = express();
 
 const corsOptions = {
-    origin: process.env.CORS_ORIGIN_URL,
+    origin: [process.env.CORS_ORIGIN_URL, "http://localhost:3000"],
     credentials: true,
 };
 
