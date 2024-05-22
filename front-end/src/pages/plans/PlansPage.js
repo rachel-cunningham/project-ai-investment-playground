@@ -6,7 +6,6 @@ import { PieChart } from '@mui/x-charts';
 import AuthHeader from "../../components/AuthHeader";
 import CustomDivider from "../../components/CustomDivider";
 import EditIcon from "../../assets/images/icons/EditPlans_Icon.png";
-import "../DashboardPage.css";
 import "./PlansPage.css";
 
 const PlansPage = () => {
@@ -94,12 +93,12 @@ const PlansPage = () => {
             return aiResponse ? (  
               <Box key={plan.goal_id} mb={4} p={2} border="1px solid #ddd" borderRadius="8px">
                 <Typography variant="h5">{plan.goal_name}</Typography>
-                <Typography variant="body1">Years to Invest: {plan.years_to_invest_for}</Typography>
-                <Typography variant="body1">Risk Comfort Level: {plan.risk_comfort_level}</Typography>
-                <Typography variant="body1">Starting Amount to Invest: ${plan.starting_amount_to_invest}</Typography>
-                <Typography variant="body1">Expected Return on Investment: ${plan.expected_return_on_investment}</Typography>
+                <Box mt={2} textAlign="right">
+                  <Button component={Link} to={`/plans/edit/${plan.goal_id}`}>
+                    <img src={EditIcon} alt="Edit" />
+                  </Button>
+                </Box>
                 <Box mt={2}>
-                  <Typography variant="h6">AI Response ({plan.risk_comfort_level} risk)</Typography>
                   {renderPieChart(aiResponse)}
                   <Box mt={2}>
                     <Typography variant="body2">Investment Breakdown:</Typography>
@@ -110,11 +109,6 @@ const PlansPage = () => {
                       <li>Domestic Stock: {aiResponse.domesticStockPercentage}%</li>
                     </ul>
                   </Box>
-                </Box>
-                <Box mt={2} textAlign="right">
-                  <Button component={Link} to={`/plans/edit/${plan.goal_id}`}>
-                    <img src={EditIcon} alt="Edit" />
-                  </Button>
                 </Box>
               </Box>
             ) : null;  
