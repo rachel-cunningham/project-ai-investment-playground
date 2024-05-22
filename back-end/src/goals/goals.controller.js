@@ -165,6 +165,7 @@ async function create(req, res, next) {
         );
 
         res.status(201).json({ data: createdGoal });
+        console.log("Plan successfully created!");
     } catch (error) {
         next({
             status: 500,
@@ -232,6 +233,7 @@ async function destroy(req, res, next) {
     try {
         await goalsService.destroy(goal_id);
         res.sendStatus(204);
+        console.log("Plan successfully deleted!");
     } catch (error) {
         next({
             status: 500,
@@ -277,7 +279,6 @@ module.exports = {
             "risk_comfort_level",
             "starting_amount_to_invest"
         ),
-        // validateInput,
         hasOnlyValidProperties,
         isValidPlan,
         asyncErrorBoundary(update),
