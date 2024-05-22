@@ -10,8 +10,7 @@ function HomePage() {
     <Box
       sx={{
         backgroundImage: `url(${HomeImage})`,
-        backgroundSize: { xs: "320%", sm: "cover" },
-        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
         backgroundPosition: {
           xs: "right 48% bottom 70%",
           sm: "right 45% bottom 80%",
