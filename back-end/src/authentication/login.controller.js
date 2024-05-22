@@ -41,7 +41,8 @@ async function login(req, res) {
             { expiresIn: "1h" }
         );
 
-        /* Chrome is phasing out third-party cookies
+
+        /* Chrome (amongst many other browsers) is phasing out third-party cookies
         res.cookie("token", token, {
             httpOnly: true,
             secure: process.env.NODE_ENV === "production", // set to process.env.NODE_ENV === 'production' if in production

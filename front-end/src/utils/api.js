@@ -34,7 +34,7 @@
 
 // Will be either https://wealthifyai-backend.onrender.com or http://localhost:5001
 const API_BASE_URL =
-    process.env.REACT_APP_API_BASE_URL || "http://localhost:5001";
+    /*process.env.REACT_APP_API_BASE_URL ||*/ "http://localhost:5001";
 
 // Just a couple necessary request headers
 const headers = new Headers();
@@ -44,11 +44,13 @@ headers.append("Content-Type", "application/json");
 async function fetchJson(url, options, onCancel) {
     const token = localStorage.getItem('token');
 
+
+    if (!options.headers) {
+        options.headers = new Headers();
+    }
+
     if (token) {
-        if (!options.headers) {
-            options.headers = new Headers();
-        }
-        options.headers.append("Authorization", `Bearer ${token}`);
+        options.headers.set("Authorization", `Bearer ${token}`);
     }
 
 
