@@ -307,7 +307,7 @@ function SignUpPage() {
                       type="submit"
                       onClick={handleClose}
                       sx={{
-                          fontFamily: "MontBlancBold",
+                          fontFamily: "MavenPro",
                           textTransform: 'none',
                           marginTop: 3,
                           margin: '0 auto',

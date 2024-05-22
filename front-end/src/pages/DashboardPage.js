@@ -10,16 +10,17 @@ import ISIcon from "../assets/images/icons/Strat_icon.png";
 import TermIcon from "../assets/images/icons/Term_icon.png";
 import { Typography, Button, CardMedia } from "@mui/material";
 import HowItWorks from "../components/HowItWorks";
+import { readUserByUsername } from "../utils/api";
 
 function DashboardPage() {
-  const history = useNavigate();
   const [salutation, setSalutation] = useState("Good Morning");
+  const [firstName, setFirstName] = useState("");
 
+  const history = useNavigate();
   const { userId } = useParams();
 
   useEffect(() => {
     let date = new Date();
-
     let hours = date.getHours();
 
     if (hours >= 12 && hours < 17) {
@@ -29,7 +30,24 @@ function DashboardPage() {
     } else {
       setSalutation("Good Morning");
     }
-  }, []);
+
+    const fetchUserData = async () => {
+      try {
+        const response = await readUserByUsername(userId);
+        if (response && response.data) {
+          setFirstName(response.data.first_name);
+        }
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+        if (error.status === 401) {
+          history("/login"); // Redirect to login if unauthorized
+        }
+      }
+    };
+
+    fetchUserData();
+
+  }, [userId, history]);
 
   const goToPlanPage = (planType) => () => {
     history(`/dashboard/${userId}/plans/${planType}`);
@@ -110,7 +128,7 @@ function DashboardPage() {
                 },
               }}
             >
-              {salutation}, {userId}
+              {salutation}, {firstName}
             </Typography>
           </Box>
         </Grid>
@@ -168,9 +186,7 @@ function DashboardPage() {
                 justifyContent="space-evenly"
               >
                 <Grid xs={12}>
-                  <Typography variant="h4">
-                    Things To Do
-                  </Typography>
+                  <Typography variant="h4">Things To Do</Typography>
                 </Grid>
                 <Grid
                   className="card"
@@ -308,9 +324,7 @@ function DashboardPage() {
                 justifyContent="space-evenly"
               >
                 <Grid xs={12}>
-                  <Typography variant="h4">
-                    Learning Path Resources
-                  </Typography>
+                  <Typography variant="h4">Learning Path Resources</Typography>
                 </Grid>
                 <Grid
                   className="card"
