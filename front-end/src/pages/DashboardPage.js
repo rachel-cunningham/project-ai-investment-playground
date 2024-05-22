@@ -411,8 +411,6 @@ function DashboardPage() {
                         width: {
                           xs: "20px",
                           sm: "30px",
-                          md: "35px",
-                          lg: "40px",
                         },
                         mr: 1,
                       }}
