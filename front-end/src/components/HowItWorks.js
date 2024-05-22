@@ -22,7 +22,7 @@ const modalStyle = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: "90%",
-  maxWidth: 650,
+  maxWidth: 800,
   height: "90%",
   maxHeight: 650,
   bgcolor: "background.paper",
@@ -131,13 +131,33 @@ function HowItWorks() {
               width: "100%",
               display: "flex",
               flexDirection: "column",
+              alignItems: "center",
               justifyContent: "center",
+              flex: 1,
             }}
           >
             {modalContent[modalStep].images.length > 0 && (
-              <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: { xs: "column", sm: "row" },
+                  justifyContent: "center",
+                  alignItems: "center",
+                  mt: 2,
+                  gap: 2,
+                }}
+              >
                 {modalContent[modalStep].images.map((image, index) => (
-                  <Box key={index} sx={{ textAlign: "center", margin: "auto" }}>
+                  <Box
+                    key={index}
+                    sx={{
+                      textAlign: "center",
+                      flex: 1,
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                    }}
+                  >
                     <CardMedia
                       component="img"
                       alt={`image-${index}`}
@@ -159,10 +179,14 @@ function HowItWorks() {
           </Box>
           <Box
             sx={{
-              mt: 4,
+              position: "absolute",
+              top: "50%",
+              left: 0,
+              right: 0,
+              transform: "translateY(-50%)",
               display: "flex",
               justifyContent: "space-between",
-              width: "100%",
+              px: 2,
             }}
           >
             <ButtonBase
