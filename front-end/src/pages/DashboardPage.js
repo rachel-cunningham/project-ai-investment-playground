@@ -91,7 +91,6 @@ function DashboardPage() {
             <Typography
               variant="h2"
               sx={{
-                fontFamily: "MontBlancBold",
                 textTransform: "capitalize",
                 color: "white",
                 fontSize: {
@@ -169,7 +168,7 @@ function DashboardPage() {
                 justifyContent="space-evenly"
               >
                 <Grid xs={12}>
-                  <Typography variant="h4" sx={{ color: "black" }}>
+                  <Typography variant="h4">
                     Things To Do
                   </Typography>
                 </Grid>
@@ -217,7 +216,6 @@ function DashboardPage() {
                     <Typography
                       sx={{
                         color: "#3B0347",
-                        fontFamily: "MontBlancBold",
                         fontSize: {
                           xs: "0.8rem",
                           sm: "1rem",
@@ -275,7 +273,6 @@ function DashboardPage() {
                     <Typography
                       sx={{
                         color: "#3B0347",
-                        fontFamily: "MontBlancBold",
                         fontSize: {
                           xs: "0.8rem",
                           sm: "1rem",
@@ -311,7 +308,7 @@ function DashboardPage() {
                 justifyContent="space-evenly"
               >
                 <Grid xs={12}>
-                  <Typography variant="h4" sx={{ color: "black" }}>
+                  <Typography variant="h4">
                     Learning Path Resources
                   </Typography>
                 </Grid>
@@ -357,7 +354,6 @@ function DashboardPage() {
                     <Typography
                       sx={{
                         color: "#3B0347",
-                        fontFamily: "MontBlancBold",
                         fontSize: {
                           xs: "0.8rem",
                           sm: "1rem",
@@ -415,7 +411,6 @@ function DashboardPage() {
                     <Typography
                       sx={{
                         color: "#3B0347",
-                        fontFamily: "MontBlancBold",
                         fontSize: {
                           xs: "0.8rem",
                           sm: "1rem",

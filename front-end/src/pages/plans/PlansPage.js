@@ -6,7 +6,7 @@ import CustomDivider from "../../components/CustomDivider";
 
 // LOGIC NEEDED TO BE IMPLEMENTED TO DO GET REQUEST IN PLANS AND HAVE THEM SHOW UP ON THIS PAGE
 // PLACEHOLDER DONE
-// IF NO PLAN, SHOW THE NO PLAN CARD, OTHERWISE, SHOW THE PLANS 
+// IF NO PLAN, SHOW THE NO PLAN CARD, OTHERWISE, SHOW THE PLANS
 
 function PlansPage({ userId }) {
   return (
@@ -25,7 +25,6 @@ function PlansPage({ userId }) {
         <Typography
           variant="h2"
           sx={{
-            fontFamily: "MontBlancBold",
             textAlign: "center",
             color: "#87DBA8",
             fontSize: { xs: "3rem", sm: "4rem", md: "5rem", lg: "4.8rem" },
@@ -69,6 +68,7 @@ function PlansPage({ userId }) {
               <Typography
                 variant="h4"
                 sx={{
+                  fontFamily: "Afacad",
                   color: "#3B0347",
                   mb: 5,
                 }}
@@ -84,7 +84,7 @@ function PlansPage({ userId }) {
                 color="primary"
                 size="small"
                 sx={{
-                  fontFamily: "MontBlancBold",
+                  fontFamily: "MavenPro",
                   fontSize: {
                     xs: "0.8rem",
                     sm: "0.8rem",

@@ -3,19 +3,19 @@ import { createTheme } from "@mui/material/styles";
 const typography = {
   fontFamily: "Afacad, Roboto, sans-serif",
   h1: {
-    fontFamily: "Mont-Blanc-Trial, Roboto, sans-serif",
+    fontFamily: "MavenPro, Roboto, sans-serif",
     fontWeight: 700, // bold
     color: "#FFFFFF", // white text color for h1
   },
   h2: {
-    fontFamily: "Mont-Blanc-Trial, Roboto, sans-serif",
+    fontFamily: "MavenPro, Roboto, sans-serif",
     fontWeight: 500, // medium
     color: "#FFFFFF", // white text color for h2
   },
   h4: {
-    fontFamily: "Afacad, Roboto, sans-serif",
+    fontFamily: "MavenPro, Roboto, sans-serif",
     fontWeight: 500, // medium
-    color: "#FFFFFF", // white text color for h4
+    color: "#000000", // black text color for h4
   },
   h5: {
     fontFamily: "Afacad, Roboto, sans-serif",
@@ -29,21 +29,21 @@ const typography = {
   },
   body1: {
     fontFamily: "Afacad, Roboto, sans-serif",
-    fontWeight: 400, // regular
+    fontWeight: 500, // semi-bold
     color: "#FFFFFF", // white text color for body text
   },
   body2: {
-    fontFamily: "Mont-Blanc-Trial, Roboto, sans-serif",
+    fontFamily: "Afacad, Roboto, sans-serif",
     fontWeight: 100, // light
     color: "#FFFFFF", // white text color for secondary body text
   },
   header1: {
-    fontFamily: "Mont-Blanc-Trial, Roboto, sans-serif",
+    fontFamily: "MavenPro, Roboto, sans-serif",
     fontWeight: 400, // light
     color: "#FFFFFF", // white text color for secondary body text
   },
   header2: {
-    fontFamily: "Mont-Blanc-Trial, Roboto, sans-serif",
+    fontFamily: "MavenPro, Roboto, sans-serif",
     fontWeight: 600, // light
     color: "#FFFFFF", // white text color for secondary body text
   },
