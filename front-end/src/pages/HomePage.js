@@ -29,7 +29,7 @@ function HomePage() {
           transform: "translateX(-70%)",
           border: "2px solid #3B0347",
           borderRadius: "30px",
-          width: { xs: "35%", sm: "25%", md: "20%", lg: "13%" },
+          width: { xs: "35%", sm: "25%", md: "20%", lg: "12%" },
           p: 1,
           display: "flex",
           alignItems: "center",
@@ -60,7 +60,7 @@ function HomePage() {
           paddingLeft: { lg: "0" },
         }}
       >
-        <Box sx={{ ml: { xl: -10 } }}>
+        <Box sx={{ ml: { lg: 0, xl: -20 } }}>
           <Typography
             variant="h1"
             color="#3B0B47"
