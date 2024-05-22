@@ -279,7 +279,6 @@ module.exports = {
             "risk_comfort_level",
             "starting_amount_to_invest"
         ),
-        // validateInput,
         hasOnlyValidProperties,
         isValidPlan,
         asyncErrorBoundary(update),
