@@ -60,7 +60,7 @@ function HomePage() {
           paddingLeft: { lg: "0" },
         }}
       >
-        <Box sx={{ ml: { lg: 0, xl: -30 } }}>
+        <Box sx={{ ml: { lg: 0, xl: -20 } }}>
           <Typography
             variant="h1"
             color="#3B0B47"
