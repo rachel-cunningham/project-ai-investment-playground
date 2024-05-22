@@ -1,55 +1,21 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import {
-    createUser,
-    deleteUser,
-    readUserByUsername,
-    updateUser,
-    userLogin,
-} from "../utils/api";
+import { useNavigate } from "react-router-dom";
+import { userLogin } from "../utils/api";
 import { Box, Button, CardMedia, Container, TextField, Typography } from "@mui/material";
 import welcomeBack from "../assets/images/icons/WelcomeBack_icon.png";
 import Header from "../components/Header";
 
-export default function ExampleLoginPage() {
+export default function LogInPage() {
     const [credentials, setCredentials] = useState({
         username: "",
         password: "",
     });
-    const [user, setUser] = useState(null);
-    const navigate = useNavigate();  // Add this line
-
-    const handleCreateUserClick = async () => {
-        const placeholderUser = {
-            first_name: "Guy",
-            last_name: "McGuysson",
-            username: "mrguy",
-            email: "guy@guy.guy",
-            password: "guy",
-            age: "50",
-            occupation: "five guys",
-        };
-
-        try {
-            const response = await createUser(placeholderUser);
-            console.log(response);
-        } catch (err) {
-            console.error(err);
-        }
-    };
+    const navigate = useNavigate();
 
     const handleChange = (event) => {
         const { name, value } = event.target;
         setCredentials((prevCredentials) => ({
             ...prevCredentials,
-            [name]: value,
-        }));
-    };
-
-    const handleUpdateFormChange = (event) => {
-        const { name, value } = event.target;
-        setUser((prevUser) => ({
-            ...prevUser,
             [name]: value,
         }));
     };
@@ -63,114 +29,17 @@ export default function ExampleLoginPage() {
                 credentials.password,
                 abortController.signal
             );
-            setUser(response);
-            navigate(`/dashboard/${response.user_id}`);  // Add this line
+            console.log(`${response.username} logged in successfully`)
+            navigate(`/dashboard/${response.user_id}`);
         } catch (err) {
             console.error(err);
         }
     };
-
-    const handleUpdateFormSubmit = async (event) => {
-        event.preventDefault();
-        const abortController = new AbortController();
-        try {
-            const response = await updateUser(user, abortController.signal);
-            setUser(response.data);
-        } catch (err) {
-            console.error(err);
-        }
-    };
-
-    const handleClickLoadUser = async () => {
-        try {
-            const response = await readUserByUsername(user.username);
-            console.log(response);
-        } catch (err) {
-            console.error(err);
-        }
-    };
-
-    const handleClickDeleteUser = async () => {
-        try {
-            await deleteUser(user.username);
-            console.log("User deleted!");
-        } catch (err) {
-            console.error(err);
-        }
-    };
-
-    const updateUserForm = user ? (
-        <>
-            <form onSubmit={handleUpdateFormSubmit}>
-                <Box>
-                    <Typography variant="subtitle1">Age</Typography>
-                    <TextField
-                        type="number"
-                        id="age"
-                        name="age"
-                        value={user.age}
-                        onChange={handleUpdateFormChange}
-                        fullWidth
-                        margin="normal"
-                        sx={{
-                            backgroundColor: 'white',
-                            input: { color: 'black' },
-                        }}
-                    />
-                </Box>
-                <Box>
-                    <Typography variant="subtitle1">Occupation</Typography>
-                    <TextField
-                        type="text"
-                        id="occupation"
-                        name="occupation"
-                        value={user.occupation}
-                        onChange={handleUpdateFormChange}
-                        fullWidth
-                        margin="normal"
-                        sx={{
-                            backgroundColor: 'white',
-                            input: { color: 'black' },
-                        }}
-                    />
-                </Box>
-                <Button type="submit" variant="contained" color="primary">
-                    Submit
-                </Button>
-            </form>
-        </>
-    ) : null;
-
-    function generateElements(user) {
-        let output = [];
-        for (const [key, value] of Object.entries(user)) {
-            output.push(
-                <Box key={key}>
-                    <Typography variant="h6">{key}</Typography>
-                    <Typography variant="body1">{value}</Typography>
-                </Box>
-            );
-        }
-
-        output.push(
-            <Button onClick={handleClickLoadUser} variant="contained" color="primary">
-                Load User
-            </Button>
-        );
-        output.push(updateUserForm);
-        output.push(
-            <Button onClick={handleClickDeleteUser} variant="contained" color="secondary">
-                Delete User
-            </Button>
-        );
-
-        return output;
-    }
 
     return (
         <Container sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <Header />
-            <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: 2 }}>
+            <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: 10 }}>
                 <CardMedia
                     component="img"
                     alt="welcomeBack"
@@ -180,16 +49,13 @@ export default function ExampleLoginPage() {
             </Box>
             <Typography
                 color="white"
-                sx={{ fontSize: '48px', fontFamily: 'MontBlancBold', textAlign: 'center' }}
+                sx={{ fontSize: '48px', fontFamily: 'MontBlancBold', textAlign: 'center', my: 4 }}
             >
                 Welcome Back
             </Typography>
-            <Button onClick={handleCreateUserClick} variant="contained" color="primary" sx={{ marginTop: 2 }}>
-                Create User
-            </Button>
-            <form onSubmit={handleSubmit} style={{ width: '100%', maxWidth: '400px', marginTop: 2 }}>
-                <Box>
-                    <Typography variant="subtitle1" color='white' >Username</Typography>
+            <form onSubmit={handleSubmit} style={{ width: '100%', maxWidth: '400px' }}>
+                <Box sx={{ mb: 2 }}>
+                    <h2 style={{ color: "white", mb: 0 }}>Username</h2>
                     <TextField
                         type="text"
                         id="username"
@@ -198,16 +64,16 @@ export default function ExampleLoginPage() {
                         onChange={handleChange}
                         fullWidth
                         required
-                        margin="normal"
                         sx={{
                             backgroundColor: 'white',
                             input: { color: 'black' },
                             borderRadius: '5px',
+                            marginBottom: '16px', // Adjusts space between the TextField and next h2
                         }}
                     />
                 </Box>
                 <Box>
-                    <Typography variant="subtitle1" color='white' >Password</Typography>
+                    <h2 style={{ color: "white", mb: 0 }}>Password</h2>
                     <TextField
                         type="password"
                         id="password"
@@ -216,28 +82,38 @@ export default function ExampleLoginPage() {
                         onChange={handleChange}
                         fullWidth
                         required
-                        margin="normal"
                         sx={{
                             backgroundColor: 'white',
                             input: { color: 'black' },
-                            borderRadius: '5px'
+                            borderRadius: '5px',
+                            mb: 8, 
                         }}
                     />
                 </Box>
-                <Button type="submit" variant="contained" color="primary" fullWidth>
-                    Log In
-                </Button>
+                <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                    <Button
+                        variant="contained"
+                        type="submit"
+                        onClick={handleSubmit}
+                        sx={{
+                            fontFamily: "MontBlancBold",
+                            textTransform: 'none',
+                            mb: 6,
+                            borderRadius: '15px',
+                            boxShadow: '0 10px 0 #639577',
+                            width: 'auto',
+                            paddingX: 6,
+                            color: "#3B0347",
+                            bgcolor: "#87DBA8",
+                            '&:hover': {
+                                bgcolor: "#639577"
+                            }
+                        }}
+                    >
+                        Log In
+                    </Button>
+                </Box>
             </form>
-            <Box sx={{ width: '100%', maxWidth: '400px', marginTop: 2 }}>
-                {user && generateElements(user)}
-                {user && (
-                    <Link to={`/dashboard/${user.user_id}/create`}>
-                        <Button variant="contained" color="primary" fullWidth sx={{ marginTop: 2 }}>
-                            Create Goal
-                        </Button>
-                    </Link>
-                )}
-            </Box>
         </Container>
     );
 }

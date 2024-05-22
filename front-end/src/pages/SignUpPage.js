@@ -7,7 +7,7 @@ import Header from "../components/Header";
 import createIcon from "../assets/images/icons/CreateAccount_Icon.png";
 import { createUser } from "../utils/api";
 
-function Register() {
+function SignUpPage() {
     const navigate = useNavigate();
     const [errors, setErrors] = useState({});
     const [formData, setFormData] = useState({
@@ -70,7 +70,7 @@ function Register() {
         if (Object.keys(validationErrors).length === 0) {
             const abortController = new AbortController();
             try {
-                const { confirm, ...userData } = formData;
+                
                 await createUser(userData, abortController.signal);
                 console.log("User created!");
                 setOpen(true);
@@ -332,4 +332,4 @@ function Register() {
     );
 }
 
-export default Register;
+export default SignUpPage;
