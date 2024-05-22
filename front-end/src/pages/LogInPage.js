@@ -48,8 +48,9 @@ export default function LogInPage() {
                 />
             </Box>
             <Typography
+                variant="h2"
                 color="white"
-                sx={{ fontSize: '48px', fontFamily: 'MontBlancBold', textAlign: 'center', my: 4 }}
+                sx={{ fontSize: '48px', textAlign: 'center', my: 4 }}
             >
                 Welcome Back
             </Typography>
@@ -96,7 +97,7 @@ export default function LogInPage() {
                         type="submit"
                         onClick={handleSubmit}
                         sx={{
-                            fontFamily: "MontBlancBold",
+                            fontFamily: "MavenPro",
                             textTransform: 'none',
                             mb: 6,
                             borderRadius: '15px',

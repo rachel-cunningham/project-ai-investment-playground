@@ -182,7 +182,7 @@ const StrategiesForm = () => {
                   variant="contained"
                   color="primary"
                   sx={{
-                    fontFamily: "MontBlancBold",
+                    fontFamily: "MavenPro",
                     textTransform: "none",
                     marginX: 5,
                     borderRadius: "15px",

@@ -95,7 +95,7 @@ function SignUpPage() {
               image={createIcon}
               sx={{ width: '24%', height: 'auto', margin: '0 auto', mb: 1 }}
             />
-            <Typography variant="h4" component="h1" gutterBottom sx={{ textAlign: 'center', mb: 4 }}>
+            <Typography variant="h4" component="h1" gutterBottom sx={{ textAlign: 'center', mb: 4, color: 'white' }}>
                 Create an Account
             </Typography>
             <form onSubmit={handleSubmit} noValidate>
@@ -273,7 +273,7 @@ function SignUpPage() {
                       type="submit"
                       onClick={handleSubmit}
                       sx={{
-                          fontFamily: "MontBlancBold",
+                          fontFamily: "MavenPro",
                           textTransform: 'none',
                           marginTop: 3,
                           mb: 6,

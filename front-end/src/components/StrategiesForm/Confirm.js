@@ -113,11 +113,6 @@ const Confirm = ({ formData, userId, setIsSubmitted }) => {
             >
               {"Investment Strategy Successfully Submitted"}
             </DialogTitle>
-            <DialogContent>
-              <DialogContentText id="alert-dialog-description">
-                Your investment strategy has been successfully submitted.
-              </DialogContentText>
-            </DialogContent>
             <DialogActions>
               <Button 
               onClick={handleClose} 
