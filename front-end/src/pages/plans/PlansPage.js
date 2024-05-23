@@ -44,10 +44,10 @@ const PlansPage = () => {
 
   const renderPieChart = (aiResponse) => {
     const data = [
-      { id: 0, value: aiResponse.bondsPercentage, label: `Bonds` },
-      { id: 1, value: aiResponse.shortTermPercentage, label: `Short Term` },
-      { id: 2, value: aiResponse.foreignStockPercentage, label: `Foreign Stock` },
-      { id: 3, value: aiResponse.domesticStockPercentage, label: `Domestic Stock` }
+      { id: 0, value: aiResponse.bondsPercentage, label: `Bonds ${aiResponse.bondsPercentage}%` },
+      { id: 1, value: aiResponse.shortTermPercentage, label: `Short Term ${aiResponse.shortTermPercentage}%` },
+      { id: 2, value: aiResponse.foreignStockPercentage, label: `Foreign Stock ${aiResponse.foreignStockPercentage}%` },
+      { id: 3, value: aiResponse.domesticStockPercentage, label: `Domestic Stock ${aiResponse.domesticStockPercentage}%` }
     ];
 
     return (
@@ -58,10 +58,10 @@ const PlansPage = () => {
         slotProps={{
           legend: {
             direction: 'column',
-            position: { vertical: { xs: 'middle', sm: 'bottom' }, horizontal: 'right' },
+            position: { vertical: 'middle', horizontal: 'right' },
             padding: 0,
             labelStyle: {
-              fontSize: { xs: 12, sm: 14, md: 16 },
+              fontSize: 14,
               fill: 'black',
             }, 
           },
@@ -75,7 +75,7 @@ const PlansPage = () => {
   }
 
   return (
-    <Box sx={{ mt: { xs: 8, sm: 2, md: 10, lg: 0 } }}>
+    <Box sx={{ mt: { xs: 5, md: 0 } }}>
       <AuthHeader />
       <Box
         id="plans"
@@ -95,8 +95,11 @@ const PlansPage = () => {
             pt: 3,
             pl: 3,
             pr: 3,
+            bgcolor: "#3B0347", padding: { xs: 2, sm: 3, md: 4, lg: 5 } 
           }}
         >
+          
+        </Box>
         <Typography
           variant="h2"
           sx={{
@@ -105,32 +108,21 @@ const PlansPage = () => {
             fontSize: { xs: "3rem", sm: "4rem", md: "5rem", lg: "4.8rem" },
             mb: 2,
           }}
-        >My Plans</Typography>  
-        </Box>
-        <CustomDivider />
-        <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          pt: 3,
-          pl: 3,
-          pr: 3,
-          maxWidth: { xs: "88%"},
-          margin: "0 auto" 
-        }}
-      >
+        >My Plans</Typography>
+        <Box>
         <Typography 
                     sx={{
                       color: "white",
                       fontSize: {
                         xs: "0.8rem",
                         sm: "1rem",
-                        md: "1.5rem",
-                        lg: "1.2rem",
+                        md: "1.2rem",
+                        lg: "1.5rem",
                       },
-                      padding: { md: "10px 5px", lg: "10px 10px" },
-                      textAlign: "center"
+                      padding: { xs: "10px 5px", sm: "10px 5px", md: "10px 5px", lg: "10px 10px"  },
+                      textAlign: { xs: 'justify', sm: 'justify', md: 'center', lg: 'center' },
+                      wordWrap: 'break-word',
+                      maxWidth: '85%',
                     }}
                     
                   >Based on your responses to the questionnaire and current market trends, it is recommend diversifying your portfolio in the following way(s):</Typography>
@@ -153,7 +145,6 @@ const PlansPage = () => {
             justifyContent: "center",
             width: "100%",
             mt: 1,
-            maxWidth: { xs: "88%"},
           }}
           >
           {plans && plans.length > 0 ? (  
@@ -188,14 +179,14 @@ const PlansPage = () => {
               justifyContent="space-evenly"
              >
               <Grid xs={12}>
-              <Typography variant="h4">{plan.goal_name}</Typography>
+              <Typography variant="h4" sx={{ fontSize: { xs: '1.5rem', sm: '2rem', md: '2.5rem', lg: '3rem' } }}>{plan.goal_name}</Typography>
               </Grid>
               <Grid
-              xs={4}
-              sx={{
+              item xs={12} md={4} sx={{
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
+                flexDirection: "column",
               }}
               > 
                 {/* <Box mt={2} textAlign="right">
@@ -203,30 +194,35 @@ const PlansPage = () => {
                     <img src={EditIcon} alt="Edit" />
                   </Button>
                 </Box> */}
-                <Box m={2}>
+                <Box mt={2}>
                   
                   {renderPieChart(aiResponse)}
-                 
+                  <Box mt={2}
+                  sx={{
+                    textTransform: "capitalize",
+                    fontSize: { xs: "1rem", sm: "1.5rem", md: "2rem", lg: "2.5rem" },
+                  }}
+                  >
+                  </Box>
                 </Box>
                 </Grid>
-                <Grid
-                  xs={6}
-                  sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
+                <Grid item xs={12}>
                 <Typography
-                      sx={{
+                       sx={{
                         color: "#3B0347",
                         fontSize: {
                           xs: "0.8rem",
                           sm: "1rem",
-                          md: "1.5rem",
-                          lg: "1.2rem",
+                          md: "1.2rem",
+                          lg: "1.5rem",
                         },
-                        padding: { md: "10px 5px", lg: "10px 10px" },
+                        padding: {
+                          xs: "5px 10px",
+                          sm: "10px 15px",
+                          md: "10px 20px",
+                          lg: "10px 25px",
+                        },
+                        textAlign: 'center',
                       }}
                     >
                       For a balanced investment, allocate {aiResponse.bondsPercentage}% to bonds, {aiResponse.shortTermPercentage}% to short-term investments, {aiResponse.foreignStockPercentage}% to foreign stocks, and {aiResponse.domesticStockPercentage}% to domestic stocks. 
@@ -301,7 +297,10 @@ const PlansPage = () => {
           </Box>
         )}
           </Box>
-        </Box>    
+        </Box>
+       
+        
+        <CustomDivider />
       </Box>
     </Box>
   );
