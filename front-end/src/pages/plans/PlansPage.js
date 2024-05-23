@@ -44,10 +44,10 @@ const PlansPage = () => {
 
   const renderPieChart = (aiResponse) => {
     const data = [
-      { id: 'Bonds', value: aiResponse.bondsPercentage, label: 'Bonds' },
-      { id: 'Short Term', value: aiResponse.shortTermPercentage, label: 'Short Term' },
-      { id: 'Foreign Stock', value: aiResponse.foreignStockPercentage, label: 'Foreign Stock' },
-      { id: 'Domestic Stock', value: aiResponse.domesticStockPercentage, label: 'Domestic Stock' }
+      { id: 0, value: aiResponse.bondsPercentage, label: `Bonds ${aiResponse.bondsPercentage}%` },
+      { id: 1, value: aiResponse.shortTermPercentage, label: `Short Term ${aiResponse.shortTermPercentage}%` },
+      { id: 2, value: aiResponse.foreignStockPercentage, label: `Foreign Stock ${aiResponse.foreignStockPercentage}%` },
+      { id: 3, value: aiResponse.domesticStockPercentage, label: `Domestic Stock ${aiResponse.domesticStockPercentage}%` }
     ];
 
     return (
@@ -55,6 +55,17 @@ const PlansPage = () => {
         series={[{ data }]}
         width={400}
         height={200}
+        slotProps={{
+          legend: {
+            direction: 'column',
+            position: { vertical: 'middle', horizontal: 'right' },
+            padding: 0,
+            labelStyle: {
+              fontSize: 14,
+              fill: 'black',
+            }, 
+          },
+        }}
       />
     );
   };
@@ -74,10 +85,65 @@ const PlansPage = () => {
           alignItems: "center",
           justifyContent: "center",
           minHeight: "100vh",
-        }}
+          }}
       >
-        <h2 className="titles">Most Recent Plans</h2>
-        {plans && plans.length > 0 ? (  
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            pt: 3,
+            pl: 3,
+            pr: 3,
+          }}
+        >
+          
+        </Box>
+        <Typography
+          variant="h2"
+          sx={{
+            textAlign: "center",
+            color: "#87DBA8",
+            fontSize: { xs: "3rem", sm: "4rem", md: "5rem", lg: "4.8rem" },
+            mb: 2,
+          }}
+        >My Plans</Typography>
+        <Box>
+        <Typography 
+                    sx={{
+                      color: "white",
+                      fontSize: {
+                        xs: "0.8rem",
+                        sm: "1rem",
+                        md: "1.5rem",
+                        lg: "1.2rem",
+                      },
+                      padding: { md: "10px 5px", lg: "10px 10px" },
+                    }}
+                    
+                  >Based on your responses to the questionnaire and current market trends, it is recommend diversifying your portfolio in the following way(s):</Typography>
+        </Box>
+
+        <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          px: 3,
+        }}
+        >
+          <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            width: "100%",
+            mt: 1,
+          }}
+          >
+          {plans && plans.length > 0 ? (  
           plans.map(plan => {
             let aiResponse;
             if (plan.ai_response) {  
@@ -91,25 +157,73 @@ const PlansPage = () => {
             }
 
             return aiResponse ? (  
-              <Box key={plan.goal_id} mb={4} p={2} border="1px solid #ddd" borderRadius="8px">
-                <Typography variant="h5">{plan.goal_name}</Typography>
-                <Box mt={2} textAlign="right">
+              <Box key={plan.goal_id} sx={{
+                bgcolor: "white",
+                border: "8px solid #87DBA8",
+                borderRadius: "25px",
+                width: "100%",
+                textAlign: "center",
+                p: 2,
+                mb: { xs: 5, lg: 1 },
+                mt: 4,
+              }}
+              >
+             <Grid
+              container
+              direction="row"
+              spacing={2}
+              justifyContent="space-evenly"
+             >
+              <Grid xs={12}>
+              <Typography variant="h4">{plan.goal_name}</Typography>
+              </Grid>
+              <Grid
+              xs={4}
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+              > 
+                {/* <Box mt={2} textAlign="right">
                   <Button component={Link} to={`/plans/edit/${plan.goal_id}`}>
                     <img src={EditIcon} alt="Edit" />
                   </Button>
-                </Box>
+                </Box> */}
                 <Box mt={2}>
+                  
                   {renderPieChart(aiResponse)}
-                  <Box mt={2}>
-                    <Typography variant="body2">Investment Breakdown:</Typography>
-                    <ul>
-                      <li>Bonds: {aiResponse.bondsPercentage}%</li>
-                      <li>Short Term: {aiResponse.shortTermPercentage}%</li>
-                      <li>Foreign Stock: {aiResponse.foreignStockPercentage}%</li>
-                      <li>Domestic Stock: {aiResponse.domesticStockPercentage}%</li>
-                    </ul>
+                  <Box mt={2}
+                  sx={{
+                    textTransform: "capitalize",
+                    fontSize: {
+                      xs: "1 rem",
+                      sm: "2 rem",
+                      md: "3rem",
+                      lg: "3.2rem",
+                    },
+                  }}
+                  >
                   </Box>
                 </Box>
+                </Grid>
+                <Grid>
+                <Typography
+                      sx={{
+                        color: "#3B0347",
+                        fontSize: {
+                          xs: "0.8rem",
+                          sm: "1rem",
+                          md: "1.5rem",
+                          lg: "1.2rem",
+                        },
+                        padding: { md: "10px 5px", lg: "10px 10px" },
+                      }}
+                    >
+                      For a balanced investment, allocate {aiResponse.bondsPercentage}% to bonds, {aiResponse.shortTermPercentage}% to short-term investments, {aiResponse.foreignStockPercentage}% to foreign stocks, and {aiResponse.domesticStockPercentage}% to domestic stocks. 
+                    </Typography>
+                </Grid>
+                </Grid>
               </Box>
             ) : null;  
           })
@@ -177,6 +291,10 @@ const PlansPage = () => {
             </Box>
           </Box>
         )}
+          </Box>
+        </Box>
+       
+        
         <CustomDivider />
       </Box>
     </Box>
