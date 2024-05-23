@@ -1,6 +1,4 @@
-// header for when the user is logged in
-
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Box,
   AppBar,
@@ -14,17 +12,28 @@ import {
   Avatar,
   MenuItem,
 } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import Logo from "../assets/images/logo/WealthifyAI-logo.png";
 import theme from "../styles/theme";
 
-function AuthHeader({ userId }) {
+function AuthHeader() {
   const [anchorElUser, setAnchorElUser] = useState(null);
+  const { userId } = useParams();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!userId) {
+      console.warn("UserId is not defined, redirecting to login...");
+      navigate("/log-in");
+    }
+  }, [userId, navigate]);
+
+  if (!userId) return null;
 
   const menuItems = [
     { label: "Account", path: `/dashboard/${userId}/account` },
     { label: "Dashboard", path: `/dashboard/${userId}` },
-    { label: "Logout", path: "/" }, // logout logic needing implemented. does it go to screen that says "you have successfully logged out"? or back to home page? how does user actually log out or know that they logged out?
+    { label: "Logout", path: "/" }, // Implement logout logic here
   ];
 
   const handleOpenUserMenu = (event) => {
@@ -70,7 +79,7 @@ function AuthHeader({ userId }) {
                   <Avatar
                     alt="User Avatar"
                     sx={{ width: "48px", height: "48px" }}
-                    // src=""  add a src dymanically based on user image upload from backend
+                    // src=""  add a src dynamically based on user image upload from backend
                   />
                 </IconButton>
               </Tooltip>
