@@ -13,8 +13,8 @@ import StrategiesForm from "../components/StrategiesForm/StrategiesForm";
 import DashboardPage from "../pages/DashboardPage";
 
 import DisplayOneGoal from "../pages/GoalsExamplePages/DisplayOneGoal";
-import ExampleCreateGoal from "../pages/GoalsExamplePages/ExampleCreateGoal";
-import ExampleDashboard from "../pages/GoalsExamplePages/ExampleDashboard";
+// import ExampleCreateGoal from "../pages/GoalsExamplePages/ExampleCreateGoal";
+// import ExampleDashboard from "../pages/GoalsExamplePages/ExampleDashboard";
 import PlansPage from "../pages/plans/PlansPage";
 import LatestPlanPage from "../pages/plans/LatestPlanPage";
 import PrivacyPolicyPage from "../pages/PrivacyPolicyPage";
@@ -42,8 +42,8 @@ function Layout() {
             element={<LatestPlanPage />}
           />
           <Route path="/dashboard/:userId/account" element={<AccountPage />} />
-          <Route path="/learning-paths/articles" element={<Articles />} />
-          <Route path="/learning-paths/terms" element={<Terms />} />
+          <Route path="/dashboard/:userId/learning-paths/articles" element={<Articles />} />
+          <Route path="/dashboard/:userId/learning-paths/terms" element={<Terms />} />
           <Route
             path="/dashboard/:userId/goals/:goalId"
             element={<DisplayOneGoal />}
@@ -52,14 +52,14 @@ function Layout() {
 
           {/* example pages */}
 
-          <Route
+          {/* <Route
             path="/dashboard/:userId/create"
             element={<ExampleCreateGoal />}
           />
           <Route
             path="/dashboard/:userId/goals"
             element={<ExampleDashboard />}
-          />
+          /> */}
           {/* example pages end */}
 
           <Route path="*" element={<NotFoundPage />} />

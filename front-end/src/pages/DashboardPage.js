@@ -40,13 +40,12 @@ function DashboardPage() {
       } catch (error) {
         console.error("Error fetching user data:", error);
         if (error.status === 401) {
-          history("/login"); // Redirect to login if unauthorized
+          history("/login"); // redirect user to login if unauthorized
         }
       }
     };
 
     fetchUserData();
-
   }, [userId, history]);
 
   const goToPlanPage = (planType) => () => {
@@ -54,7 +53,7 @@ function DashboardPage() {
   };
 
   const goToPage = (learningType) => () => {
-    history(`/learning-paths/${learningType}`);
+    history(`learning-paths/${learningType}`);
   };
 
   return (
