@@ -44,10 +44,10 @@ const PlansPage = () => {
 
   const renderPieChart = (aiResponse) => {
     const data = [
-      { id: 0, value: aiResponse.bondsPercentage, label: `Bonds ${aiResponse.bondsPercentage}%` },
-      { id: 1, value: aiResponse.shortTermPercentage, label: `Short Term ${aiResponse.shortTermPercentage}%` },
-      { id: 2, value: aiResponse.foreignStockPercentage, label: `Foreign Stock ${aiResponse.foreignStockPercentage}%` },
-      { id: 3, value: aiResponse.domesticStockPercentage, label: `Domestic Stock ${aiResponse.domesticStockPercentage}%` }
+      { id: 0, value: aiResponse.bondsPercentage, label: `Bonds` },
+      { id: 1, value: aiResponse.shortTermPercentage, label: `Short Term` },
+      { id: 2, value: aiResponse.foreignStockPercentage, label: `Foreign Stock` },
+      { id: 3, value: aiResponse.domesticStockPercentage, label: `Domestic Stock` }
     ];
 
     return (
@@ -58,10 +58,10 @@ const PlansPage = () => {
         slotProps={{
           legend: {
             direction: 'column',
-            position: { vertical: 'middle', horizontal: 'right' },
+            position: { vertical: { xs: 'middle', sm: 'bottom' }, horizontal: 'right' },
             padding: 0,
             labelStyle: {
-              fontSize: 14,
+              fontSize: { xs: 12, sm: 14, md: 16 },
               fill: 'black',
             }, 
           },
@@ -75,7 +75,7 @@ const PlansPage = () => {
   }
 
   return (
-    <Box sx={{ mt: { xs: 5, md: 0 } }}>
+    <Box sx={{ mt: { xs: 8, sm: 2, md: 10, lg: 0 } }}>
       <AuthHeader />
       <Box
         id="plans"
@@ -97,8 +97,6 @@ const PlansPage = () => {
             pr: 3,
           }}
         >
-          
-        </Box>
         <Typography
           variant="h2"
           sx={{
@@ -107,8 +105,21 @@ const PlansPage = () => {
             fontSize: { xs: "3rem", sm: "4rem", md: "5rem", lg: "4.8rem" },
             mb: 2,
           }}
-        >My Plans</Typography>
-        <Box>
+        >My Plans</Typography>  
+        </Box>
+        <CustomDivider />
+        <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          pt: 3,
+          pl: 3,
+          pr: 3,
+          maxWidth: { xs: "88%"},
+          margin: "0 auto" 
+        }}
+      >
         <Typography 
                     sx={{
                       color: "white",
@@ -119,6 +130,7 @@ const PlansPage = () => {
                         lg: "1.2rem",
                       },
                       padding: { md: "10px 5px", lg: "10px 10px" },
+                      textAlign: "center"
                     }}
                     
                   >Based on your responses to the questionnaire and current market trends, it is recommend diversifying your portfolio in the following way(s):</Typography>
@@ -141,6 +153,7 @@ const PlansPage = () => {
             justifyContent: "center",
             width: "100%",
             mt: 1,
+            maxWidth: { xs: "88%"},
           }}
           >
           {plans && plans.length > 0 ? (  
@@ -190,24 +203,20 @@ const PlansPage = () => {
                     <img src={EditIcon} alt="Edit" />
                   </Button>
                 </Box> */}
-                <Box mt={2}>
+                <Box m={2}>
                   
                   {renderPieChart(aiResponse)}
-                  <Box mt={2}
-                  sx={{
-                    textTransform: "capitalize",
-                    fontSize: {
-                      xs: "1 rem",
-                      sm: "2 rem",
-                      md: "3rem",
-                      lg: "3.2rem",
-                    },
-                  }}
-                  >
-                  </Box>
+                 
                 </Box>
                 </Grid>
-                <Grid>
+                <Grid
+                  xs={6}
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
                 <Typography
                       sx={{
                         color: "#3B0347",
@@ -292,10 +301,7 @@ const PlansPage = () => {
           </Box>
         )}
           </Box>
-        </Box>
-       
-        
-        <CustomDivider />
+        </Box>    
       </Box>
     </Box>
   );
