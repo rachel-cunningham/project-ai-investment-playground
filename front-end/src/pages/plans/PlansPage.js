@@ -5,7 +5,6 @@ import { Box, Typography, Button, Grid } from "@mui/material";
 import { PieChart } from '@mui/x-charts';
 import AuthHeader from "../../components/AuthHeader";
 import CustomDivider from "../../components/CustomDivider";
-import EditIcon from "../../assets/images/icons/EditPlans_Icon.png";
 import "./PlansPage.css";
 
 const PlansPage = () => {
@@ -44,24 +43,24 @@ const PlansPage = () => {
 
   const renderPieChart = (aiResponse) => {
     const data = [
-      { id: 0, value: aiResponse.bondsPercentage, label: `Bonds ${aiResponse.bondsPercentage}%` },
-      { id: 1, value: aiResponse.shortTermPercentage, label: `Short Term ${aiResponse.shortTermPercentage}%` },
-      { id: 2, value: aiResponse.foreignStockPercentage, label: `Foreign Stock ${aiResponse.foreignStockPercentage}%` },
-      { id: 3, value: aiResponse.domesticStockPercentage, label: `Domestic Stock ${aiResponse.domesticStockPercentage}%` }
+      { id: 0, value: aiResponse.bondsPercentage, label: `Bonds` },
+      { id: 1, value: aiResponse.shortTermPercentage, label: `Short Term` },
+      { id: 2, value: aiResponse.foreignStockPercentage, label: `Foreign Stock` },
+      { id: 3, value: aiResponse.domesticStockPercentage, label: `Domestic Stock` }
     ];
 
     return (
       <PieChart
         series={[{ data }]}
-        width={400}
+        width={500}
         height={200}
         slotProps={{
           legend: {
             direction: 'column',
-            position: { vertical: 'middle', horizontal: 'right' },
+            position: { vertical: { xs: 'middle', sm: 'bottom' }, horizontal: 'right' },
             padding: 0,
             labelStyle: {
-              fontSize: 14,
+              fontSize: { xs: 12, sm: 14, md: 16 },
               fill: 'black',
             }, 
           },
@@ -75,7 +74,7 @@ const PlansPage = () => {
   }
 
   return (
-    <Box sx={{ mt: { xs: 5, md: 0 } }}>
+    <Box sx={{ mt: { xs: 8, sm: 2, md: 10, lg: 0 } }}>
       <AuthHeader />
       <Box
         id="plans"
@@ -85,7 +84,7 @@ const PlansPage = () => {
           alignItems: "center",
           justifyContent: "center",
           minHeight: "100vh",
-          }}
+        }}
       >
         <Box
           sx={{
@@ -95,212 +94,208 @@ const PlansPage = () => {
             pt: 3,
             pl: 3,
             pr: 3,
-            bgcolor: "#3B0347", padding: { xs: 2, sm: 3, md: 4, lg: 5 } 
           }}
         >
-          
+          <Typography
+            variant="h2"
+            sx={{
+              textAlign: "center",
+              color: "#87DBA8",
+              fontSize: { xs: "3rem", sm: "4rem", md: "5rem", lg: "4.8rem" },
+              mb: 2,
+            }}
+          >
+            My Plans
+          </Typography>  
         </Box>
-        <Typography
-          variant="h2"
-          sx={{
-            textAlign: "center",
-            color: "#87DBA8",
-            fontSize: { xs: "3rem", sm: "4rem", md: "5rem", lg: "4.8rem" },
-            mb: 2,
-          }}
-        >My Plans</Typography>
-        <Box>
-        <Typography 
-                    sx={{
-                      color: "white",
-                      fontSize: {
-                        xs: "0.8rem",
-                        sm: "1rem",
-                        md: "1.2rem",
-                        lg: "1.5rem",
-                      },
-                      padding: { xs: "10px 5px", sm: "10px 5px", md: "10px 5px", lg: "10px 10px"  },
-                      textAlign: { xs: 'justify', sm: 'justify', md: 'center', lg: 'center' },
-                      wordWrap: 'break-word',
-                      maxWidth: '85%',
-                    }}
-                    
-                  >Based on your responses to the questionnaire and current market trends, it is recommend diversifying your portfolio in the following way(s):</Typography>
-        </Box>
-
+        <CustomDivider />
         <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          px: 3,
-        }}
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            pt: 3,
+            pl: 3,
+            pr: 3,
+            maxWidth: { xs: "88%" },
+            margin: "0 auto" 
+          }}
         >
-          <Box
+          <Typography 
+            sx={{
+              color: "white",
+              fontSize: {
+                xs: "0.8rem",
+                sm: "1rem",
+                md: "1.5rem",
+                lg: "1.2rem",
+              },
+              padding: { md: "10px 5px", lg: "10px 10px" },
+              textAlign: "center"
+            }}
+          >
+            Based on your responses to the questionnaire and current market trends, it is recommend diversifying your portfolio in the following way(s):
+          </Typography>
+        </Box>
+        <Box
           sx={{
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            width: "100%",
-            mt: 1,
+            px: 3,
           }}
-          >
-          {plans && plans.length > 0 ? (  
-          plans.map(plan => {
-            let aiResponse;
-            if (plan.ai_response) {  
-              if (plan.risk_comfort_level === 'low') {
-                aiResponse = plan.ai_response.lowRisk;
-              } else if (plan.risk_comfort_level === 'medium') {
-                aiResponse = plan.ai_response.mediumRisk;
-              } else if (plan.risk_comfort_level === 'high') {
-                aiResponse = plan.ai_response.highRisk;
-              }
-            }
-
-            return aiResponse ? (  
-              <Box key={plan.goal_id} sx={{
-                bgcolor: "white",
-                border: "8px solid #87DBA8",
-                borderRadius: "25px",
-                width: "100%",
-                textAlign: "center",
-                p: 2,
-                mb: { xs: 5, lg: 1 },
-                mt: 4,
-              }}
-              >
-             <Grid
-              container
-              direction="row"
-              spacing={2}
-              justifyContent="space-evenly"
-             >
-              <Grid xs={12}>
-              <Typography variant="h4" sx={{ fontSize: { xs: '1.5rem', sm: '2rem', md: '2.5rem', lg: '3rem' } }}>{plan.goal_name}</Typography>
-              </Grid>
-              <Grid
-              item xs={12} md={4} sx={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                flexDirection: "column",
-              }}
-              > 
-                {/* <Box mt={2} textAlign="right">
-                  <Button component={Link} to={`/plans/edit/${plan.goal_id}`}>
-                    <img src={EditIcon} alt="Edit" />
-                  </Button>
-                </Box> */}
-                <Box mt={2}>
-                  
-                  {renderPieChart(aiResponse)}
-                  <Box mt={2}
-                  sx={{
-                    textTransform: "capitalize",
-                    fontSize: { xs: "1rem", sm: "1.5rem", md: "2rem", lg: "2.5rem" },
-                  }}
-                  >
-                  </Box>
-                </Box>
-                </Grid>
-                <Grid item xs={12}>
-                <Typography
-                       sx={{
-                        color: "#3B0347",
-                        fontSize: {
-                          xs: "0.8rem",
-                          sm: "1rem",
-                          md: "1.2rem",
-                          lg: "1.5rem",
-                        },
-                        padding: {
-                          xs: "5px 10px",
-                          sm: "10px 15px",
-                          md: "10px 20px",
-                          lg: "10px 25px",
-                        },
-                        textAlign: 'center',
-                      }}
-                    >
-                      For a balanced investment, allocate {aiResponse.bondsPercentage}% to bonds, {aiResponse.shortTermPercentage}% to short-term investments, {aiResponse.foreignStockPercentage}% to foreign stocks, and {aiResponse.domesticStockPercentage}% to domestic stocks. 
-                    </Typography>
-                </Grid>
-                </Grid>
-              </Box>
-            ) : null;  
-          })
-        ) : (
+        >
           <Box
             sx={{
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
               justifyContent: "center",
-              width: "80%",
-              mt: 4,
+              width: "100%",
+              mt: 1,
+              maxWidth: { xs: "88%" },
             }}
           >
-            <Box
-              sx={{
-                bgcolor: "white",
-                border: "8px solid #87DBA8",
-                borderRadius: "25px",
-                width: "100%",
-                textAlign: "center",
-                p: 2,
-                mb: { xs: 5, lg: 1 },
-              }}
-            >
-              <Typography
-                variant="h4"
+            {plans && plans.length > 0 ? (  
+              plans.map(plan => {
+                let aiResponse;
+                if (plan.ai_response) {  
+                  if (plan.risk_comfort_level.toLowerCase() === 'low') {
+                    aiResponse = plan.ai_response.lowRisk;
+                  } else if (plan.risk_comfort_level.toLowerCase() === 'medium') {
+                    aiResponse = plan.ai_response.mediumRisk;
+                  } else if (plan.risk_comfort_level.toLowerCase() === 'high') {
+                    aiResponse = plan.ai_response.highRisk;
+                  }
+                }
+
+                return aiResponse ? (  
+                  <Box key={plan.goal_id} sx={{
+                    bgcolor: "white",
+                    border: "8px solid #87DBA8",
+                    borderRadius: "25px",
+                    width: "100%",
+                    textAlign: "center",
+                    p: 2,
+                    mb: { xs: 5, lg: 1 },
+                    mt: 4,
+                  }}
+                  >
+                    <Grid
+                      container
+                      direction="row"
+                      spacing={2}
+                      justifyContent="space-evenly"
+                    >
+                      <Grid item xs={12}>
+                        <Typography variant="h4">{plan.goal_name}</Typography>
+                      </Grid>
+                      <Grid
+                        item xs={4}
+                        sx={{
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                        }}
+                      > 
+                        <Box m={2}>
+                          {renderPieChart(aiResponse)}
+                        </Box>
+                      </Grid>
+                      <Grid
+                        item xs={6}
+                        sx={{
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                        }}
+                      >
+                        <Typography
+                          sx={{
+                            color: "#3B0347",
+                            fontSize: {
+                              xs: "0.8rem",
+                              sm: "1rem",
+                              md: "1.5rem",
+                              lg: "1.2rem",
+                            },
+                            padding: { md: "10px 5px", lg: "10px 10px" },
+                          }}
+                        >
+                          For a balanced investment, allocate {aiResponse.bondsPercentage}% to bonds, {aiResponse.shortTermPercentage}% to short-term investments, {aiResponse.foreignStockPercentage}% to foreign stocks, and {aiResponse.domesticStockPercentage}% to domestic stocks. 
+                        </Typography>
+                      </Grid>
+                    </Grid>
+                  </Box>
+                ) : null;  
+              })
+            ) : (
+              <Box
                 sx={{
-                  color: "#3B0347",
-                  mb: 5,
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: "80%",
+                  mt: 4,
                 }}
               >
-                You haven't started any plans.
-                <br />
-                <br />
-                When you do, they'll be located here.
-              </Typography>
-              <Button
-                component={Link}
-                to={`/dashboard/${userId}/plans/new`}
-                color="primary"
-                size="small"
-                sx={{
-                  fontFamily: "MontBlancBold",
-                  fontSize: {
-                    xs: "0.8rem",
-                    sm: "0.8rem",
-                    md: "0.8rem",
-                    lg: "1rem",
-                  },
-                  textTransform: "none",
-                  borderRadius: "15px",
-                  boxShadow: "0 9px 0 #639577",
-                  padding: "10px 20px",
-                  color: "#3B0347",
-                  bgcolor: "#87DBA8",
-                  "&:hover": {
-                    bgcolor: "#639577",
-                  },
-                  mb: 1,
-                }}
-              >
-                Create a Plan
-              </Button>
-            </Box>
+                <Box
+                  sx={{
+                    bgcolor: "white",
+                    border: "8px solid #87DBA8",
+                    borderRadius: "25px",
+                    width: "100%",
+                    textAlign: "center",
+                    p: 2,
+                    mb: { xs: 5, lg: 1 },
+                  }}
+                >
+                  <Typography
+                    variant="h4"
+                    sx={{
+                      color: "#3B0347",
+                      mb: 5,
+                    }}
+                  >
+                    You haven't started any plans.
+                    <br />
+                    <br />
+                    When you do, they'll be located here.
+                  </Typography>
+                  <Button
+                    component={Link}
+                    to={`/dashboard/${userId}/plans/new`}
+                    color="primary"
+                    size="small"
+                    sx={{
+                      fontFamily: "MontBlancBold",
+                      fontSize: {
+                        xs: "0.8rem",
+                        sm: "0.8rem",
+                        md: "0.8rem",
+                        lg: "1rem",
+                      },
+                      textTransform: "none",
+                      borderRadius: "15px",
+                      boxShadow: "0 9px 0 #639577",
+                      padding: "10px 20px",
+                      color: "#3B0347",
+                      bgcolor: "#87DBA8",
+                      "&:hover": {
+                        bgcolor: "#639577",
+                      },
+                      mb: 1,
+                    }}
+                  >
+                    Create a Plan
+                  </Button>
+                </Box>
+              </Box>
+            )}
           </Box>
-        )}
-          </Box>
-        </Box>
-       
-        
-        <CustomDivider />
+        </Box>    
       </Box>
     </Box>
   );
