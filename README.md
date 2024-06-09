@@ -109,6 +109,9 @@ https://kaitmahluxdesign.weebly.com/
 Vanessa Garcia <br>
 https://github.com/petrihcour
 
+Collin DeWalt <br>
+https://github.com/CollinDDD
+
 #### Backend team:
 
 James Lycett <br>
